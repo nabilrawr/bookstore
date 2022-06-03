@@ -1,6 +1,6 @@
-@include('admin.layouts.header')
-@include('admin.layouts.sidebar')
+@include('borrower.layouts.header')
+@include('borrower.layouts.sidebar')
 
 @yield('content')
 
-@include('admin.layouts.footer')
+@include('borrower.layouts.footer')

@@ -67,7 +67,7 @@
                          </div>
                        </div>
                        <div class="col-12">
-                         <p class="mb-0">Don't have an account yet? <a href="authentication-signup.html">Sign up here</a></p>
+                         <p class="mb-0">Don't have an account yet? <a  href="{{ route('register') }}">Sign up here</a></p>
                        </div>
                      </div>
                  </form>
