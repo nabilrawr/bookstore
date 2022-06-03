@@ -13,7 +13,27 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.index');
+    }
+    public function bookCategory()
+    {
+        return view('staff.book-category');
+    }
+    public function bookList()
+    {
+        return view('staff.book-list');
+    }
+    public function profile()
+    {
+        return view('staff.profile');
+    }
+    public function rentRecord()
+    {
+        return view('staff.rent-record');
+    }
+    public function statusRent()
+    {
+        return view('staff.status-rent');
     }
 
     /**

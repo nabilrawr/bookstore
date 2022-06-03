@@ -40,11 +40,27 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
     Route::get('/user-list', [App\Http\Controllers\AdminController::class, 'userList'])->name('user-list');
     Route::get('/create-list', [App\Http\Controllers\AdminController::class, 'createList'])->name('create-list');
     Route::get('/report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');
+    Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('profile');
 });
 
 //Borrower Controller
 Route::group(['prefix'=> 'borrower', 'as' => 'borrower.'], function(){
 
     Route::get('/index', [App\Http\Controllers\BorrowerController::class, 'index'])->name('index');
+    Route::get('/borrow-record', [App\Http\Controllers\BorrowerController::class, 'borrowRecord'])->name('borrow-record');
+    Route::get('/profile', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
 
 });
+
+//staff controller
+Route::group(['prefix'=> 'staff', 'as' => 'staff.'], function(){
+
+    Route::get('/index', [App\Http\Controllers\StaffController::class, 'index'])->name('index');
+    Route::get('/book-category', [App\Http\Controllers\StaffController::class, 'bookCategory'])->name('book-category');
+    Route::get('/book-list', [App\Http\Controllers\StaffController::class, 'bookList'])->name('book-list');
+    Route::get('/profile', [App\Http\Controllers\StaffController::class, 'profile'])->name('profile');
+    Route::get('/rent-record', [App\Http\Controllers\StaffController::class, 'rentRecord'])->name('rent-record');
+    Route::get('/status-rent', [App\Http\Controllers\StaffController::class, 'statusRent'])->name('status-rent');
+
+});
+
