@@ -65,3 +65,26 @@ Route::group(['prefix'=> 'staff', 'as' => 'staff.'], function(){
 
 });
 
+//book
+Route::group(['prefix'=> 'book', 'as' => 'book.'], function(){
+
+    Route::get('/index', [App\Http\Controllers\BookController::class, 'index'])->name('index');
+    Route::get('/create', [App\Http\Controllers\BookController::class, 'create'])->name('create');
+    Route::post('/store', [App\Http\Controllers\BookController::class, 'store'])->name('store');
+    Route::get('/show/{book}', [App\Http\Controllers\BookController::class, 'show'])->name('show');
+    Route::get('/edit/{book}', [App\Http\Controllers\BookController::class, 'edit'])->name('edit');
+    Route::post('/update/{book}', [App\Http\Controllers\BookController::class, 'update'])->name('update');
+    Route::post('/destroy/{book}', [App\Http\Controllers\BookController::class, 'destroy'])->name('destroy');
+});
+
+//category
+Route::group(['prefix'=> 'category', 'as' => 'category.'], function(){
+
+    Route::get('/index', [App\Http\Controllers\CategoryController::class, 'index'])->name('index');
+    Route::get('/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('create');
+    Route::post('/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('store');
+    Route::get('/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('edit');
+    Route::post('/update/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
+    Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
+});
+

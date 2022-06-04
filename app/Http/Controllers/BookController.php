@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Category;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -13,7 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.book.index');
     }
 
     /**
@@ -23,7 +26,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $statuses = Status::all();
+        return view('staff.book.create',compact('categories','statuses'));
     }
 
     /**
@@ -34,16 +39,52 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request -> validate([
+            'name' => 'required|unique:books',
+            'description' => 'required|unique:books',
+            'image' => 'required',
+            'category_id' => 'required',
+            'status_id' => 'required',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+        ]);
+
+        $book = new Book();
+        $book->name = $request->name;
+        $book->description = $request->description;
+
+        if($request -> hasFile('image'))
+        {
+            $destination_path= 'public/images/book';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($destination_path,$image_name);
+
+            $book['image'] = $image_name;
+        }
+//        if($request->file('image')){
+//            $file= $request->file('image');
+//            $filename= date('YmdHi').$file->getClientOriginalName();
+//            $file-> move(public_path('public/Image'), $filename);
+//            $item['image']= $filename;
+//        }
+
+        $book->category_id = $request->category;
+        $book->status_id = $request->status;
+        $book->price = $request->price;
+        $book->save();
+
+        return redirect()->route('book.index')->with('success','Category added successfully');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Book $book)
     {
         //
     }
@@ -51,10 +92,10 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
         //
     }
@@ -63,10 +104,10 @@ class BookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
         //
     }
@@ -74,10 +115,10 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
         //
     }
