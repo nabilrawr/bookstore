@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BorrowerController extends Controller
@@ -57,9 +58,9 @@ class BorrowerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $borrower)
     {
-        //
+        return view('borrower.profile-edit', compact('borrower'));
     }
 
     /**
@@ -69,9 +70,27 @@ class BorrowerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $borrower)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'ic' => ['required', 'string','max:12'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string'],
+            'address' => ['required', 'string','max:255'],
+        ]);
+
+        //attribute database -> attribute dari form
+        $borrower->name = $request->name;
+        $borrower->ic = $request->ic;
+        $borrower->email = $request->email;
+        $borrower->phone = $request->phone;
+        $borrower->address = $request->address;
+        // $borrower->password = $borrower->password;
+
+        $borrower->save();
+
+        return view('borrower.profile-edit')->with('success', 'Your profile has been updated');;
     }
 
     /**
