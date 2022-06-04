@@ -63,9 +63,18 @@
             <a href="https://themeforest.net/user/codervent" target="_blank">
               <div class="parent-icon"><i class="bi bi-telephone-fill"></i>
               </div>
-              <div class="menu-title">Support</div>
+              <div class="menu-title" class="has-arrow">Support</div>
             </a>
           </li>
+
+            <li>
+                <a href="https://themeforest.net/user/codervent" target="_blank">
+                    <div class="parent-icon"><i class="bi-sim-fill"></i>
+                    </div>
+                    <div class="menu-title">Maintenance</div>
+                </a>
+            </li>
+
         </ul>
         <!--end navigation-->
      </aside>

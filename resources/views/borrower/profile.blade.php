@@ -51,7 +51,7 @@
                         <p class="mb-0">Full Name</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->name }}</p>
+                        <p class="text-muted mb-0">Johnatan Smith</p>
                         </div>
                     </div>
                     <hr>
@@ -60,7 +60,7 @@
                         <p class="mb-0">IC Number</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->ic }}</p>
+                        <p class="text-muted mb-0">990131045045</p>
                         </div>
                     </div>
                     <hr>
@@ -69,7 +69,7 @@
                         <p class="mb-0">Email</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->email }}</p>
+                        <p class="text-muted mb-0">example@example.com</p>
                         </div>
                     </div>
                     <hr>

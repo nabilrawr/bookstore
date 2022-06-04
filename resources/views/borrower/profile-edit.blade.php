@@ -11,74 +11,90 @@
           <div class="card-body">
               <h5 class="mb-0">My Account</h5>
               <hr>
-
-              @if ($message = Session::get('success'))
-                    <div class="alert alert-primary card shadow">
-                        <p>{{ $message }}</p>
+              {{-- <div class="card shadow-none border">
+                <div class="card-header">
+                  <h6 class="mb-0">USER INFORMATION</h6>
+                </div>
+                <div class="card-body">
+                  <form class="row g-3">
+                     <div class="col-6">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ old('name', Auth::user()->name )}}" readonly>
+                     </div>
+                     <div class="col-6">
+                      <label class="form-label">IC Number</label>
+                      <input type="text" class="form-control" name="ic" value="{{ old('ic' )}}" readonly>
                     </div>
-                @endif
-
+                      <div class="col-6">
+                        <label class="form-label">Email Address</label>
+                        <input type="text" class="form-control" name="email" value="{{ old('email' )}}" readonly>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" name="phone" value="{{ old('phone' )}}" readonly>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="address" rows="4" readonly>{{ old('address' )}}</textarea>
+                      </div>
+                  </form>
+                </div>
+              </div> --}}
 
               <div class="card shadow-none border">
                 <div class="card-header">
                   <h6 class="mb-0">USER INFORMATION</h6>
                 </div>
                 <div class="card-body">
-                  <form class="row g-3" action="{{ route('borrower.profile-update', $borrower) }}" method="POST">
-                    @csrf
-                     <div class="col-6">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $borrower->name )}}" required >
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                     </div>
-                     <div class="col-6">
-                      <label class="form-label">IC Number</label>
-                      <input type="text" class="form-control @error('ic') is-invalid @enderror" name="ic" value="{{ old('ic', $borrower->ic )}}" >
-                            @error('ic')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                    <div class="row">
+                        <div class="col-sm-3">
+                        <p class="mb-0">Full Name</p>
+                        </div>
+                        <div class="col-sm-9">
+                        <p class="text-muted mb-0">Johnatan Smith</p>
+                        </div>
                     </div>
-                      <div class="col-6">
-                        <label class="form-label">Email Address</label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email', $borrower->email )}}" >
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        <p class="mb-0">IC Number</p>
+                        </div>
+                        <div class="col-sm-9">
+                        <p class="text-muted mb-0">990131045045</p>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <label class="form-label">Phone Number</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone', $borrower->phone )}}" >
-                            @error('phone')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                        </div>
+                        <div class="col-sm-9">
+                        <p class="text-muted mb-0">example@example.com</p>
+                        </div>
                     </div>
-                    <div class="col-12">
-                        <label class="form-label">Address</label>
-                        <textarea class="form-control @error('address') is-invalid @enderror" id="exampleFormControlTextarea1" name="address" rows="4">{{ old('address', $borrower->address )}}</textarea>
-                            @error('address')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                      </div>
-
-                      <div class="col-sm-3">
-                        <a class="btn btn-secondary px-4" href="">Back</a>
-                        <button type="submit" class="btn btn-success px-4">Update Profile</button>
-                      </div>
-
-                  </form>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        <p class="mb-0">Phone Number</p>
+                        </div>
+                        <div class="col-sm-9">
+                        <p class="text-muted mb-0">(097) 234-5678</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                        <p class="mb-0">Address</p>
+                        </div>
+                        <div class="col-sm-9">
+                        <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                        </div>
+                    </div>
                 </div>
+              </div>
+
+              <div class="col-sm-3">
+                <a class="btn btn-primary px-4" href="">Edit Profile</a>
               </div>
           </div>
         </div>

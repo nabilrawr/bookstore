@@ -51,7 +51,6 @@ Route::group(['prefix'=> 'borrower', 'as' => 'borrower.'], function(){
     Route::get('/profile/{borrower}', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
     Route::get('/profile-edit/{borrower}', [App\Http\Controllers\BorrowerController::class, 'edit'])->name('profile-edit');
     Route::post('/profile-update/{borrower}', [App\Http\Controllers\BorrowerController::class,'update'])->name('profile-update');
-
 });
 
 //staff controller
