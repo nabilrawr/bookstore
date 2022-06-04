@@ -72,6 +72,7 @@ class BorrowerController extends Controller
      */
     public function update(Request $request, User $borrower)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'ic' => ['required', 'string','max:12'],
@@ -90,7 +91,7 @@ class BorrowerController extends Controller
 
         $borrower->save();
 
-        return view('borrower.profile-edit')->with('success', 'Your profile has been updated');;
+        return view('borrower.profile-edit')->with('success', 'Your profile has been updated');
     }
 
     /**

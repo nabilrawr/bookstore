@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -43,9 +44,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('borrower.profile-show', compact('user'));
     }
 
     /**
@@ -54,9 +55,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('borrower.profile-edit', compact('user'));
     }
 
     /**
@@ -66,9 +67,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'ic' => ['required', 'string','max:12'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string'],
+            'address' => ['required', 'string','max:255'],
+        ]);
+
+        //attribute database -> attribute dari form
+        $user->name = $request->name;
+        $user->ic = $request->ic;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        // $borrower->password = $borrower->password;
+
+        $user->save();
+
+        return view('borrower.profile-edit');
     }
 
     /**

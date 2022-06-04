@@ -30,6 +30,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+//user profile
+    Route::get('/profile-show/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('profile-show');
+    Route::get('/profile-edit/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('profile-edit');
+    Route::post('/profile-update/{user}', [App\Http\Controllers\UserController::class,'update'])->name('profile-update');
+
+
 //Admin Controller
 Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
     Route::get('/index', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
