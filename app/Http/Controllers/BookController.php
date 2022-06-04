@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\BookCategory;
-use App\Models\Category;
 use App\Models\Status;
+use App\Models\Category;
+use App\Models\BookCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -31,7 +32,7 @@ class BookController extends Controller
     {
         $categories = Category::all();
         $statuses = Status::all();
-        return view('staff.book.create',compact('categories','statuses'));
+        return view('staff.book.create', compact('categories', 'statuses'));
     }
 
     /**
@@ -52,17 +53,14 @@ class BookController extends Controller
 //            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/'
 //        ]);
 
-
-
         $book = new Book();
         $book->title = $request->title;
         $book->writer = $request->writer;
         $book->description = $request->description;
 
-        if($request ->file('image'))
-        {
-//            $destination_path= '/images/book';
-//            $image = $request->file('image');
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
 //            $image_name = $image->getClientOriginalName();
 //            $path = $request->file('image')->storeAs($destination_path,$image_name);
 //
@@ -95,7 +93,6 @@ class BookController extends Controller
     }
 
     /**
-     * Display the specified resource.
      *
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response

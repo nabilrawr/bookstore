@@ -19,8 +19,8 @@ class CreateBooksTable extends Migration
             $table->string('writer');
             $table->text('description');
             $table->string('image');
-            $table->foreignId('status_id');
             $table->decimal('price');
+            $table->foreignId('status_id');
             $table->timestamps();
         });
     }
