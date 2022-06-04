@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="nav-item dropdown dropdown-user-setting">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="route('borrower.profile), Auth::user()" data-bs-toggle="dropdown">
+              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="{{route('borrower.profile',  Auth::user())}}" data-bs-toggle="dropdown">
                 <div class="user-setting d-flex align-items-center">
                   <img src="{{asset('template/assets/images/avatars/avatar-1.png')}}" class="user-img" alt="">
                 </div>
