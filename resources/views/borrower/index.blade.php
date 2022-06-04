@@ -4,54 +4,6 @@
 
    <!--start content-->
    <main class="page-content">
-    <!--breadcrumb-->
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-      <div class="breadcrumb-title pe-3">eCommerce</div>
-      <div class="ps-3">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0 p-0">
-            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Products Grid</li>
-          </ol>
-        </nav>
-      </div>
-      <div class="ms-auto">
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary">Settings</button>
-          <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-            <a class="dropdown-item" href="javascript:;">Another action</a>
-            <a class="dropdown-item" href="javascript:;">Something else here</a>
-            <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--end breadcrumb-->
-
-    <div class="card">
-      <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-lg-3 col-xl-2">
-                                <a href="javascript:;" class="btn btn-primary mb-3 mb-lg-0"><i class="bi bi-plus-square-fill"></i>Add Product</a>
-                            </div>
-                            <div class="col-lg-9 col-xl-10">
-                                <form class="float-lg-end">
-                                    <div class="row row-cols-lg-auto g-2">
-                                        <div class="col-12">
-                                            <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i class="bi bi-download"></i>Export</a>
-                                        </div>
-                                        <div class="col-12">
-                                            <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i class="bi bi-upload"></i>Import</a>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-    </div>
 
       <div class="card">
          <div class="card-header py-3">
@@ -276,7 +228,7 @@
 <div class="card border shadow-none mb-0">
   <div class="card-body text-center">
     <img src="assets/images/products/10.png" class="img-fluid mb-3" alt=""/>
-    <h6 class="product-title">12</h6>
+    <h6 class="product-title">13</h6>
     <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
     <div class="rating mb-0">
       <i class="bi bi-star-fill text-warning"></i>
