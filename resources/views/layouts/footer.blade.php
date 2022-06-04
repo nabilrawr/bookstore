@@ -18,9 +18,17 @@
 <script src="{{asset('template/assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
 <script src="{{asset('template/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
 <script src="{{asset('template/assets/js/pace.min.js')}}"></script>
-<script src="{{asset('template/assets/plugins/chartjs/js/Chart.min.js')}}"></script>
+{{-- <script src="{{asset('template/assets/plugins/chartjs/js/Chart.min.js')}}"></script>
 <script src="{{asset('template/assets/plugins/chartjs/js/Chart.extension.js')}}"></script>
-<script src="{{asset('template/assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
+<script src="{{asset('template/assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script> --}}
+<script src="{{asset('template/assets/plugins/datetimepicker/js/legacy.js')}}"></script>
+<script src="{{asset('template/assets/plugins/datetimepicker/js/picker.js')}}"></script>
+<script src="{{asset('template/assets/plugins/datetimepicker/js/picker.time.js')}}"></script>
+<script src="{{asset('template/assets/plugins/datetimepicker/js/picker.date.js')}}"></script>
+<script src="{{asset('template/assets/plugins/bootstrap-material-datetimepicker/js/moment.min.js')}}"></script>
+<script src="{{asset('template/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js')}}"></script>
+<script src="{{asset('template/assets/js/form-date-time-pickes.js')}}"></script>
+
 <!--app-->
 <script src="{{asset('template/assets/js/app.js')}}"></script>
 <script src="{{asset('template/assets/js/index2.js')}}"></script>
@@ -36,3 +44,7 @@ new PerfectScrollbar(".best-product")
 </body>
 
 </html>
+
+
+
+

@@ -10,6 +10,15 @@
   <link href="{{asset('template/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" >
   <link href="{{asset('template/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
   <link href="{{asset('template/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('template/assets/plugins/datetimepicker/css/classic.css')}}" rel="stylesheet" />
+  <link href="{{asset('template/assets/plugins/datetimepicker/css/classic.time.css')}}" rel="stylesheet" />
+  <link href="{{asset('template/assets/plugins/datetimepicker/css/classic.date.css')}}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{asset('template/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css')}}">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
   <!-- Bootstrap CSS -->
   <link href="{{asset('template/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('template/assets/css/bootstrap-extended.css')}}" rel="stylesheet" />

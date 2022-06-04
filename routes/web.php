@@ -24,6 +24,13 @@ Route::get('/dashboard', function () {
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('/receipt', function () {
+    return view('receipt');
+});
+Route::get('/product-detail', function () {
+    return view('product-detail');
+});
+
 
 
 Auth::routes(['verify' => true]);
