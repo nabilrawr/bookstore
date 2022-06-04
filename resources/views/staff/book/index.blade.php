@@ -46,7 +46,7 @@
                         <tbody>
                         @foreach($books as $book)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td><img src="{{ asset("storage/$book->image") }}" style="width:50px;height:50px;"></td>
                                 <td>{{ $book->title }}</td>
                                 <td>{{ $book->writer }}</td>
                                 <td>{{ $book->description }}</td>

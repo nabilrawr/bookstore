@@ -1,4 +1,4 @@
-@extends('borrower.layouts.master')
+@extends('layouts.master')
 
 @section('content')
   <!--start content-->
@@ -24,11 +24,11 @@
                   <h6 class="mb-0">USER INFORMATION</h6>
                 </div>
                 <div class="card-body">
-                  <form class="row g-3" action="{{ route('borrower.profile-update', $borrower) }}" method="POST">
+                  <form class="row g-3" action="{{ route('borrower.profile-update', $user->id) }}" method="POST">
                     @csrf
                      <div class="col-6">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $borrower->name )}}" required >
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name )}}" required >
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                      </div>
                      <div class="col-6">
                       <label class="form-label">IC Number</label>
-                      <input type="text" class="form-control @error('ic') is-invalid @enderror" name="ic" value="{{ old('ic', $borrower->ic )}}" >
+                      <input type="text" class="form-control @error('ic') is-invalid @enderror" name="ic" value="{{ old('ic', $user->ic )}}" >
                             @error('ic')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -46,7 +46,7 @@
                     </div>
                       <div class="col-6">
                         <label class="form-label">Email Address</label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email', $borrower->email )}}" >
+                        <input type="text" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email', $user->email )}}" >
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-6">
                         <label class="form-label">Phone Number</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone', $borrower->phone )}}" >
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone', $user->phone )}}" >
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-12">
                         <label class="form-label">Address</label>
-                        <textarea class="form-control @error('address') is-invalid @enderror" id="exampleFormControlTextarea1" name="address" rows="4">{{ old('address', $borrower->address )}}</textarea>
+                        <textarea class="form-control @error('address') is-invalid @enderror" id="exampleFormControlTextarea1" name="address" rows="4">{{ old('address', $user->address )}}</textarea>
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -61,12 +61,21 @@ class BookController extends Controller
 
         if($request ->file('image'))
         {
-            $destination_path= 'public/images/book';
-            $image = $request->file('image');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($destination_path,$image_name);
+//            $destination_path= '/images/book';
+//            $image = $request->file('image');
+//            $image_name = $image->getClientOriginalName();
+//            $path = $request->file('image')->storeAs($destination_path,$image_name);
+//
+//            $book->image = $path;
 
-            $book['image'] = $image_name;
+            $path = Storage::disk('uploads')->putFileAs(
+                'book',
+                $request ->file('image'),
+                'book-'. $request ->file('image')->getClientOriginalName()
+            );
+
+            $book->image = '/uploads/' . $path;
+
         }
 
         $book->status_id = Book::AVAILABLE;

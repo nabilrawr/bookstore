@@ -77,15 +77,21 @@ class UserController extends Controller
             'address' => ['required', 'string','max:255'],
         ]);
 
-        //attribute database -> attribute dari form
-        $user->name = $request->name;
-        $user->ic = $request->ic;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        // $borrower->password = $borrower->password;
+        $user->update([
+            'name'=>$request->name,
+            'ic'=>$request->ic,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
 
-        $user->save();
+        ]);
+//        $user->name = $request->name;
+//        $user->ic = $request->ic;
+//        $user->email = $request->email;
+//        $user->phone = $request->phone;
+//        $user->address = $request->address;
+//
+//        $user->save();
 
         return view('borrower.profile-edit');
     }

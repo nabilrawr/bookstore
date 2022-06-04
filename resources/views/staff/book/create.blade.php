@@ -64,18 +64,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <label for="inputEnterYourName" class="col-sm-3 col-form-label">Status</label>
-                                    <div class="col-sm-9" >
-                                        <select class="single-select form-control" name="status">
-                                            <option value="" selected="selected">Select</option>
-                                            @foreach ($statuses as $status)
-                                                <option value="{{ $status->id }}">{{ $status->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
 
-                                </div>
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Price</label>
                                     <div class="col-sm-9">
