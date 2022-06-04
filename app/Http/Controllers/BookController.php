@@ -17,7 +17,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return view('staff.book.index',compact('books'));
+        return view('staff.book.index', compact('books'));
     }
 
     /**
@@ -29,7 +29,7 @@ class BookController extends Controller
     {
         $categories = Category::all();
         $statuses = Status::all();
-        return view('staff.book.create',compact('categories','statuses'));
+        return view('staff.book.create', compact('categories', 'statuses'));
     }
 
     /**
@@ -41,7 +41,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
 
-        $request -> validate([
+        $request->validate([
             'name' => 'required|unique:books',
             'description' => 'required',
             'image' => 'required',
@@ -54,19 +54,18 @@ class BookController extends Controller
         $book->name = $request->name;
         $book->description = $request->description;
 
-        if($request->file('image')){
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(storage_path('public/images'), $filename);
-            $book['image']= $filename;
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(storage_path('public/images'), $filename);
+            $book['image'] = $filename;
         }
         $book->category_id = $request->category;
         $book->status_id = $request->status;
         $book->price = $request->price;
         $book->save();
 
-        return redirect()->route('book.index')->with('success','Book added successfully');
-
+        return redirect()->route('book.index')->with('success', 'Book added successfully');
     }
 
     /**
