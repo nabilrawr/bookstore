@@ -51,7 +51,7 @@
                         <p class="mb-0">Full Name</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">Johnatan Smith</p>
+                        <p class="text-muted mb-0">{{ $borrower->name }}</p>
                         </div>
                     </div>
                     <hr>
@@ -60,7 +60,7 @@
                         <p class="mb-0">IC Number</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">990131045045</p>
+                        <p class="text-muted mb-0">{{ $borrower->ic }}</p>
                         </div>
                     </div>
                     <hr>
@@ -69,7 +69,7 @@
                         <p class="mb-0">Email</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">example@example.com</p>
+                        <p class="text-muted mb-0">{{ $borrower->email }}</p>
                         </div>
                     </div>
                     <hr>
@@ -78,7 +78,7 @@
                         <p class="mb-0">Phone Number</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">(097) 234-5678</p>
+                        <p class="text-muted mb-0">{{ $borrower->phone }}</p>
                         </div>
                     </div>
                     <hr>
@@ -87,14 +87,14 @@
                         <p class="mb-0">Address</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                        <p class="text-muted mb-0">{{ $borrower->address }}</p>
                         </div>
                     </div>
                 </div>
               </div>
 
               <div class="col-sm-3">
-                <a class="btn btn-primary px-4" href="">Edit Profile</a>
+                <a class="btn btn-primary px-4" href="{{ route('borrower.profile-edit', $borrower) }}">Edit Profile</a>
               </div>
           </div>
         </div>
