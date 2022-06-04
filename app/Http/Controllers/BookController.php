@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\BookCategory;
 use App\Models\Category;
 use App\Models\Status;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('staff.book.index');
+        $books = Book::all();
+        $categories = Category::all();
+        return view('staff.book.index', compact('books','categories'));
     }
 
     /**
@@ -39,21 +42,24 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+//        $request -> validate([
+//            'title' => 'required|unique:books',
+//            'writer' => 'required',
+//            'description' => 'required',
+//            'image' => 'required',
+//            'category_id' => 'required',
+//            'status_id' => 'required',
+//            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/'
+//        ]);
 
-        $request -> validate([
-            'name' => 'required|unique:books',
-            'description' => 'required|unique:books',
-            'image' => 'required',
-            'category_id' => 'required',
-            'status_id' => 'required',
-            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/'
-        ]);
+
 
         $book = new Book();
-        $book->name = $request->name;
+        $book->title = $request->title;
+        $book->writer = $request->writer;
         $book->description = $request->description;
 
-        if($request -> hasFile('image'))
+        if($request ->file('image'))
         {
             $destination_path= 'public/images/book';
             $image = $request->file('image');
@@ -62,17 +68,18 @@ class BookController extends Controller
 
             $book['image'] = $image_name;
         }
-//        if($request->file('image')){
-//            $file= $request->file('image');
-//            $filename= date('YmdHi').$file->getClientOriginalName();
-//            $file-> move(public_path('public/Image'), $filename);
-//            $item['image']= $filename;
-//        }
 
-        $book->category_id = $request->category;
-        $book->status_id = $request->status;
+        $book->status_id = Book::AVAILABLE;
         $book->price = $request->price;
         $book->save();
+
+        foreach ($request->category as $category){
+            $bookCategory = new BookCategory();
+            $bookCategory->book_id = $book->id;
+            $bookCategory->category_id = $category;
+            $bookCategory->save();
+        }
+
 
         return redirect()->route('book.index')->with('success','Category added successfully');
 

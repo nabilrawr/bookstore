@@ -27,18 +27,24 @@
                                 <h5 class="mb-0">Create Book</h5>
                             </div>
                             <hr/>
-                            <form method="post" action="{{ route('book.store') }}"class="mb-5" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('book.store') }}" class="mb-5" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
-                                    <label for="inputEnterYourName" class="col-sm-3 col-form-label">Name</label>
+                                    <label for="title" class="col-sm-3 col-form-label">Title</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Enter Book Name" name="name" value="{{ old('name') }}" required>
+                                        <input type="text" class="form-control" placeholder="Enter Book Title" name="title" value="{{ old('title') }}" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="writer" class="col-sm-3 col-form-label">Writer Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Enter Writer Name" name="writer" value="{{ old('writer') }}" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                         <label for="inputEnterYourName" class="col-sm-3 col-form-label">Description</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" id="inputAddress4" rows="3" placeholder="Enter Description" name="description" required>{{ old('description') }}</textarea>
+                                        <textarea class="form-control" id="description" rows="3" placeholder="Enter Description" name="description" required>{{ old('description') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -50,7 +56,7 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
                                     <div class="col-sm-9">
-                                        <select class="single-select form-control" name="category">
+                                        <select class="form-control" name="category[]" multiple>
                                             <option value="" selected="selected">Select</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -74,7 +80,7 @@
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Price</label>
                                     <div class="col-sm-9">
                                         <div class="input-group mb-3"> <span class="input-group-text">RM</span>
-                                            <input type="text" class="form-control" placeholder="0.00" aria-label="RM amount (with dot and two decimal places)" value="{{ old('price') }}" required>
+                                            <input type="text" class="form-control" name="price" placeholder="0.00" aria-label="RM amount (with dot and two decimal places)" value="{{ old('price') }}" required>
                                         </div>
                                     </div>
                                 </div>
