@@ -21,6 +21,7 @@
                  <h5 class="card-title">Sign Up</h5>
                  <p class="card-text mb-5">See your growth and get consulting support!</p>
                  <form class="form-body" method="POST" action="{{ route('register') }}">
+                    @csrf
                    <div class="login-separater text-center mb-4"> <span>OR SIGN UP WITH EMAIL</span>
                      <hr>
                    </div>
