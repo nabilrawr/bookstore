@@ -27,7 +27,7 @@
                                 <h5 class="mb-0">Create Book</h5>
                             </div>
                             <hr/>
-                            <form method="post" action="{{ route('book.store') }}"class="mb-5" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('book.store') }}" class="mb-5" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Name</label>

@@ -37,8 +37,10 @@
                         <thead class="table-light">
                         <tr>
                             <th>#</th>
+                            <th>Image</th>
                             <th>Name</th>
-                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -46,12 +48,15 @@
                         @foreach($books as $book)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{$category->name}}</td>
+                                <td>{{$book->image}}</td>
+                                <td>{{$book->name}}</td>
+                                <td>{{$book->status_id}}</td>
+                                <td>{{$book->price}}</td>
                                 <td>
                                     <div class="d-flex align-items-center gap-3 fs-6">
                                         {{--                                <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="bi bi-eye-fill"></i></a>--}}
-                                        <a href="{{ route('category.edit',$category) }}" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit Category" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
-                                        <form action="{{ route('category.destroy',$category) }}" method="POST">
+                                        <a href="{{ route('book.edit',$book) }}" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit Category" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                        <form action="{{ route('book.destroy',$book) }}" method="POST">
                                             @csrf
                                             <button type="submit" onclick="return confirm ('Are you sure want to delete?');" class="text-danger border-0 bx-outline-none btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></button>
                                         </form>
@@ -63,7 +68,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $categories->links() }}
+{{--                {{ $books->links() }}--}}
             </div>
         </div>
     </main>
