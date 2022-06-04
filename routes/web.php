@@ -26,9 +26,16 @@ Route::get('/test', function () {
 });
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//user profile
+    Route::get('/profile-show/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('profile-show');
+    Route::get('/profile-edit/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('profile-edit');
+    Route::post('/profile-update/{user}', [App\Http\Controllers\UserController::class,'update'])->name('profile-update');
+
 
 //Admin Controller
 Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
@@ -48,10 +55,9 @@ Route::group(['prefix'=> 'borrower', 'as' => 'borrower.'], function(){
 
     Route::get('/index', [App\Http\Controllers\BorrowerController::class, 'index'])->name('index');
     Route::get('/borrow-record', [App\Http\Controllers\BorrowerController::class, 'borrowRecord'])->name('borrow-record');
-    Route::get('/profile/{borrower}', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
-    Route::get('/profile-edit/{borrower}', [App\Http\Controllers\BorrowerController::class, 'edit'])->name('profile-edit');
-    Route::post('/profile-update/{borrower}', [App\Http\Controllers\BorrowerController::class,'update'])->name('profile-update');
-
+    Route::get('/profile/{user}', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
+    Route::get('/profile-edit/{user}', [App\Http\Controllers\BorrowerController::class, 'edit'])->name('profile-edit');
+    Route::post('/profile-update/{user}', [App\Http\Controllers\BorrowerController::class,'update'])->name('profile-update');
 });
 
 //staff controller

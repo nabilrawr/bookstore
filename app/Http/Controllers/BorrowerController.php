@@ -18,9 +18,9 @@ class BorrowerController extends Controller
         return view('borrower.bookview');
     }
 
-    public function profile(User $borrower)
+    public function profile()
     {
-        return view('borrower.profile', compact('borrower'));
+        return view('borrower.profile');
     }
 
     public function borrowRecord()
@@ -58,9 +58,9 @@ class BorrowerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $borrower)
+    public function edit(User $user)
     {
-        return view('borrower.profile-edit', compact('borrower'));
+        return view('borrower.profile-edit', compact('user'));
     }
 
     /**
@@ -70,7 +70,7 @@ class BorrowerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $borrower)
+    public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -81,16 +81,16 @@ class BorrowerController extends Controller
         ]);
 
         //attribute database -> attribute dari form
-        $borrower->name = $request->name;
-        $borrower->ic = $request->ic;
-        $borrower->email = $request->email;
-        $borrower->phone = $request->phone;
-        $borrower->address = $request->address;
-        // $borrower->password = $borrower->password;
+        $user->name = $request->name;
+        $user->ic = $request->ic;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
 
-        $borrower->save();
 
-        return view('borrower.profile-edit')->with('success', 'Your profile has been updated');;
+        $user->save();
+
+        return redirect()->route('profile-show',$user->id)->with('success', 'Your profile has been updated');;
     }
 
     /**

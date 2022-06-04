@@ -1,4 +1,4 @@
-@extends('borrower.layouts.master')
+@extends('layouts.master')
 
 @section('content')
   <!--start content-->
@@ -51,7 +51,7 @@
                         <p class="mb-0">Full Name</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->name }}</p>
+                        <p class="text-muted mb-0">{{$user->name}}</p>
                         </div>
                     </div>
                     <hr>
@@ -60,7 +60,7 @@
                         <p class="mb-0">IC Number</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->ic }}</p>
+                        <p class="text-muted mb-0">{{ $user->ic }}</p>
                         </div>
                     </div>
                     <hr>
@@ -69,7 +69,7 @@
                         <p class="mb-0">Email</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->email }}</p>
+                        <p class="text-muted mb-0">{{ $user->email }}</p>
                         </div>
                     </div>
                     <hr>
@@ -78,7 +78,7 @@
                         <p class="mb-0">Phone Number</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->phone }}</p>
+                        <p class="text-muted mb-0">{{ $user->phone }}</p>
                         </div>
                     </div>
                     <hr>
@@ -87,14 +87,14 @@
                         <p class="mb-0">Address</p>
                         </div>
                         <div class="col-sm-9">
-                        <p class="text-muted mb-0">{{ $borrower->address }}</p>
+                        <p class="text-muted mb-0">{{ $user->address }}</p>
                         </div>
                     </div>
                 </div>
               </div>
 
               <div class="col-sm-3">
-                <a class="btn btn-primary px-4" href="{{ route('borrower.profile-edit', $borrower) }}">Edit Profile</a>
+                <a class="btn btn-primary px-4" href="{{ route('borrower.profile-edit', $user->id) }}">Edit Profile</a>
               </div>
           </div>
         </div>

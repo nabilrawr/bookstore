@@ -41,6 +41,9 @@
                             <th>Name</th>
                             <th>Status</th>
                             <th>Price</th>
+                            <th>Title</th>
+                            <th>Writer Name</th>
+                            <th>Description</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -60,15 +63,18 @@
                                             @csrf
                                             <button type="submit" onclick="return confirm ('Are you sure want to delete?');" class="text-danger border-0 bx-outline-none btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></button>
                                         </form>
+                                <td><img src="{{ asset("storage/$book->image") }}" style="width:50px;height:50px;"></td>
+                                <td>{{ $book->title }}</td>
+                                <td>{{ $book->writer }}</td>
+                                <td>{{ $book->description }}</td>
+                                <td>
 
-                                    </div>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-{{--                {{ $books->links() }}--}}
             </div>
         </div>
     </main>
