@@ -1,4 +1,4 @@
-@extends('borrower.layouts.master')
+@extends('layouts.master')
 
 @section('content')
 

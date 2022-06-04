@@ -27,8 +27,9 @@ class HomeController extends Controller
         //1= rental
         if ( Auth::user()->role == 1 ){
             return view('borrower.index');
-        }
-        else{
+        } else if ( Auth::user()->role == 2 ){
+            return view('staff.index');
+        } else {
             return view('home');
         }
 
