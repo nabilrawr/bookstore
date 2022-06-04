@@ -33,7 +33,11 @@
 <script src="{{asset('template/assets/js/app.js')}}"></script>
 <script src="{{asset('template/assets/js/index2.js')}}"></script>
 <script>
+<<<<<<< HEAD
 new PerfectScrollbar(".best-product")
+=======
+    new PerfectScrollbar(".best-product")
+>>>>>>> izzaty
 </script>
 
 

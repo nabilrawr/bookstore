@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+    protected $fillable = ['title','writer','description','image','category_id','status_id','price'];
 
-    protected $fillable = [
-        'title',
-        'desc',
-        'price',
-        'isAvailable',
-        'image',
-    ];
+    public const AVAILABLE=4;
+
+//    public function categories(){
+//        return $this->hasMany()
+//    }
 }

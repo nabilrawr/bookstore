@@ -75,6 +75,16 @@
                 </a>
             </li>
 
+            @if (auth()->user()->role==1)
+                <li>
+                    <a href="{{ route('book.create') }}" target="_blank">
+                        <div class="parent-icon"><i class="bi-sim-fill"></i>
+                        </div>
+                        <div class="menu-title">Add Book</div>
+                    </a>
+                </li>
+            @endif
+
         </ul>
         <!--end navigation-->
      </aside>
