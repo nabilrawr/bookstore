@@ -87,7 +87,7 @@
                   <div class="card border shadow-none mb-0">
                     <div class="card-body text-center">
                       <img src="assets/images/products/01.png" class="img-fluid mb-3" alt=""/>
-                      <h6 class="product-title">Men White Polo T-shirt</h6>
+                      <h6 class="product-title">3</h6>
                       <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
                       <div class="rating mb-0">
                         <i class="bi bi-star-fill text-warning"></i>
@@ -108,7 +108,7 @@
                 <div class="card border shadow-none mb-0">
                   <div class="card-body text-center">
                     <img src="assets/images/products/02.png" class="img-fluid mb-3" alt=""/>
-                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                    <h6 class="product-title">2</h6>
                     <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
                     <div class="rating mb-0">
                       <i class="bi bi-star-fill text-warning"></i>
@@ -129,7 +129,7 @@
               <div class="card border shadow-none mb-0">
                 <div class="card-body text-center">
                   <img src="assets/images/products/03.png" class="img-fluid mb-3" alt=""/>
-                  <h6 class="product-title">Men White Polo T-shirt</h6>
+                  <h6 class="product-title">1</h6>
                   <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
                   <div class="rating mb-0">
                     <i class="bi bi-star-fill text-warning"></i>
@@ -150,7 +150,7 @@
             <div class="card border shadow-none mb-0">
               <div class="card-body text-center">
                 <img src="assets/images/products/04.png" class="img-fluid mb-3" alt=""/>
-                <h6 class="product-title">Men White Polo T-shirt</h6>
+                <h6 class="product-title">5</h6>
                 <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
                 <div class="rating mb-0">
                   <i class="bi bi-star-fill text-warning"></i>
@@ -171,7 +171,7 @@
           <div class="card border shadow-none mb-0">
             <div class="card-body text-center">
               <img src="assets/images/products/05.png" class="img-fluid mb-3" alt=""/>
-              <h6 class="product-title">Men White Polo T-shirt</h6>
+              <h6 class="product-title">6</h6>
               <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
               <div class="rating mb-0">
                 <i class="bi bi-star-fill text-warning"></i>
@@ -192,7 +192,7 @@
         <div class="card border shadow-none mb-0">
           <div class="card-body text-center">
             <img src="assets/images/products/06.png" class="img-fluid mb-3" alt=""/>
-            <h6 class="product-title">Men White Polo T-shirt</h6>
+            <h6 class="product-title">7</h6>
             <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
             <div class="rating mb-0">
               <i class="bi bi-star-fill text-warning"></i>
@@ -213,7 +213,7 @@
       <div class="card border shadow-none mb-0">
         <div class="card-body text-center">
           <img src="assets/images/products/07.png" class="img-fluid mb-3" alt=""/>
-          <h6 class="product-title">Men White Polo T-shirt</h6>
+          <h6 class="product-title">8</h6>
           <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
           <div class="rating mb-0">
             <i class="bi bi-star-fill text-warning"></i>
@@ -234,7 +234,7 @@
     <div class="card border shadow-none mb-0">
       <div class="card-body text-center">
         <img src="assets/images/products/08.png" class="img-fluid mb-3" alt=""/>
-        <h6 class="product-title">Men White Polo T-shirt</h6>
+        <h6 class="product-title">9</h6>
         <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
         <div class="rating mb-0">
           <i class="bi bi-star-fill text-warning"></i>
@@ -255,7 +255,7 @@
   <div class="card border shadow-none mb-0">
     <div class="card-body text-center">
       <img src="assets/images/products/09.png" class="img-fluid mb-3" alt=""/>
-      <h6 class="product-title">Men White Polo T-shirt</h6>
+      <h6 class="product-title">12</h6>
       <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
       <div class="rating mb-0">
         <i class="bi bi-star-fill text-warning"></i>
@@ -276,7 +276,7 @@
 <div class="card border shadow-none mb-0">
   <div class="card-body text-center">
     <img src="assets/images/products/10.png" class="img-fluid mb-3" alt=""/>
-    <h6 class="product-title">Men White Polo T-shirt</h6>
+    <h6 class="product-title">12</h6>
     <p class="product-price fs-5 mb-1"><span>$250.99</span></p>
     <div class="rating mb-0">
       <i class="bi bi-star-fill text-warning"></i>
