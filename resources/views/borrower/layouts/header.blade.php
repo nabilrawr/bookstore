@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="nav-item dropdown dropdown-user-setting">
-              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
+              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="{{ route('borrower.profile', Auth::user()) }}" data-bs-toggle="dropdown">
                 <div class="user-setting d-flex align-items-center">
                   <img src="{{asset('template/assets/images/avatars/avatar-1.png')}}" class="user-img" alt="">
                 </div>
@@ -451,6 +451,16 @@
             </li>
             </ul>
             </div>
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
       </nav>
     </header>
      <!--end top header-->
