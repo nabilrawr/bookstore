@@ -27,6 +27,9 @@ Route::get('/test', function () {
 Route::get('/receipt', function () {
     return view('receipt');
 });
+Route::get('/product-detail', function () {
+    return view('product-detail');
+});
 
 
 
