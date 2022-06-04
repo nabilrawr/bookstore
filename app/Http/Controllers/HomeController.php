@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //1= rental
+        if ( Auth::user()->role == 1 ){
+            return view('borrower.index');
+        }
+        else{
+            return view('home');
+        }
+
     }
 }
