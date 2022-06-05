@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class BorrowerController extends Controller
 {
 
-    public function index()
+    public function indexCatalog()
     {
-        return view('borrower.index');
+        $books = Book::orderByDesc('created_at')->get();
+        $categories = Category::all();
+        return view('borrower.catalog-index', compact('books','categories'));
+    }
 
+    public function showCatalog(Book $book)
+    {
+        $categories = Category::all();
+        return view('borrower.catalog-show', compact('book','categories'));
     }
     public function bookView()
     {

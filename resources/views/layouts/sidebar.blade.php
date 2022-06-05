@@ -21,21 +21,15 @@
                    </a>
                </li>
                <li>
-                   <a href="javascript:;" class="has-arrow">
+                   <a href="{{ route('borrower.index-catalog') }}" class="has-arrow">
                        <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
                        </div>
                        <div class="menu-title">Catalogue</div>
                    </a>
-                   <ul>
-                       <li> <a href="app-emailbox.html"><i class="bi bi-circle"></i>All Book</a>
-                       </li>
-                       <li> <a href="app-chat-box.html"><i class="bi bi-circle"></i>Category</a>
-                       </li>
-                   </ul>
                </li>
                <li class="menu-label">Account</li>
                <li>
-                   <a href="javascript:;">
+                   <a href="{{ route('profile-show', Auth::user()->id ) }}">
                        <div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
                        </div>
                        <div class="menu-title">My Profile</div>

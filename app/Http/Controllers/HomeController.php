@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         //1= rental
         if ( Auth::user()->role == 1 ){
-            return view('borrower.index');
+            return redirect()->route('borrower.index-catalog');
         } else if ( Auth::user()->role == 2 ){
             return view('staff.index');
         } else {

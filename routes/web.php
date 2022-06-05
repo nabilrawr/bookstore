@@ -27,9 +27,11 @@ Route::get('/test', function () {
 Route::get('/receipt', function () {
     return view('receipt');
 });
-Route::get('/product-detail', function () {
-    return view('product-detail');
-});
+
+
+// Route::get('/product-detail', function () {
+//     return view('product-detail');
+// });
 
 
 
@@ -60,11 +62,12 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
 //Borrower Controller
 Route::group(['prefix'=> 'borrower', 'as' => 'borrower.'], function(){
 
-    Route::get('/index', [App\Http\Controllers\BorrowerController::class, 'index'])->name('index');
+    Route::get('/catalog-index', [App\Http\Controllers\BorrowerController::class, 'indexCatalog'])->name('index-catalog');
+    Route::get('/catalog-show/{book}', [App\Http\Controllers\BorrowerController::class, 'showCatalog'])->name('show-catalog');
     Route::get('/borrow-record', [App\Http\Controllers\BorrowerController::class, 'borrowRecord'])->name('borrow-record');
-    Route::get('/profile/{user}', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
-    Route::get('/profile-edit/{user}', [App\Http\Controllers\BorrowerController::class, 'edit'])->name('profile-edit');
-    Route::post('/profile-update/{user}', [App\Http\Controllers\BorrowerController::class,'update'])->name('profile-update');
+    // Route::get('/profile/{user}', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
+    // Route::get('/profile-edit/{user}', [App\Http\Controllers\BorrowerController::class, 'edit'])->name('profile-edit');
+    // Route::post('/profile-update/{user}', [App\Http\Controllers\BorrowerController::class,'update'])->name('profile-update');
 });
 
 //staff controller

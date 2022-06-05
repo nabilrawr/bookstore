@@ -72,7 +72,7 @@ class BookController extends Controller
                 'book-'. $request ->file('image')->getClientOriginalName()
             );
 
-            $book->image = '/uploads/' . $path;
+            $book->image = 'uploads/' . $path;
 
         }
 

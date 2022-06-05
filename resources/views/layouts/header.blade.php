@@ -40,6 +40,15 @@
   <title>Snacked - Bootstrap 5 Admin Template</title>
 </head>
 
+<style>
+    .boxCatalog:hover
+    {
+      -moz-box-shadow: 0 0 10px rgb(225, 225, 225);
+      -webkit-box-shadow: 0 0 10px #ccc;
+      box-shadow: 0 0 10px #ccc;
+    }
+</style>
+
 <body>
 
 
