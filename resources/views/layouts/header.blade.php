@@ -13,8 +13,10 @@
     <link href="{{ asset('template/assets/plugins/datetimepicker/css/classic.css') }}" rel="stylesheet" />
     <link href="{{ asset('template/assets/plugins/datetimepicker/css/classic.time.css') }}" rel="stylesheet" />
     <link href="{{ asset('template/assets/plugins/datetimepicker/css/classic.date.css') }}" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="{{ asset('template/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css') }}">
+    <link href="{{ asset('template/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
+    <link href="{{ asset('template/assets/plugins/input-tags/css/tagsinput.css" rel="stylesheet') }}" />
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

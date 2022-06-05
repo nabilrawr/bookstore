@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -105,5 +108,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    //excel controller
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

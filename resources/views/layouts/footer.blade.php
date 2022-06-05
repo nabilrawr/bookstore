@@ -76,10 +76,11 @@
   <script src="{{ asset('template/assets/plugins/datetimepicker/js/picker.time.js') }}"></script>
   <script src="{{ asset('template/assets/plugins/datetimepicker/js/picker.date.js') }}"></script>
   <script src="{{ asset('template/assets/plugins/bootstrap-material-datetimepicker/js/moment.min.js') }}"></script>
-  <script
-    src="{{ asset('template/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js') }}">
-  </script>
+  <script src="{{ asset('template/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js') }}"></script>
+  <script src="{{ asset('template/assets/plugins/select2/js/select2.min.js') }}"></script>
+  <script src="{{ asset('template/assets/js/form-select2.js') }}"></script>
   <script src="{{ asset('template/assets/js/form-date-time-pickes.js') }}"></script>
+  <script src="{{ asset('template/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 
   <!--app-->
   <script src="{{ asset('template/assets/js/app.js') }}"></script>

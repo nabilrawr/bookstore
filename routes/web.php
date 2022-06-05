@@ -39,6 +39,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
 
 //user profile
 Route::get('/profile-show/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('profile-show');

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('layouts.master')
 
 @section('content')
 
@@ -6,7 +6,7 @@
        <main class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Forms</div>
+            <div class="breadcrumb-title pe-3">Insert</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
@@ -16,45 +16,30 @@
                     </ol>
                 </nav>
             </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">Settings</button>
-                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                        <a class="dropdown-item" href="javascript:;">Something else here</a>
-                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-                    </div>
-                </div>
-            </div>
         </div>
         <!--end breadcrumb-->
         <div class="row">
             <div class="col-xl-9 mx-auto">
-                <h6 class="mb-0 text-uppercase">Select2 Controls</h6>
+                <h6 class="mb-0 text-uppercase">Insert Book category</h6>
                 <hr/>
                 <div class="card">
                     <div class="card-body">
                         <div class="border p-3 rounded">
                             <div class="mb-3">
-                                <label class="form-label">Select2 Text Control</label>
-                                <select class="single-select">
-                                    <option value="United States">United States</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="Afghanistan">Afghanistan</option>
-                                </select>
-                            </div>
-                            <div class="mb-3 select2-sm">
-                                <label class="form-label">Select2 Small Text Control</label>
-                                <select class="single-select">
-                                    <option value="United States">United States</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="Afghanistan">Afghanistan</option>
-                                </select>
+                                <label class="form-label">Book Name</label>
+                                <input class="form-control mb-3" type="text" placeholder="Book Name" aria-label="default input example">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Select2 Multiple Control</label>
+                                <label class="form-label">Author</label>
+                                <input class="form-control mb-3" type="text" placeholder="Author" aria-label="default input example">
+                            </div>
+                            <div class="mb-3 select2-sm">
+                                <label class="form-label">Book Description</label>
+                                <textarea class="form-control" rows="4" cols="4"></textarea>
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Select Book categories</label><br>
                                 <select class="multiple-select" data-placeholder="Choose anything" multiple="multiple">
                                     <option value="United States" selected>United States</option>
                                     <option value="United Kingdom" selected>United Kingdom</option>
@@ -64,35 +49,23 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Select2 Input Group Apend</label>
-                                <div class="input-group">
-                                    <select class="single-select form-select" >
-                                        <option selected>Last Visit</option>
-                                        <option value="1">Dashboard</option>
-                                        <option value="2">Control</option>
-                                        <option value="3">KPI</option>
-                                        <option value="3">Map</option>
-                                        <option value="3">Billing Product</option>
-                                    </select>
-                                    <button class="btn btn-outline-secondary" type="button"><i class='bx bx-search'></i>
-                                    </button>
-                                </div>
+                                <label class="form-label">Book Condition</label>
+                                <select class="form-select" aria-label="Default select example">
+									<option selected>Book Condition</option>
+									<option value="1">New</option>
+									<option value="2">Used</option>
+								</select>
                             </div>
+                            <br>
                             <div class="mb-3">
-                                <label class="form-label">Select2 Input Group Prepend</label>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary" type="button"><i class='bx bx-search'></i>
-                                    </button>
-                                    <select class="form-select single-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                        <option selected>Last Visit</option>
-                                        <option value="1">Dashboard</option>
-                                        <option value="2">Control</option>
-                                        <option value="3">KPI</option>
-                                        <option value="3">Map</option>
-                                        <option value="3">Billing Product</option>
-                                    </select>
-                                </div>
+                                <label class="form-label">Upload Book Cover Image</label>
+                                <input class="form-control" type="file" id="formFile">
                             </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary px-5">Back</button>
+                                <button type="button" class="btn btn-primary px-5">Submit</button>
+                              </div>
+
                         </div>
                     </div>
                 </div>
