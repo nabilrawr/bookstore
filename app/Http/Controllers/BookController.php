@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\BookCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookController extends Controller
 {
@@ -20,7 +21,14 @@ class BookController extends Controller
     {
         $books = Book::all();
         $categories = Category::all();
-        return view('staff.book.index', compact('books','categories'));
+        return view('staff.book.index', compact('books', 'categories'));
+    }
+
+    public function try()
+    {
+        $books = Book::all();
+        $categories = Category::all();
+        return view('staff.book.try', compact('books', 'categories'));
     }
 
     /**
@@ -43,15 +51,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-//        $request -> validate([
-//            'title' => 'required|unique:books',
-//            'writer' => 'required',
-//            'description' => 'required',
-//            'image' => 'required',
-//            'category_id' => 'required',
-//            'status_id' => 'required',
-//            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/'
-//        ]);
+        // $request->validate([
+        //     'title' => 'required',
+        //     'writer' => 'required',
+        //     'description' => 'required',
+        //     'status_id' => 'required',
+        // ]);
 
         $book = new Book();
         $book->title = $request->title;
@@ -61,15 +66,15 @@ class BookController extends Controller
         if ($request->file('image')) {
             $file = $request->file('image');
             $filename = date('YmdHi') . $file->getClientOriginalName();
-//            $image_name = $image->getClientOriginalName();
-//            $path = $request->file('image')->storeAs($destination_path,$image_name);
-//
-//            $book->image = $path;
+            //            $image_name = $image->getClientOriginalName();
+            //            $path = $request->file('image')->storeAs($destination_path,$image_name);
+            //
+            //            $book->image = $path;
 
             $path = Storage::disk('uploads')->putFileAs(
                 'book',
-                $request ->file('image'),
-                'book-'. $request ->file('image')->getClientOriginalName()
+                $request->file('image'),
+                'book-' . $request->file('image')->getClientOriginalName()
             );
 
             $book->image = 'uploads/' . $path;
@@ -80,16 +85,16 @@ class BookController extends Controller
         $book->price = $request->price;
         $book->save();
 
-        foreach ($request->category as $category){
+        foreach ($request->category as $category) {
             $bookCategory = new BookCategory();
             $bookCategory->book_id = $book->id;
             $bookCategory->category_id = $category;
             $bookCategory->save();
         }
 
-
-        return redirect()->route('book.index')->with('success','Category added successfully');
-
+        Alert::success('Success', 'Book Has Been Added');
+        return redirect()->route('book.index');
+        // return redirect()->route('book.index')->with('success', 'Book Has Been Added');
     }
 
     /**
@@ -99,7 +104,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('staff.book.show', compact('book'));
     }
 
     /**
@@ -110,7 +115,12 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $categories = Category::all();
+        $BookCategories = BookCategory::all();
+        $genres = Book::with(['categories'])->get()->find($book);
+        // return $genres->categories;
+
+        return view('staff.book.edit', compact('book', 'categories', 'genres'));
     }
 
     /**
@@ -122,7 +132,41 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book = new Book();
+        $book->title = $request->title;
+        $book->writer = $request->writer;
+        $book->description = $request->description;
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            //            $image_name = $image->getClientOriginalName();
+            //            $path = $request->file('image')->storeAs($destination_path,$image_name);
+            //
+            //            $book->image = $path;
+
+            $path = Storage::disk('uploads')->putFileAs(
+                'book',
+                $request->file('image'),
+                'book-' . $request->file('image')->getClientOriginalName()
+            );
+
+            $book->image = '/uploads/' . $path;
+        }
+
+        $book->status_id = Book::AVAILABLE;
+        $book->price = $request->price;
+        $book->save();
+
+        foreach ($request->category as $category) {
+            $bookCategory = new BookCategory();
+            $bookCategory->book_id = $book->id;
+            $bookCategory->category_id = $category;
+            $bookCategory->save();
+        }
+
+        Alert::success('Success', 'Book Has Been Edited');
+        return redirect()->route('book.index');
     }
 
     /**
@@ -133,6 +177,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        Alert::success('Success', 'Book Has Been Deleted');
+        return redirect()->route('book.index');
     }
 }

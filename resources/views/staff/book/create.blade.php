@@ -47,7 +47,7 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Description</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" id="description" rows="3" placeholder="Enter Description" name="description"
+                                        <textarea class="form-control" id="description" rows="5" placeholder="Enter Description" name="description"
                                             required>{{ old('description') }}</textarea>
                                     </div>
                                 </div>
@@ -60,8 +60,9 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
                                     <div class="col-sm-9">
-                                        <select class="form-control" name="category[]" multiple>
-                                            <option value="" selected="selected">Select</option>
+                                        <select multiple="multiple" class="form-select mb-3" name="category[]" id="news">
+                                            {{-- <select class="select2 form-select mb-3" name="category[]" id="category"> --}}
+                                            <option selected>Open this select menu</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
@@ -97,3 +98,9 @@
 
     </main>
 @endsection
+
+@push('scripts')
+    <script>
+        $('#category').select2();
+    </script>
+@endpush

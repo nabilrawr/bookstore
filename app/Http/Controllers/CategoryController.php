@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -43,6 +44,8 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->save();
+
+        Alert::success('Success', 'Category Has Been Added');
 
         return redirect()->route('category.index')->with('success','Category added successfully');
 
@@ -85,6 +88,8 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
+        Alert::success('Success', 'Category Has Been Edited');
+
         return redirect()->route('category.index')->with('success','Category Updated Successfully');
     }
 
@@ -97,6 +102,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+        Alert::success('Success', 'Book Has Been Deleted');
         return redirect()->route('category.index')->with('success','Category Deleted Successfully');
     }
 }

@@ -58,7 +58,10 @@
                                     <td>{{ $book->status_id }}</td>
                                     <td>
                                         <div class="d-flex align-items-center gap-3 fs-6">
-                                            <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                            <a href="{{ route('book.show', $book) }}" class="text-primary"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
+                                                data-bs-original-title="View detail" aria-label="Views"><i
+                                                    class="bi bi-eye-fill"></i></a>
                                             <a href="{{ route('book.edit', $book) }}" class="text-warning"
                                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
                                                 data-bs-original-title="Edit Category" aria-label="Edit"><i
@@ -66,9 +69,10 @@
                                             <form action="{{ route('book.destroy', $book) }}" method="POST">
                                                 @csrf
                                                 <button type="submit"
+                                                    class="text-danger border-0 bx-outline-none btn-light "
                                                     onclick="return confirm ('Are you sure want to delete?');"
-                                                    class="text-danger border-0 bx-outline-none btn-light"
-                                                    data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
+                                                    data-id="{{ $book->id }}" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom" id="delete-confirm" title=""
                                                     data-bs-original-title="Delete" aria-label="Delete"><i
                                                         class="bi bi-trash-fill"></i></button>
                                             </form>
@@ -79,5 +83,6 @@
                 </div>
             </div>
         </div>
+
     </main>
 @endsection

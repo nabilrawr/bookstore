@@ -12,7 +12,9 @@ class Book extends Model
 
     public const AVAILABLE=4;
 
-//    public function categories(){
-//        return $this->hasMany()
-//    }
+    public function categories()
+    {
+        // return $this->hasMany(BookingItem::class);
+        return $this->belongsToMany(Category::class, 'book_categories');
+    }
 }
