@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,12 +63,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 //Borrower Controller
 Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 
-    Route::get('/catalog-index', [App\Http\Controllers\BorrowerController::class, 'indexCatalog'])->name('index-catalog');
-    Route::get('/catalog-show/{book}', [App\Http\Controllers\BorrowerController::class, 'showCatalog'])->name('show-catalog');
-    Route::get('/borrow-record', [App\Http\Controllers\BorrowerController::class, 'borrowRecord'])->name('borrow-record');
-    // Route::get('/profile/{user}', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
-    // Route::get('/profile-edit/{user}', [App\Http\Controllers\BorrowerController::class, 'edit'])->name('profile-edit');
-    // Route::post('/profile-update/{user}', [App\Http\Controllers\BorrowerController::class,'update'])->name('profile-update');
+    Route::get('/catalog-index', [App\Http\Controllers\RentalController::class, 'indexCatalog'])->name('index-catalog');
+    Route::get('/catalog-show/{book}', [App\Http\Controllers\RentalController::class, 'showCatalog'])->name('show-catalog');
+    Route::get('/borrow-record', [App\Http\Controllers\RentalController::class, 'borrowRecord'])->name('borrow-record');
+    Route::get('/booking', [App\Http\Controllers\RentalController::class, 'index'])->name('index-booking');
+    Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
+
 });
 
 //staff controller
