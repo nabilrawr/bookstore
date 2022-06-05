@@ -13,6 +13,7 @@
                         <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i
                                 class="bi bi-search"></i></div>
                         <input class="form-control ps-5" type="text" placeholder="Search Booking">
+
                     </div>
                 </div>
             </div>
@@ -47,7 +48,7 @@
             </div>
         </div>
     </div>
-
+    <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Excel</a>
   </main>
 <!--end page main-->
 

@@ -60,7 +60,7 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
                                     <div class="col-sm-9">
-                                        <select multiple="multiple" class="form-select mb-3" name="category[]" id="news">
+                                        <select class="multiple-select" data-placeholder="Choose anything" multiple="multiple" name="category[]" id="news">
                                             {{-- <select class="select2 form-select mb-3" name="category[]" id="category"> --}}
                                             <option selected>Open this select menu</option>
                                             @foreach ($categories as $category)
@@ -85,6 +85,7 @@
                                 <div class="row">
                                     <label class="col-sm-3 col-form-label"></label>
                                     <div class="col-sm-9">
+                                        <button type="button" class="btn btn-secondary px-5">Back</button>
                                         <button type="submit" class="btn btn-primary px-5">Create</button>
                                     </div>
                                 </div>
