@@ -14,12 +14,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('users')->delete();
-        
+
         \DB::table('users')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'staff',
@@ -34,22 +34,22 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2022-06-04 22:06:49',
                 'updated_at' => '2022-06-04 22:06:49',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
-                'name' => 'staff',
-                'email' => 'staff@gmail.com',
+                'name' => 'borrower',
+                'email' => 'borrower@test.com',
                 'phone' => '0112348892',
                 'address' => 'address',
                 'ic' => '99090201022',
                 'email_verified_at' => NULL,
                 'password' => '$2y$10$G5ZoWnlN/06uH0azxkOIoudURJqDX.mY7JVo6C.jZM2E7PNNUaQD2',
-                'role' => 1,
+                'role' => 2,
                 'remember_token' => NULL,
                 'created_at' => '2022-06-04 14:38:45',
                 'updated_at' => '2022-06-04 14:38:45',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 4,
                 'name' => 'staff2',
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2022-06-04 14:47:32',
             ),
         ));
-        
-        
+
+
     }
 }
