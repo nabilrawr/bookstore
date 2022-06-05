@@ -104,7 +104,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view('staff.book.show', compact('book'));
+        $bookCategories = $book->categories;
+        return view('staff.book.show', compact('book','bookCategories'));
     }
 
     /**

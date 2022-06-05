@@ -24,7 +24,7 @@
                   <h6 class="mb-0">USER INFORMATION</h6>
                 </div>
                 <div class="card-body">
-                  <form class="row g-3" action="{{ route('borrower.profile-update', $user->id) }}" method="POST">
+                  <form class="row g-3" action="{{ route('profile-update', $user->id) }}" method="POST">
                     @csrf
                      <div class="col-6">
                         <label class="form-label">Name</label>

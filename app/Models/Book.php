@@ -15,6 +15,7 @@ class Book extends Model
     public function categories()
     {
         // return $this->hasMany(BookingItem::class);
-        return $this->belongsToMany(Category::class, 'book_categories');
+        return $this->hasMany(BookCategory::class,'book_id','id');
     }
+
 }

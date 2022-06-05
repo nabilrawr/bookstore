@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Rental extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['user_id','start_date','end_date','status_id','book_id','staff_id','receipt'];
+
+
 
 }
+

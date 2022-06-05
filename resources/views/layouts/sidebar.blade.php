@@ -35,6 +35,15 @@
                        <div class="menu-title">My Profile</div>
                    </a>
                </li>
+
+               <li>
+                <a href="{{ route('borrower.index-booking') }}">
+                    <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
+                    </div>
+                    <div class="menu-title">Rental Record For User</div>
+                </a>
+            </li>
+
                <li>
                    <a href="javascript:;">
                        <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
