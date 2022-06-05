@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Rental;
+use App\Models\User;
+use App\Notifications\PickupNotification;
+use App\Notifications\ReturnNotification;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class RentalController extends Controller
 {
@@ -18,6 +22,8 @@ class RentalController extends Controller
      */
     public function index()
     {
+
+
         $bookings = DB::table('rentals')
        ->join('books', 'books.id', '=', 'rentals.book_id')
        ->join('statuses', 'statuses.id', '=', 'rentals.status_id')

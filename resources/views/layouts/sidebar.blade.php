@@ -40,7 +40,7 @@
                 <a href="{{ route('borrower.index-booking') }}">
                     <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
                     </div>
-                    <div class="menu-title">Rental Record For User</div>
+                    <div class="menu-title">Rental Record</div>
                 </a>
             </li>
 
@@ -51,14 +51,6 @@
                        <div class="menu-title">Active Rental</div>
                    </a>
                </li>
-               <li>
-                   <a href="javascript:;">
-                       <div class="parent-icon"><i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                       </div>
-                       <div class="menu-title">Rental Record</div>
-                   </a>
-               </li>
-
 
                <li class="menu-label">Others</li>
 
