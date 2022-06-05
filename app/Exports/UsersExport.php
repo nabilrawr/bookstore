@@ -2,30 +2,48 @@
 
 namespace App\Exports;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User;
+use Maatwebsite\Excel\Concerns\WithDrawings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
-use Maatwebsite\Excel\Concerns\WithDrawings;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithStartRow;
+
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
+
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class UsersExport implements FromCollection
+
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        // $drawing = new Drawing();
-        // $drawing->setName('Logo');
-        // $drawing->setDescription('This is my logo');
-        // $drawing->setHeight(50);
-        // $drawing->setCoordinates('B3');
 
-        // $drawing2 = new Drawing();
-        // $drawing2->setName('Other image');
-        // $drawing2->setDescription('This is a second image');
-        // $drawing2->setHeight(120);
-        // $drawing2->setCoordinates('G2');
+        $bookings = DB::table('rentals')
+        ->join('books', 'books.id', '=', 'rentals.book_id')
+        ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
+        ->join('users', 'users.id', '=', 'rentals.user_id')
+        // ->join('users', 'users.id', '=', 'rentals.staff_id')
+        ->select('users.name as Username','books.title', 'rentals.start_date','statuses.name as statusName','users.name as Staffname')
+        ->get();
 
-        return User::all();
+        return $bookings;
+        // return User::all();
+
     }
+
+
+
 }
