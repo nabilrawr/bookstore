@@ -39,13 +39,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //user profile
-    Route::get('/profile-show/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('profile-show');
-    Route::get('/profile-edit/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('profile-edit');
-    Route::post('/profile-update/{user}', [App\Http\Controllers\UserController::class,'update'])->name('profile-update');
+Route::get('/profile-show/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('profile-show');
+Route::get('/profile-edit/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('profile-edit');
+Route::post('/profile-update/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('profile-update');
 
 
 //Admin Controller
-Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/index', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
     Route::get('/rent-record', [App\Http\Controllers\AdminController::class, 'rentRecord'])->name('rent-record');
     Route::get('/book-list', [App\Http\Controllers\AdminController::class, 'bookList'])->name('book-list');
@@ -58,17 +58,17 @@ Route::group(['prefix'=> 'admin', 'as' => 'admin.'], function(){
 });
 
 //Borrower Controller
-Route::group(['prefix'=> 'borrower', 'as' => 'borrower.'], function(){
+Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 
     Route::get('/index', [App\Http\Controllers\BorrowerController::class, 'index'])->name('index');
     Route::get('/borrow-record', [App\Http\Controllers\BorrowerController::class, 'borrowRecord'])->name('borrow-record');
     Route::get('/profile/{user}', [App\Http\Controllers\BorrowerController::class, 'profile'])->name('profile');
     Route::get('/profile-edit/{user}', [App\Http\Controllers\BorrowerController::class, 'edit'])->name('profile-edit');
-    Route::post('/profile-update/{user}', [App\Http\Controllers\BorrowerController::class,'update'])->name('profile-update');
+    Route::post('/profile-update/{user}', [App\Http\Controllers\BorrowerController::class, 'update'])->name('profile-update');
 });
 
 //staff controller
-Route::group(['prefix'=> 'staff', 'as' => 'staff.'], function(){
+Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
 
     Route::get('/index', [App\Http\Controllers\StaffController::class, 'index'])->name('index');
     Route::get('/book-category', [App\Http\Controllers\StaffController::class, 'bookCategory'])->name('book-category');
@@ -76,12 +76,11 @@ Route::group(['prefix'=> 'staff', 'as' => 'staff.'], function(){
     Route::get('/profile', [App\Http\Controllers\StaffController::class, 'profile'])->name('profile');
     Route::get('/rent-record', [App\Http\Controllers\StaffController::class, 'rentRecord'])->name('rent-record');
     Route::get('/status-rent', [App\Http\Controllers\StaffController::class, 'statusRent'])->name('status-rent');
-
 });
 
 //book
-Route::group(['prefix'=> 'book', 'as' => 'book.'], function(){
-
+Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
+    Route::get('/try', [App\Http\Controllers\BookController::class, 'try'])->name('try');
     Route::get('/index', [App\Http\Controllers\BookController::class, 'index'])->name('index');
     Route::get('/create', [App\Http\Controllers\BookController::class, 'create'])->name('create');
     Route::post('/store', [App\Http\Controllers\BookController::class, 'store'])->name('store');
@@ -92,7 +91,7 @@ Route::group(['prefix'=> 'book', 'as' => 'book.'], function(){
 });
 
 //category
-Route::group(['prefix'=> 'category', 'as' => 'category.'], function(){
+Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 
     Route::get('/index', [App\Http\Controllers\CategoryController::class, 'index'])->name('index');
     Route::get('/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('create');
@@ -102,3 +101,6 @@ Route::group(['prefix'=> 'category', 'as' => 'category.'], function(){
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
 });
 
+Route::get('/receipt', function () {
+    return view('receipt');
+});
