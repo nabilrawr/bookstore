@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('content')
 <br><br>
 <!--start wrapper-->
@@ -8,12 +9,12 @@
     <!--start content-->
     <main class="authentication-content">
      <div class="container-fluid">
-       <div class="authentication-card ">
-         <div class="card shadow rounded-0 overflow-hidden ">
+       <div class="card pt-4" style="padding-left: 25%; padding-right:5%">
+         <div class="card shadow rounded-0 ">
            <div class="row g-0">
              <div class="col-lg-6 d-flex align-items-center justify-content-center border-end">
-
-                <img src="{{ asset("storage/$book->image") }}" class="img-fluid" alt="">
+                <img src="{{asset('template/assets/images/error/login-img.jpg')}}" class="img-fluid" alt="">
+                {{-- <img src="{{ asset("storage/$book->image") }}" class="img-fluid" alt=""> --}}
              </div>
              <div class="col-lg-6">
                <div class="card-body p-4 p-sm-5">
@@ -41,7 +42,6 @@
        </div>
      </div>
     </main>
-
     <!--end page main-->
 @endsection
 
