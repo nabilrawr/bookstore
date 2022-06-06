@@ -23,7 +23,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
-class UsersExport implements FromCollection, ShouldAutoSize, WithHeadings, WithEvents
+class StaffExport implements FromCollection, ShouldAutoSize, WithHeadings, WithEvents
 
 {
     use Exportable;
@@ -43,7 +43,7 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithHeadings, WithE
         ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
         ->join('users', 'users.id', '=', 'rentals.user_id')
         // ->join('users', 'users.id', '=', 'rentals.staff_id')
-        ->select('rentals.id','users.name as Username','books.title', 'rentals.start_date','statuses.name as statusName','users.name as Staffname')
+        ->select('rentals.id','users.name as Username','users.name as Staffname', 'rentals.start_date','rentals.end_date','books.title', 'statuses.name as statusName',)
         ->get();
 
         return $bookings;
@@ -55,10 +55,11 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithHeadings, WithE
         return [
             'No',
             'Borrower Name',
+            'Staff On Charge',
+            'Pickup date',
+            'Return Date',
             'Book Title',
-            'Rental date',
             'Status',
-            'Staff Name'
         ];
     }
 
@@ -71,7 +72,7 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithHeadings, WithE
                 $event->sheet->getDelegate()->getParent()->getDefaultStyle()->getFont()->setSize(10);
 
                 //Style
-                $event->sheet->getstyle('A1:F1')->applyFromArray([
+                $event->sheet->getstyle('A1:G1')->applyFromArray([
                     'font' =>[
                         'bold' => true
                     ],

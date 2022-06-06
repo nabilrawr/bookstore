@@ -39,8 +39,9 @@ Route::get('/pdf-report', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//excel Route
 Route::get('user/export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
+Route::get('/user/staffexport', [App\Http\Controllers\UserController::class, 'staffexport'])->name('staffexport');
 
 //user profile
 Route::get('/profile-show/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('profile-show');
