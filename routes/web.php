@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/create-list', [App\Http\Controllers\AdminController::class, 'createList'])->name('create-list');
     Route::get('/report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');
     Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('profile');
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
 
 //Borrower Controller
