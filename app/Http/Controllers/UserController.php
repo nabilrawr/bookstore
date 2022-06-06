@@ -72,31 +72,33 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'ic' => ['required', 'string','max:12'],
+            'ic' => ['required', 'string', 'max:12'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required', 'string'],
-            'address' => ['required', 'string','max:255'],
+            'address' => ['required', 'string', 'max:255'],
         ]);
 
-        $user->update([
-            'name'=>$request->name,
-            'ic'=>$request->ic,
-            'email'=>$request->email,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
+        // $user->update([
+        //     'name' => $request->name,
+        //     'ic' => $request->ic,
+        //     'email' => $request->email,
+        //     'address' => $request->address,
+        //     'phone' => $request->phone,
 
-        ]);
-//        $user->name = $request->name;
-//        $user->ic = $request->ic;
-//        $user->email = $request->email;
-//        $user->phone = $request->phone;
-//        $user->address = $request->address;
-//
-//        $user->save();
+        // ]);
+        $user->name = $request->name;
+        $user->ic = $request->ic;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->role = $user->role;
+        $user->save();
+        // return "done";
 
-        return view('borrower.profile-edit');
+        return redirect()->route('profile-edit', $user);
     }
 
     /**
