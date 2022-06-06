@@ -39,8 +39,9 @@ Route::get('/pdf-report', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//excel Route
 Route::get('user/export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
+Route::get('/user/staffexport', [App\Http\Controllers\UserController::class, 'staffexport'])->name('staffexport');
 
 //user profile
 Route::get('/profile-show/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('profile-show');
@@ -59,6 +60,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/create-list', [App\Http\Controllers\AdminController::class, 'createList'])->name('create-list');
     Route::get('/report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');
     Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('profile');
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
 
 //Borrower Controller

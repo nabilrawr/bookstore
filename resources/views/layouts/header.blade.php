@@ -2,6 +2,8 @@
 <html lang="en" class="semi-dark">
 
 <head>
+    <!-- Apex chart -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,62 +73,6 @@
                 </div>
                 <div class="top-navbar-right ms-auto">
                     <ul class="navbar-nav align-items-center">
-                        <li class="nav-item search-toggle-icon">
-                            <a class="nav-link" href="#">
-                                <div class="">
-                                    <i class="bi bi-search"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown dropdown-user-setting">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
-                                data-bs-toggle="dropdown">
-                                <div class="user-setting d-flex align-items-center">
-                                    <img src="{{ asset('template/assets/images/avatars/avatar-1.png') }}"
-                                        class="user-img" alt="">
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ asset('template/assets/images/avatars/avatar-1.png') }}"
-                                                alt="" class="rounded-circle" width="54" height="54">
-                                            <div class="ms-3">
-                                                <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
-                                                <small class="mb-0 dropdown-user-designation text-secondary">HR
-                                                    Manager</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item"  href="{{ route('profile-show', Auth::user()) }}">
-                                        <div class="d-flex align-items-center">
-                                            <div class=""><i class="bi bi-person-fill"></i></div>
-                                            <div class="ms-3"><span>Profile</span></div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();" >
-                                        <div class="d-flex align-items-center">
-                                            <div class=""><i class="bi bi-lock-fill"></i></div>
-                                            <div class="ms-3"><span>Logout</span></div>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
 
                         <li class="nav-item dropdown dropdown-small">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
@@ -181,6 +127,18 @@
                                     </a>
                                 </div>
                             </div>
+                        </li>
+
+                        <li>
+                            <button type="button" class="btn btn-danger"  href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Log Out
+                            </button>
+                            
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+
                         </li>
                     </ul>
                 </div>

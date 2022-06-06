@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Exports\StaffExport;
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -72,33 +73,31 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'ic' => ['required', 'string', 'max:12'],
+            'ic' => ['required', 'string','max:12'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required', 'string'],
-            'address' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string','max:255'],
         ]);
 
-        // $user->update([
-        //     'name' => $request->name,
-        //     'ic' => $request->ic,
-        //     'email' => $request->email,
-        //     'address' => $request->address,
-        //     'phone' => $request->phone,
+        $user->update([
+            'name'=>$request->name,
+            'ic'=>$request->ic,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
 
-        // ]);
-        $user->name = $request->name;
-        $user->ic = $request->ic;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        $user->role = $user->role;
-        $user->save();
-        // return "done";
+        ]);
+//        $user->name = $request->name;
+//        $user->ic = $request->ic;
+//        $user->email = $request->email;
+//        $user->phone = $request->phone;
+//        $user->address = $request->address;
+//
+//        $user->save();
 
-        return redirect()->route('profile-edit', $user);
+        return view('borrower.profile-edit');
     }
 
     /**
@@ -111,11 +110,15 @@ class UserController extends Controller
     {
         //
     }
-    //excel controller
+    //excel controller user
     public function export()
     {
         return (new UsersExport)->download('users.xlsx');
     }
 
-    
+    //excel controller staff
+    public function staffexport()
+    {
+          return (new StaffExport)->download('staff.xlsx');
+    }
 }
