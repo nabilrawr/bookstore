@@ -25,15 +25,6 @@ Route::get('/dashboard', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Route::get('/pdf-report', function () {
-    return view('pdf-report');
-});
-
-
-// Route::get('/product-detail', function () {
-//     return view('product-detail');
-// });
-
 
 
 Auth::routes(['verify' => true]);
@@ -71,6 +62,8 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
     Route::get('/borrow-record', [App\Http\Controllers\RentalController::class, 'borrowRecord'])->name('borrow-record');
     Route::get('/booking', [App\Http\Controllers\RentalController::class, 'index'])->name('index-booking');
     Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
+    Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
+    Route::get('/user-receipt-pdf', [App\Http\Controllers\RentalController::class, 'pdfReportUser'])->name('pdf-user-receipt');
 });
 
 //staff controller
@@ -105,6 +98,8 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
 });
 
-Route::get('/receipt', function () {
-    return view('pdf-report');
+
+//User PDF
+Route::get('/user-receipt', function () {
+    return view('user-receipt');
 });

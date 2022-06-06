@@ -6,7 +6,7 @@
                        alt="logo icon">
                </div>
                <div>
-                   <h4 class="logo-text">Snacked</h4>
+                   <h4 class="logo-text">BRMS</h4>
                </div>
                <div class="toggle-icon ms-auto"> <i class="bi bi-list"></i>
                </div>
@@ -31,7 +31,7 @@
 
                <li>
                    <a href="{{ route('borrower.index-booking') }}">
-                       <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
+                       <div class="parent-icon"><i class="bi bi-journal-bookmark-fill"></i>
                        </div>
                        <div class="menu-title">Rental Record</div>
                    </a>
@@ -69,7 +69,7 @@
 
                <li>
                    <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
+                       <div class="parent-icon"><i class="bi bi-journal-check"></i>
                        </div>
                        <div class="menu-title">Rent</div>
                    </a>
