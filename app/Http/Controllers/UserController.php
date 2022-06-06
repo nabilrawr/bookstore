@@ -8,6 +8,8 @@ use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -28,7 +30,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $roles = Role::all();
+
+        return view('admin.role.create', compact('users', 'roles'));
     }
 
     /**
@@ -39,7 +44,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $user = User::find($request->user_id);
+        $role = Role::find($request->role_id);
+        if (filled($user) && filled($role)) {
+            $user = assignRole($role);
+        }
+        return redirect()->route('admin.create-role');
     }
 
     /**
@@ -75,18 +86,18 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'ic' => ['required', 'string','max:12'],
+            'ic' => ['required', 'string', 'max:12'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required', 'string'],
-            'address' => ['required', 'string','max:255'],
+            'address' => ['required', 'string', 'max:255'],
         ]);
 
         $user->update([
-            'name'=>$request->name,
-            'ic'=>$request->ic,
-            'email'=>$request->email,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
+            'name' => $request->name,
+            'ic' => $request->ic,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
 
         ]);
 
@@ -112,6 +123,6 @@ class UserController extends Controller
     //excel controller staff
     public function staffexport()
     {
-          return (new StaffExport)->download('staff.xlsx');
+        return (new StaffExport)->download('staff.xlsx');
     }
 }
