@@ -21,7 +21,6 @@ class BookController extends Controller
     {
         $books = Book::all();
         $categories = Category::all();
-        // $statuses = Status::all();
 
         return view('staff.book.index', compact('books', 'categories'));
     }
@@ -45,12 +44,6 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'writer' => 'required',
-        //     'description' => 'required',
-        //     'status_id' => 'required',
-        // ]);
 
         $book = new Book();
         $book->title = $request->title;

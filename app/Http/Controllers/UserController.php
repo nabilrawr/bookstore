@@ -89,13 +89,6 @@ class UserController extends Controller
             'phone'=>$request->phone,
 
         ]);
-//        $user->name = $request->name;
-//        $user->ic = $request->ic;
-//        $user->email = $request->email;
-//        $user->phone = $request->phone;
-//        $user->address = $request->address;
-//
-//        $user->save();
 
         return view('borrower.profile-edit');
     }

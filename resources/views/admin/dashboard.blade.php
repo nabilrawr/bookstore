@@ -28,13 +28,9 @@
           <div class="card overflow-hidden radius-10">
               <div class="card-body p-2">
                <div class="d-flex align-items-stretch justify-content-between radius-10 overflow-hidden">
-                <div class="w-50 p-3 bg-light-pink">
-                  <p>Total Orders</p>
-                  <h4 class="text-pink">8,542</h4>
-                </div>
-                <div class="w-50 bg-pink p-3">
-                   <p class="mb-3 text-white">+ 16% <i class="bi bi-arrow-up"></i></p>
-                   <div id="chart1"></div>
+                <div class="w-100 p-3 bg-light-pink">
+                  <h5><p>Total Pending Rent</p></h5>
+                  <h4 class="text-pink">{{ $totalPending }}</h4>
                 </div>
               </div>
             </div>
@@ -44,13 +40,9 @@
           <div class="card overflow-hidden radius-10">
               <div class="card-body p-2">
                <div class="d-flex align-items-stretch justify-content-between radius-10 overflow-hidden">
-                <div class="w-50 p-3 bg-light-purple">
-                  <p>Total Views</p>
-                  <h4 class="text-purple">12.5M</h4>
-                </div>
-                <div class="w-50 bg-purple p-3">
-                   <p class="mb-3 text-white">- 3.4% <i class="bi bi-arrow-down"></i></p>
-                   <div id="chart2"></div>
+                <div class="w-100 p-3 bg-light-purple">
+                    <h5><p>Total Pickup Book</p></h5>
+                  <h4 class="text-purple">{{ $totalPickup }}</h4>
                 </div>
               </div>
             </div>
@@ -60,13 +52,9 @@
           <div class="card overflow-hidden radius-10">
               <div class="card-body p-2">
                <div class="d-flex align-items-stretch justify-content-between radius-10 overflow-hidden">
-                <div class="w-50 p-3 bg-light-success">
-                  <p>Revenue</p>
-                  <h4 class="text-success">$64.5K</h4>
-                </div>
-                <div class="w-50 bg-success p-3">
-                   <p class="mb-3 text-white">+ 24% <i class="bi bi-arrow-up"></i></p>
-                   <div id="chart3"></div>
+                <div class="w-100 p-3 bg-light-success">
+                    <h5><p>Total Rent Book</p></h5>
+                  <h4 class="text-success">{{ $totalRent }}</h4>
                 </div>
               </div>
             </div>
@@ -76,13 +64,9 @@
           <div class="card overflow-hidden radius-10">
               <div class="card-body p-2">
                <div class="d-flex align-items-stretch justify-content-between radius-10 overflow-hidden">
-                <div class="w-50 p-3 bg-light-orange">
-                  <p>Customers</p>
-                  <h4 class="text-orange">25.8K</h4>
-                </div>
-                <div class="w-50 bg-orange p-3">
-                   <p class="mb-3 text-white">+ 8.2% <i class="bi bi-arrow-up"></i></p>
-                   <div id="chart4"></div>
+                <div class="w-100 p-3 bg-light-orange">
+                    <h5><p>Total Completed</p></h5>
+                  <h4 class="text-orange">{{ $totalComplete }}</h4>
                 </div>
               </div>
             </div>
@@ -105,7 +89,7 @@
               <div class="card-header bg-transparent">
                 <div class="row g-3 align-items-center">
                   <div class="col">
-                    <h5 class="mb-0">Recent Orders</h5>
+                    <h5 class="mb-0">Pending & Pickup Book List</h5>
                   </div>
                  </div>
               </div>
@@ -116,43 +100,45 @@
                         <table class="table table-bordered table-striped mb-0">
                     <thead class="table-light">
                       <tr>
-                        <th>#ID</th>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Date</th>
-                        <th>Actions</th>
+                        <th>No.</th>
+                        <th>Pickup Date</th>
+                        <th>Pickup Time</th>
+                        <th>Book Title</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>#89742</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-3">
-                            <div class="product-box border">
-                               <img src="assets/images/products/11.png" alt="">
-                            </div>
-                            <div class="product-info">
-                              <h6 class="product-name mb-1">Smart Mobile Phone</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>2</td>
-                        <td>$214</td>
-                        <td>Apr 8, 2021</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-3 fs-6">
-                            <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                            <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
-                            <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
-                          </div>
-                        </td>
-                      </tr>
+
+                          @foreach ( $rentals as $rental)
+                          <tr>
+                            <td>{{ $loop->iteration }}</td>
+                                <?php
+                                $tempDate = explode(' ',$rental->start_date);
+                                ?>
+                                <td>{{ $tempDate[0] }}</td>
+                                <td>{{ $tempDate[1] }}</td>
+                                <td>{{ $rental->title }}</td>
+                                {{-- status pending=8 --}}
+                                @if ($rental->name == 'pending')
+                                    <td><span class="badge bg-light-warning text-warning w-100">{{ $rental->name }}</span></td>
+                                @else
+                                    <td><span class="badge bg-light-success text-success w-100">{{ $rental->name }}</span></td>
+                                @endif
+
+
+                          </tr>
+                          @endforeach
                     </tbody>
                   </table>
                 </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-12 col-xl-12 d-flex">
+            <div class="card radius-10 w-100">
+                <div id='barchart'></div>
             </div>
           </div>
       </div><!--end row-->
@@ -164,8 +150,8 @@
 <script>
     var options = {
           series: [{
-            name: "Desktops",
-            data: {{ $data['series'] }}
+            name: "Total Book Rented",
+            data: {{ $data1['total'] }}
         }],
           chart: {
           height: 350,
@@ -197,6 +183,97 @@
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var options = {
+          series: [{
+          data: {{ $data2['total'] }}
+        }],
+          chart: {
+          type: 'bar',
+          height: 680
+        },
+        plotOptions: {
+          bar: {
+            barHeight: '100%',
+            distributed: true,
+            horizontal: true,
+            dataLabels: {
+              position: 'bottom'
+            },
+          }
+        },
+        colors: ['#DE5D83', '#523f02', '#3f5202', '#085202', '#025252', '#022252', '#4b075c', '#5c0742',
+          '#5c0707', '#69d2e7','#79443B', '#DEB887', '#702963', '#00CC99', '#DFFF00', '#00FF6F', '#f9a3a4', '#90ee7e'
+        ],
+        dataLabels: {
+          enabled: true,
+          textAnchor: 'start',
+          style: {
+            colors: ['#fff']
+          },
+          formatter: function (val, opt) {
+            return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
+          },
+          offsetX: 0,
+          dropShadow: {
+            enabled: true
+          }
+        },
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        xaxis: {
+          categories: {!! $data2['categoryName']->toJson()  !!},
+        },
+        yaxis: {
+          labels: {
+            show: false
+          }
+        },
+        title: {
+            text: 'Total Book By Category',
+            align: 'center',
+            floating: true
+        },
+        tooltip: {
+          theme: 'dark',
+          x: {
+            show: false
+          },
+          y: {
+            title: {
+              formatter: function () {
+                return ''
+              }
+            }
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#barchart"), options);
+        chart.render();
+
 </script>
 
 @endsection

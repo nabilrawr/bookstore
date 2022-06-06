@@ -224,15 +224,14 @@ class RentalController extends Controller
             ->inline('ReportRental.pdf');
     }
 
-    public function pdfReportUser(Request $request)
+    public function pdfReceipt(Request $request)
     {
 
         $rentals = Rental::all();
-        return PDF::loadview('user-receipt', compact('rentals'))
+        return PDF::loadview('receipt', compact('rentals'))
             ->setOrientation('landscape')
-            ->setOption('margin-bottom', '0mm')
-            ->setOption('margin-top', '0mm')
-            ->inline('UserReceipt.pdf');
+            ->setOption('margin-bottom', '10mm')
+            ->setOption('margin-top', '10mm')
+            ->inline('RentalReceipt.pdf');
     }
-
 }
