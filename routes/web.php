@@ -75,12 +75,9 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
 
     Route::get('/index', [App\Http\Controllers\StaffController::class, 'index'])->name('index');
-    Route::get('/book-category', [App\Http\Controllers\StaffController::class, 'bookCategory'])->name('book-category');
-    Route::get('/book-list', [App\Http\Controllers\StaffController::class, 'bookList'])->name('book-list');
-    Route::get('/profile', [App\Http\Controllers\StaffController::class, 'profile'])->name('profile');
     Route::get('/rent-record', [App\Http\Controllers\StaffController::class, 'rentRecord'])->name('rent-record');
-    Route::get('/status-rent{rental}', [App\Http\Controllers\RentalController::class, 'statusRent'])->name('status-rent');
     Route::get('/status-rent-damage{rental}', [App\Http\Controllers\RentalController::class, 'statusRentDamage'])->name('status-rent-damage');
+    Route::get('/status-rent{rental}', [App\Http\Controllers\RentalController::class, 'statusRent'])->name('status-rent');
 });
 
 //book

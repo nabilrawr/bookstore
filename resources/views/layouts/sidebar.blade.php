@@ -76,8 +76,6 @@
                    <ul>
                        <li> <a href="{{ route('staff.rent-record') }}"><i class="bi bi-circle"></i>Rent List</a>
                        </li>
-                       <li> <a href="{{ route('book.create') }}"><i class="bi bi-circle"></i>Book Add</a>
-                       </li>
                    </ul>
                </li>
 
