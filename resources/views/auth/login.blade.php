@@ -2,7 +2,7 @@
 
 @section('content')
 
-<br><br><br>
+<br><br>
 <!--start wrapper-->
 <div class="wrapper">
 
@@ -17,15 +17,12 @@
              </div>
              <div class="col-lg-6">
                <div class="card-body p-4 p-sm-5">
-                 <h5 class="card-title">Sign In</h5>
-                 <p class="card-text mb-5">See your growth and get consulting support!</p>
+                <h5 class="card-title">Sign In</h5>
+                <p class="card-text mb-5">Start Reading today for free</p>
+                <hr>
 
                  <form method="POST" class="form-body" action="{{ route('login') }}">
                     @csrf
-
-                   <div class="login-separater text-center mb-4"> <span>OR SIGN IN WITH EMAIL</span>
-                     <hr>
-                   </div>
                      <div class="row g-3">
                        <div class="col-12">
                          <label for="inputEmailAddress" class="form-label">Email Address</label>
