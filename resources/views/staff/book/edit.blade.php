@@ -87,6 +87,7 @@
                                 <div class="row">
                                     <label class="col-sm-3 col-form-label"></label>
                                     <div class="col-sm-9">
+                                        <a href="{{ route('book.index') }}" class="btn btn-secondary px-5">Back</a>
                                         <button type="submit" class="btn btn-primary px-5">Update</button>
                                     </div>
                                 </div>

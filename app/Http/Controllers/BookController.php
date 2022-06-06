@@ -21,16 +21,9 @@ class BookController extends Controller
     {
         $books = Book::all();
         $categories = Category::all();
+        // $statuses = Status::all();
         return view('staff.book.index', compact('books', 'categories'));
     }
-
-    public function try()
-    {
-        $books = Book::all();
-        $categories = Category::all();
-        return view('staff.book.try', compact('books', 'categories'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -78,7 +71,6 @@ class BookController extends Controller
             );
 
             $book->image = 'uploads/' . $path;
-
         }
 
         $book->status_id = Book::AVAILABLE;
@@ -105,7 +97,7 @@ class BookController extends Controller
     public function show(Book $book)
     {
         $bookCategories = $book->categories;
-        return view('staff.book.show', compact('book','bookCategories'));
+        return view('staff.book.show', compact('book', 'bookCategories'));
     }
 
     /**

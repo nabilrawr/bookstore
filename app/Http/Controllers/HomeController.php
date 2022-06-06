@@ -25,13 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         //1= rental
-        if ( Auth::user()->role == 1 ){
+        if (Auth::user()->role == 1) {
             return redirect()->route('borrower.index-catalog');
-        } else if ( Auth::user()->role == 2 ){
-            return view('staff.index');
+        } else if (Auth::user()->role == 2) {
+            return redirect()->route('staff.rent-record');
         } else {
             return view('home');
         }
-
     }
 }
