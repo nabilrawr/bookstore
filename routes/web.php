@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,8 +64,8 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
     Route::get('/borrow-record', [App\Http\Controllers\RentalController::class, 'borrowRecord'])->name('borrow-record');
     Route::get('/booking', [App\Http\Controllers\RentalController::class, 'index'])->name('index-booking');
     Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
-    Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
     Route::get('/user-receipt-pdf', [App\Http\Controllers\RentalController::class, 'pdfReportUser'])->name('pdf-user-receipt');
+    Route::get('/book-list', [App\Http\Controllers\RentalController::class, 'listbook'])->name('book-list');
 });
 
 //staff controller
@@ -99,7 +101,3 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 });
 
 
-//User PDF
-Route::get('/user-receipt', function () {
-    return view('user-receipt');
-});

@@ -24,8 +24,7 @@
             <div class="col-lg-3 col-md-6 me-auto">
               <div class="ms-auto position-relative">
                 <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
-                {{-- <input class="form-control ps-5" type="text" placeholder="search produts"> --}}
-                <input class="form-control ps-5" id="search-box" type="Search" placeholder="search produts">
+                <input class="form-control ps-5" type="text" placeholder="search produts">
               </div>
             </div>
             <div class="col-lg-2 col-6 col-md-3">

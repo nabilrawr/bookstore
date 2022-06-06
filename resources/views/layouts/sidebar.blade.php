@@ -21,12 +21,19 @@
                    </a>
                </li>
                <li>
-                   <a href="{{ route('borrower.index-catalog') }}" class="has-arrow">
+                   <a href="{{ route('borrower.index-catalog') }}">
                        <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
                        </div>
                        <div class="menu-title">Catalogue</div>
                    </a>
                </li>
+               <li>
+                <a href="">
+                    <div class="parent-icon"><i class="bi bi-card-list"></i>
+                    </div>
+                    <div class="menu-title">List of Book</div>
+                </a>
+            </li>
                <li class="menu-label">Account</li>
 
                <li>

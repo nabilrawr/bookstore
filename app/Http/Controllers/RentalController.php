@@ -199,6 +199,13 @@ class RentalController extends Controller
         return view('borrower.catalog-index', compact('books', 'categories'));
     }
 
+    public function listbook()
+    {
+        $books = Book::orderByDesc('created_at')->get();
+        $categories = Category::all();
+        return view('borrower.book-list', compact('books', 'categories'));
+    }
+
     public function showCatalog(Book $book)
     {
         $categories = Category::all();
