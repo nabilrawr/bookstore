@@ -9,9 +9,6 @@
         <div class="card-header py-3">
             <div class="row g-3">
                 <div class="col-lg-3 col-md-6 me-auto">
-                    <div class="ms-auto position-relative">
-                        <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Download Report</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -21,23 +18,18 @@
                     <thead class="table-light">
                         <tr>
                             <th>No</th>
-                            <th>Pickup Date</th>
-                            <th>Pickup Time</th>
+                            <th>Image</th>
                             <th>Book Title</th>
-                            <th>Status</th>
+                            <th>Author</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($bookings as $booking)
+                        @foreach ($books as $book)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <?php
-                                     $tempDate = explode(' ',$booking->start_date);
-                                 ?>
-                                <td>{{ $tempDate[0] }}</td>
-                                <td>{{ $tempDate[1] }}</td>
-                                <td>{{ $booking->title }}</td>
-                                <td>{{ $booking->name }}</td>
+                                <td>  <img class="img-fluid rounded-4 shadow-2-strong" src="{{ asset("storage/$book->image") }}" style="width:150px;height:200px;"></td>
+                                <td><a id="book-list" href="{{ route('borrower.show-catalog',$book->id) }}">{{ $book->title }}</a></td>
+                                <td>{{ $book->writer }}</td>
                             </tr>
                         @endforeach
                     </tbody>
