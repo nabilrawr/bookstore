@@ -76,8 +76,6 @@
                                <div class="menu-title">User</div>
                            </a>
                            <ul>
-                               <li> <a href="{{route('admin.create-list')}}"><i class="bi bi-circle"></i>Add User</a>
-                               </li>
                                <li> <a href="{{route('admin.user-list')}}"><i class="bi bi-circle"></i>User List</a>
                                </li>
                            </ul>
