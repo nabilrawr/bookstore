@@ -14,7 +14,7 @@
            <!--navigation-->
            <ul class="metismenu" id="menu">
                <li>
-                   <a href="javascript:;">
+                   <a href="{{ route('admin.dashboard') }}">
                        <div class="parent-icon"><i class="bi bi-house-fill"></i>
                        </div>
                        <div class="menu-title">Dashboard</div>
@@ -28,21 +28,14 @@
                    </a>
                </li>
                <li class="menu-label">Account</li>
-               <li>
-                   <a href="{{ route('profile-show', Auth::user()->id ) }}">
-                       <div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
-                       </div>
-                       <div class="menu-title">My Profile</div>
-                   </a>
-               </li>
 
                <li>
-                <a href="{{ route('borrower.index-booking') }}">
-                    <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
-                    </div>
-                    <div class="menu-title">Rental Record For User</div>
-                </a>
-            </li>
+                   <a href="{{ route('borrower.index-booking') }}">
+                       <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
+                       </div>
+                       <div class="menu-title">Rental Record</div>
+                   </a>
+               </li>
 
                <li>
                    <a href="javascript:;">
@@ -51,14 +44,6 @@
                        <div class="menu-title">Active Rental</div>
                    </a>
                </li>
-               <li>
-                   <a href="javascript:;">
-                       <div class="parent-icon"><i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                       </div>
-                       <div class="menu-title">Rental Record</div>
-                   </a>
-               </li>
-
 
                <li class="menu-label">Others</li>
 
@@ -80,7 +65,21 @@
                </li>
 
                <li class="menu-label">Staff</li>
+               <li class="menu-label">Book Rent</li>
 
+               <li>
+                   <a href="javascript:;" class="has-arrow">
+                       <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
+                       </div>
+                       <div class="menu-title">Rent</div>
+                   </a>
+                   <ul>
+                       <li> <a href="{{ route('staff.rent-record') }}"><i class="bi bi-circle"></i>Rent List</a>
+                       </li>
+                   </ul>
+               </li>
+
+               <li class="menu-label">Book</li>
                <li>
                    <a href="javascript:;" class="has-arrow">
                        <div class="parent-icon"><i class="bi bi-book-fill"></i>

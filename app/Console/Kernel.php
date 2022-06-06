@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +16,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('notify:pickup')->everyThirtyMinutes();
+        $schedule->command('return:notify')->dailyAt('08:00');
+        $schedule->command('statusReturn:lateReturn')->dailyAt('00:00');
+        $schedule->command('statusReturn:unpaidReturn')->dailyAt('08:00');
     }
 
     /**
@@ -25,7 +29,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

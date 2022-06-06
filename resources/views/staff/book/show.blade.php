@@ -33,34 +33,42 @@
                             <div class="row mb-3 mt-3">
                                 <label for="title" class="col-sm-3 col-form-label">Title</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="{{ $book->title }}" readonly>
+                                    {{ $book->title }}
+                                    {{-- <input type="text" class="form-control" value="{{ $book->title }}" readonly> --}}
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="writer" class="col-sm-3 col-form-label">Writer Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="{{ $book->writer }}" readonly>
+                                    {{ $book->writer }}
+                                    {{-- <input type="text" class="form-control" value="{{ $book->writer }}" readonly> --}}
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Description</label>
-                                <div class="col-sm-9">
-                                    <textarea class="form-control" rows="7" readonly>{{ $book->description }}</textarea>
+                                <div class="col-sm-9 text-justify">
+                                    {{ $book->description }}
+                                    {{-- <textarea class="form-control" rows="7" readonly>{{ $book->description }}</textarea> --}}
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
                                 <div class="col-sm-9">
-                                    @foreach( $bookCategories as $bookCategory)
-                                    <input type="text" class="form-control" value="{{ $bookCategory->category->name }}" readonly>
-                                    @endforeach
+                                    <ul>
+                                        @foreach ($bookCategories as $bookCategory)
+                                            <li>{{ $bookCategory->category->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                    {{-- <input type="text" class="form-control" value="{{ $bookCategory->category->name }}" readonly> --}}
+
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Price</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="{{ $book->price }}" readonly>
+                                    {{ $book->price }}
+                                    {{-- <input type="text" class="form-control" value="{{ $book->price }}" readonly> --}}
                                 </div>
                             </div>
 
