@@ -74,7 +74,7 @@ class DashboardController extends Controller
             'categoryName'=> collect($listCategories),
             'total'=>collect($totalRentByCategories)
         ];
-        
+
 
         return view('admin.dashboard', compact('data1','rentals','totalPending','totalPickup','totalRent','totalComplete','data2'));
     }

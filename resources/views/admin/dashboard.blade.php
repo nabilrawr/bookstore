@@ -206,11 +206,11 @@
 
         var options = {
           series: [{
-          data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+          data: {{ $data2['total'] }}
         }],
           chart: {
           type: 'bar',
-          height: 380
+          height: 680
         },
         plotOptions: {
           bar: {
@@ -222,6 +222,9 @@
             },
           }
         },
+        colors: ['#DE5D83', '#523f02', '#3f5202', '#085202', '#025252', '#022252', '#4b075c', '#5c0742',
+          '#5c0707', '#69d2e7','#79443B', '#DEB887', '#702963', '#00CC99', '#DFFF00', '#00FF6F', '#f9a3a4', '#90ee7e'
+        ],
         dataLabels: {
           enabled: true,
           textAnchor: 'start',
@@ -241,9 +244,7 @@
           colors: ['#fff']
         },
         xaxis: {
-          categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-            'United States', 'China', 'India'
-          ],
+          categories: {!! $data2['categoryName']->toJson()  !!},
         },
         yaxis: {
           labels: {
@@ -251,13 +252,9 @@
           }
         },
         title: {
-            text: 'Custom DataLabels',
+            text: 'Total Book By Category',
             align: 'center',
             floating: true
-        },
-        subtitle: {
-            text: 'Category Names as DataLabels inside bars',
-            align: 'center',
         },
         tooltip: {
           theme: 'dark',
