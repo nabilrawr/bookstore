@@ -112,6 +112,6 @@ class UserController extends Controller
     //excel controller
     public function export()
     {
-        return Excel::download(new UsersExport, 'users.xlsx');
+        return (new UsersExport)->download('users.xlsx');
     }
 }
