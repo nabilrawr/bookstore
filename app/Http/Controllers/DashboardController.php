@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookCategory;
+use App\Models\Category;
 use App\Models\Rental;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +17,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        //find total rental by month
         $totalRental = 0;
         $assign = [];
             for($i = 1; $i <= 12 ; $i++){
@@ -24,16 +27,55 @@ class DashboardController extends Controller
             $totalRental = 0;
         }
 
-        $data = [
-          'series'=> collect($assign),
+        $data1 = [
+          'total'=> collect($assign),
         ];
 
+        //list of rental in table
         $rentals = DB::table('rentals')
+            ->select('rentals.*', 'statuses.name', 'books.title')
             ->join('books', 'books.id', '=', 'rentals.book_id')
             ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
-            ->select('rentals.*', 'statuses.name', 'books.title')
+            ->where('rentals.status_id', '=', 8)//status pending
+            ->orWhere('rentals.status_id', '=', 9)//status pickup
             ->get();
 
-        return view('admin.dashboard', compact('data','rentals'));
+        //status pending = 8
+        $totalPending = count(Rental::query()->where('status_id', '=', 8)->get());
+
+        //status pickup = 9
+        $totalPickup = count(Rental::query()->where('status_id', '=', 9)->get());
+
+        //status rent = 13
+        $totalRent = count(Rental::query()->where('status_id', '=', 13)->get());
+
+        //status complete = 14
+        $totalComplete = count(Rental::query()->where('status_id', '=', 14)->get());
+
+        //store catergory name
+        $listCategories = [];
+        $categories=Category::all();
+
+        foreach( $categories as $category )
+        {
+            array_push($listCategories,$category->name);
+        }
+
+        //find total book rent by category
+        $totalRentByCategories = [];
+        $totalCategory = count($categories);
+        for( $i =1 ; $i<= $totalCategory ; $i++)
+        {
+            $temp=count(BookCategory::query()->where('category_id', '=', $i)->get());
+            array_push($totalRentByCategories,$temp);
+        }
+
+        $data2 = [
+            'categoryName'=> collect($listCategories),
+            'total'=>collect($totalRentByCategories)
+        ];
+        
+
+        return view('admin.dashboard', compact('data1','rentals','totalPending','totalPickup','totalRent','totalComplete','data2'));
     }
 }
