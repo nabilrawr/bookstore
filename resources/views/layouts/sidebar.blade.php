@@ -28,7 +28,7 @@
                    </a>
                </li>
                <li>
-                <a href="">
+                <a href="{{ route('borrower.book-list') }}">
                     <div class="parent-icon"><i class="bi bi-card-list"></i>
                     </div>
                     <div class="menu-title">List of Book</div>
