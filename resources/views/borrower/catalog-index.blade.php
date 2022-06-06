@@ -19,7 +19,7 @@
    <main class="page-content">
 
       <div class="card">
-         <div class="card-header py-3">
+         {{-- <div class="card-header py-3">
           <div class="row g-3 align-items-center">
             <div class="col-lg-3 col-md-6 me-auto">
               <div class="ms-auto position-relative">
@@ -44,7 +44,7 @@
               </select>
             </div>
           </div>
-         </div>
+         </div> --}}
          <div class="card-body">
            <div class="product-grid">
              <div class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-3">
