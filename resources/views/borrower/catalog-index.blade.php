@@ -24,7 +24,8 @@
             <div class="col-lg-3 col-md-6 me-auto">
               <div class="ms-auto position-relative">
                 <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
-                <input class="form-control ps-5" type="text" placeholder="search produts">
+                {{-- <input class="form-control ps-5" type="text" placeholder="search produts"> --}}
+                <input class="form-control ps-5" id="search-box" type="Search" placeholder="search produts">
               </div>
             </div>
             <div class="col-lg-2 col-6 col-md-3">
@@ -56,8 +57,8 @@
 
                                 <img class="img-fluid rounded-4 shadow-2-strong" src="{{ asset("storage/$book->image") }}" style="width:150px;height:200px;">
                                 <hr>
-                                    <span class="text-ellipsis"><a href="{{ route('borrower.show-catalog',$book->id) }}">{{ $book->title }}</a></span>
-                                    <span class="text-ellipsis">By :{{ $book->writer }}</span>
+                                    <span id="book-list" class="text-ellipsis"><a id="book-list" href="{{ route('borrower.show-catalog',$book->id) }}">{{ $book->title }}</a></span>
+                                    <span id="book-list" class="text-ellipsis"> <a id="book-list"> By :{{ $book->writer }}</a> </span>
                                 <hr>
                                 <div class="actions d-flex align-items-center justify-content-center gap-2 mt-3">
                             </div>
@@ -85,3 +86,4 @@
 <!--end page main-->
 
 @endsection
+

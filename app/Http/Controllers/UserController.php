@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Exports\StaffExport;
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -88,13 +89,6 @@ class UserController extends Controller
             'phone'=>$request->phone,
 
         ]);
-//        $user->name = $request->name;
-//        $user->ic = $request->ic;
-//        $user->email = $request->email;
-//        $user->phone = $request->phone;
-//        $user->address = $request->address;
-//
-//        $user->save();
 
         return view('borrower.profile-edit');
     }
@@ -109,9 +103,15 @@ class UserController extends Controller
     {
         //
     }
-    //excel controller
+    //excel controller user
     public function export()
     {
         return (new UsersExport)->download('users.xlsx');
+    }
+
+    //excel controller staff
+    public function staffexport()
+    {
+          return (new StaffExport)->download('staff.xlsx');
     }
 }

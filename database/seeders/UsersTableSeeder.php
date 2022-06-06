@@ -14,14 +14,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('users')->delete();
-        
+
         \DB::table('users')->insert(array (
-            0 => 
+            0 =>
             array (
-                'address' => 'address',
+                'address' => 'Persiaran Multimedia, Cyberjaya, 63000 Cyberjaya, Selangor',
                 'created_at' => '2022-06-04 14:38:45',
                 'email' => 'borrower@test.com',
                 'email_verified_at' => '2022-06-05 03:59:24',
@@ -34,9 +34,9 @@ class UsersTableSeeder extends Seeder
                 'role' => 1,
                 'updated_at' => '2022-06-05 03:59:24',
             ),
-            1 => 
+            1 =>
             array (
-                'address' => 'address',
+                'address' => 'Tamarind Bldg Rd, Cyberjaya, 63000 Cyberjaya, Selangor',
                 'created_at' => '2022-06-04 14:40:31',
                 'email' => 'staff@test.com',
                 'email_verified_at' => '2022-06-04 14:41:52',
@@ -49,9 +49,9 @@ class UsersTableSeeder extends Seeder
                 'role' => 2,
                 'updated_at' => '2022-06-04 14:47:32',
             ),
-            2 => 
+            2 =>
             array (
-                'address' => 'address',
+                'address' => ' 1, Jalan BP 7/1 Sierra 7, Bandar Bukit, 47120 Puchong, Selangor',
                 'created_at' => '2022-06-05 04:02:45',
                 'email' => 'admin@test.com',
                 'email_verified_at' => '2022-06-05 04:03:13',
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => '2022-06-05 04:03:13',
             ),
         ));
-        
-        
+
+
     }
 }

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
 
     public function index()
     {
-        return view('admin.index');
+        return view('dashboard');
     }
 
     public function rentRecord()
@@ -35,7 +38,8 @@ class AdminController extends Controller
 
     public function userList()
     {
-        return view('admin.user-list');
+        $users = User::all();
+        return view('admin.user-list', compact('users'));
     }
 
     public function createList()
@@ -47,15 +51,15 @@ class AdminController extends Controller
     {
         return view('admin.report');
     }
-    public function profile()
+    public function profile(User $user)
     {
-        return view('admin.profile');
+        return view('admin.profile', compact('user'));
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
-
+        return view('admin.profile-add', compact('request'));
     }
 
     /**
@@ -66,7 +70,26 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'ic' => ['required', 'string','max:12'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string'],
+            'address' => ['required', 'string','max:255'],
+        ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->ic = $request->ic;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->role = $request->role;
+        $user->phone = $request->phone;
+
+        $user->save();
+
+        $users = User::all();
+        return view('admin.user-list', compact('users'));
     }
 
     /**
@@ -75,9 +98,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('admin.profile-show', compact('user'));
     }
 
     /**
@@ -98,9 +121,28 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'ic' => ['required', 'string', 'max:12'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['required', 'string'],
+            'address' => ['required', 'string', 'max:255'],
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'ic' => $request->ic,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+
+        ]);
+
+        $users = User::all();
+
+        return view('admin.user-list', compact('users'));
     }
 
     /**

@@ -30,7 +30,7 @@ class HomeController extends Controller
         } else if (Auth::user()->role == 2) {
             return redirect()->route('staff.rent-record');
         } else {
-            return view('home');
+            return redirect()->route('admin.dashboard');
         }
     }
 }

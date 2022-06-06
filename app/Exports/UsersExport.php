@@ -32,6 +32,13 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithHeadings, WithE
     {
 
         $bookings = DB::table('rentals')
+        // ->join('books', 'books.id', '=', 'rentals.book_id')
+        // ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
+        // ->join('users', 'users.id', '=', 'rentals.user_id')
+        // // ->join('users', 'users.id', '=', 'rentals.staff_id')
+        // ->select('rentals.id','users.name as Username','books.title', 'rentals.start_date','statuses.name as statusName','users.name as Staffname')
+        // ->get();
+
         ->join('books', 'books.id', '=', 'rentals.book_id')
         ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
         ->join('users', 'users.id', '=', 'rentals.user_id')
