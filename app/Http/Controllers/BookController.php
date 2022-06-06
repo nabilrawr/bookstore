@@ -21,6 +21,7 @@ class BookController extends Controller
     {
         $books = Book::all();
         $categories = Category::all();
+        
         return view('staff.book.index', compact('books', 'categories'));
     }
 
