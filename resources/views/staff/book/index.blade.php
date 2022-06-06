@@ -48,7 +48,8 @@
                                     <td>{{ $book->title }}</td>
                                     <td>{{ $book->writer }}</td>
                                     <td>RM {{ $book->price }}</td>
-                                    <td>{{ $book->status_id }}</td>
+                                    {{-- <td>{{ $book->status_id }}</td> --}}
+                                    <td>{{ $book->status->name }}</td>
                                     <td>
                                         <div class="d-flex align-items-center gap-3 fs-6">
                                             <a href="{{ route('book.show', $book) }}" class="text-primary"
@@ -69,6 +70,7 @@
                                                     data-bs-original-title="Delete" aria-label="Delete"><i
                                                         class="bi bi-trash-fill"></i></button>
                                             </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

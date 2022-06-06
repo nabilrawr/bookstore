@@ -14,10 +14,10 @@ class StatusSeeder extends Seeder
     public function run()
     {
         \DB::table('statuses')->insert([
-            'name' => 'complete(paid)',
+            'name' => 'complete paid(replace)',
         ]);
         \DB::table('statuses')->insert([
-            'name' => 'complete(replace)',
+            'name' => 'complete paid(late)',
         ]);
         \DB::table('statuses')->insert([
             'name' => 'complete',
@@ -29,13 +29,31 @@ class StatusSeeder extends Seeder
             'name' => 'not available',
         ]);
         \DB::table('statuses')->insert([
-            'name' => 'unpaid',
+            'name' => 'unpaid(late)',
         ]);
         \DB::table('statuses')->insert([
             'name' => 'late',
         ]);
         \DB::table('statuses')->insert([
             'name' => 'pending',
+        ]);
+        \DB::table('statuses')->insert([
+            'name' => 'pickup',
+        ]);
+        \DB::table('statuses')->insert([
+            'name' => 'new',
+        ]);
+        \DB::table('statuses')->insert([
+            'name' => 'damaged/missing',
+        ]);
+        \DB::table('statuses')->insert([
+            'name' => 'used',
+        ]);
+        \DB::table('statuses')->insert([
+            'name' => 'rent',
+        ]);
+        \DB::table('statuses')->insert([
+            'name' => 'Complete paid(late)',
         ]);
     }
 }
