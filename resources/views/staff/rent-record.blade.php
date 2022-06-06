@@ -41,6 +41,7 @@
                                 <th>Book Title</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>Receipt</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,6 +79,11 @@
                                                 href="{{ route('staff.status-rent', $rental) }}">Paid(Replace)</a>
                                         @endif
                                     </td>
+                                    <td> <div class="col-lg-3 col-md-6 me-auto">
+                                            <div class="ms-auto position-relative">
+                                                <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a>
+                                            </div>
+                                        </div></td>
                                 </tr>
                             @endforeach
                         </tbody>

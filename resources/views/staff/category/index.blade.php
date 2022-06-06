@@ -46,10 +46,7 @@
                                             <td>{{ $category->name }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3 fs-6">
-                                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                        data-bs-placement="bottom" title=""
-                                                        data-bs-original-title="View detail" aria-label="Views"><i
-                                                            class="bi bi-eye-fill"></i></a>
+
                                                     <a href="{{ route('category.edit', $category) }}"
                                                         class="text-warning" data-bs-toggle="tooltip"
                                                         data-bs-placement="bottom" title=""
@@ -80,5 +77,5 @@
         </main>
     </div>
     <!--end wrapper-->
- 
+
 @endsection

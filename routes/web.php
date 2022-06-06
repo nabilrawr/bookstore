@@ -30,12 +30,6 @@ Route::get('/pdf-report', function () {
 });
 
 
-// Route::get('/product-detail', function () {
-//     return view('product-detail');
-// });
-
-
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -59,7 +53,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/user-list', [App\Http\Controllers\AdminController::class, 'userList'])->name('user-list');
     Route::get('/create-list', [App\Http\Controllers\AdminController::class, 'createList'])->name('create-list');
     Route::get('/report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');
-    Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('profile');
+    Route::get('/profile-edit/{user}', [App\Http\Controllers\AdminController::class, 'profile'])->name('profile-edit');
+    Route::post('/profile-update/{user}', [App\Http\Controllers\AdminController::class, 'update'])->name('profile-update');
+    Route::get('/profile-add', [App\Http\Controllers\AdminController::class, 'create'])->name('profile-add');
+    Route::post('/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
 
@@ -108,3 +105,5 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 Route::get('/receipt', function () {
     return view('pdf-report');
 });
+
+Route::get('/rent-receipt', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('generate-receipt');
