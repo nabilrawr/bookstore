@@ -10,22 +10,10 @@
 		  <div class="panel-body">
 		    <div class="row">
 
-				{{-- <div class="col-sm-6 top-right">
-						<h3 class="marginright">Reference No: 1234578</h3>
-						<span class="marginright">Created At: 14 April 2014</span>
-			    </div> --}}
-
 			</div>
 			<hr>
 			<div class="row">
 
-				{{-- <div class="col-xs-4 from">
-					<p class="lead marginbottom">Borrower Details</p>
-					<p>Name: razaman </p>
-					<p>Phone: 415-767-3600</p>
-					<p>Email: contact@dynofy.com</p>
-                    <p>Address: Persiaran Multimedia, Cyberjaya, 63000 Cyberjaya, Selangor</p>
-				</div> --}}
 
                 	<div class="col-xs-4 from">
 						<img src="./images/logo.png" alt="Company logo" style="width: 100%; " />

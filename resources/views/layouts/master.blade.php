@@ -1,7 +1,17 @@
-@include('layouts.header')
-@include('layouts.sidebar')
-@include('sweetalert::alert')
 
-@yield('content')
+<html>
+    <head>
+        @include('layouts.header')
+        @include('layouts.sidebar')
+        @include('sweetalert::alert')
+    </head>
 
-@include('layouts.footer')
+    <body>
+        <div class="main-class">
+                @yield('content')
+        </div>
+
+    </body>
+    @include('layouts.footer')
+
+</html>

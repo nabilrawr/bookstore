@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('return:notify')->dailyAt('08:00');
         $schedule->command('statusReturn:lateReturn')->dailyAt('00:00');
         $schedule->command('statusReturn:unpaidReturn')->dailyAt('08:00');
+        $schedule->command('statusRental:notPickup')->dailyAt('00:00');
     }
 
     /**

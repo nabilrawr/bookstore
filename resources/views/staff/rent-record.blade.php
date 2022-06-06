@@ -24,10 +24,7 @@
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
-                            <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i
-                                    class="bi bi-search"></i></div>
-                            <input class="form-control ps-5" type="text" placeholder="Search Booking">
-
+                        <a href="{{ route('staffexport') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Excel</a>
                         </div>
                     </div>
                 </div>
@@ -37,7 +34,7 @@
                     <table id="example" class="table table-striped table-bordered">
                         <thead class="table-light">
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Pickup Date</th>
                                 <th>Pickup Time</th>
                                 <th>Returned Date</th>
@@ -89,6 +86,7 @@
             </div>
         </div>
         <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Excel</a>
+        <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-success"> <i class="fas fa-plus"></i> PDF</a>
     </main>
     <!--end page main-->
 @endsection

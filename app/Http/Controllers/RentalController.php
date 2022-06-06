@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 
 class RentalController extends Controller
 {
@@ -202,5 +203,16 @@ class RentalController extends Controller
     {
         $categories = Category::all();
         return view('borrower.catalog-show', compact('book', 'categories'));
+    }
+
+    public function pdfReportRental(Request $request)
+    {
+
+        $rentals = Rental::all();
+        return PDF::loadview('lala', compact('rentals'))
+            ->setOrientation('landscape')
+            ->setOption('margin-bottom', '0mm')
+            ->setOption('margin-top', '0mm')
+            ->inline('ReportRental.pdf');
     }
 }
