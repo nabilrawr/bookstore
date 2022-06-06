@@ -78,6 +78,7 @@ Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
     Route::get('/rent-record', [App\Http\Controllers\StaffController::class, 'rentRecord'])->name('rent-record');
     Route::get('/status-rent-damage{rental}', [App\Http\Controllers\RentalController::class, 'statusRentDamage'])->name('status-rent-damage');
     Route::get('/status-rent{rental}', [App\Http\Controllers\RentalController::class, 'statusRent'])->name('status-rent');
+    Route::get('/rental-report-pdf', [App\Http\Controllers\RentalController::class, 'pdfReportRental'])->name('pdf-report-rental');
 });
 
 //book
@@ -103,5 +104,5 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 });
 
 Route::get('/receipt', function () {
-    return view('receipt');
+    return view('pdf-report');
 });

@@ -89,6 +89,7 @@
             </div>
         </div>
         <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Excel</a>
+        <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-success"> <i class="fas fa-plus"></i> PDF</a>
     </main>
     <!--end page main-->
 @endsection
