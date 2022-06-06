@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rental;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -23,10 +24,16 @@ class DashboardController extends Controller
             $totalRental = 0;
         }
 
-       $data = [
+        $data = [
           'series'=> collect($assign),
-          'label'=>collect(["January","February","March","April","May","June","July","August","September","October","November","December"])
-      ];
-        return view('admin.dashboard', compact('data'));
+        ];
+
+        $rentals = DB::table('rentals')
+            ->join('books', 'books.id', '=', 'rentals.book_id')
+            ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
+            ->select('rentals.*', 'statuses.name', 'books.title')
+            ->get();
+
+        return view('admin.dashboard', compact('data','rentals'));
     }
 }
