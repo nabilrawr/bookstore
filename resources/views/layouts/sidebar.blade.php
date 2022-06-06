@@ -83,7 +83,7 @@
 
                <li>
                    <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
+                       <div class="parent-icon"><i class="bi bi-book-fill"></i>
                        </div>
                        <div class="menu-title">Book</div>
                    </a>

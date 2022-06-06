@@ -1,8 +1,7 @@
 @extends('auth.layouts.master')
 
 @section('content')
-    <br><br><br>
-
+    <br>
     <!--start wrapper-->
     <div class="wrapper">
 
@@ -22,12 +21,10 @@
                             <div class="col-lg-6">
                                 <div class="card-body p-4 p-sm-5">
                                     <h5 class="card-title">Sign Up</h5>
-                                    <p class="card-text mb-5">See your growth and get consulting support!</p>
+                                    <p class="card-text mb-5">Start Reading today for free</p>
+                                    <hr>
                                     <form class="form-body" method="POST" action="{{ route('register') }}">
                                         @csrf
-                                        <div class="login-separater text-center mb-4"> <span>OR SIGN UP WITH EMAIL</span>
-                                            <hr>
-                                        </div>
                                         <div class="row g-3">
                                             <div class="col-12 ">
                                                 <label for="inputName" class="form-label">Name</label>
@@ -126,8 +123,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <p class="mb-0">Already have an account? <a
-                                                        href="authentication-signin.html">Sign up here</a></p>
+                                                <p class="mb-0">Already have an account?
+                                                    <a  href="{{ route('login') }}">Sign in </a></p>
                                             </div>
                                         </div>
                                     </form>
