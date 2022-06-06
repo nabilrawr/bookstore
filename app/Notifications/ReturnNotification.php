@@ -11,14 +11,16 @@ class ReturnNotification extends Notification
 {
     use Queueable;
 
+    protected $rental;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($rental)
     {
-        //
+        $this->rental = $rental;
     }
 
     /**
@@ -41,8 +43,16 @@ class ReturnNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->line('Thank you for using our application!');
+
+            ->line('Hi ' . $this->rental->user->name)
+            ->line('Thank you for return the book ')
+            ->line('Below is a detail of the book that already returned')
+            ->line('Title : ' . $this->rental->book->title)
+            ->line('Pickup Date/Time:  ' . $this->rental->start_date)
+            ->line('End Date/Time:  ' . $this->rental->end_date)
+            ->line('see you again')
+
+            ->line('Thank you,');
     }
 
     /**

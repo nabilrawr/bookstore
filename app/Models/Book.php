@@ -8,14 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','writer','description','image','category_id','status_id','price'];
+    protected $fillable = ['title', 'writer', 'description', 'image', 'category_id', 'status_id', 'price'];
 
-    public const AVAILABLE=4;
+    public const AVAILABLE = 4;
 
     public function categories()
     {
         // return $this->hasMany(BookingItem::class);
-        return $this->hasMany(BookCategory::class,'book_id','id');
+        return $this->hasMany(BookCategory::class, 'book_id', 'id');
     }
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status_id', 'id');
+    }
+    
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class);
+    }
 }

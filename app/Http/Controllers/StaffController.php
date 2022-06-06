@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Notification;
+use App\Models\Book;
+use App\Models\User;
+use App\Models\Rental;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
@@ -27,13 +35,12 @@ class StaffController extends Controller
     {
         return view('staff.profile');
     }
+
+    //list rent
     public function rentRecord()
     {
-        return view('staff.rent-record');
-    }
-    public function statusRent()
-    {
-        return view('staff.status-rent');
+        $rentals = Rental::all();
+        return view('staff.rent-record', compact('rentals'));
     }
 
     /**

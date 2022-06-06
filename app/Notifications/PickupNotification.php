@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notification;
 class PickupNotification extends Notification
 {
     use Queueable;
+    protected $rental;
 
     /**
      * Create a new notification instance.
@@ -41,8 +42,14 @@ class PickupNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Due date on .'.$this->rental->book->title)
-                    ->line('Thank you for using our application!');
+            ->line('Hi ' . $this->rental->user->name)
+            ->line('Thank you for book the book with us')
+            ->line('Below is a detail of the book book')
+            ->line('Title : ' . $this->rental->book->title)
+            ->line('Pickup Date/Time:  ' . $this->rental->start_date)
+            ->line('Make Sure to pick up the book by the date given to avoid cancellation of the borrow')
+
+            ->line('Thank you,');
     }
 
     /**

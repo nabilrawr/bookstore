@@ -15,8 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(5);
-        return view('staff.category.index',compact('categories'));
+        // $categories = Category::paginate(5);
+        $categories = Category::all();
+        return view('staff.category.index', compact('categories'));
     }
 
     /**
@@ -37,7 +38,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate([
+        $request->validate([
             'name' => 'required|unique:categories',
         ]);
 
@@ -47,8 +48,7 @@ class CategoryController extends Controller
 
         Alert::success('Success', 'Category Has Been Added');
 
-        return redirect()->route('category.index')->with('success','Category added successfully');
-
+        return redirect()->route('category.index')->with('success', 'Category added successfully');
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('staff.category.edit',compact('category'));
+        return view('staff.category.edit', compact('category'));
     }
 
     /**
@@ -82,7 +82,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $request -> validate([
+        $request->validate([
             'name' => 'required',
         ]);
         $category->name = $request->name;
@@ -90,7 +90,7 @@ class CategoryController extends Controller
 
         Alert::success('Success', 'Category Has Been Edited');
 
-        return redirect()->route('category.index')->with('success','Category Updated Successfully');
+        return redirect()->route('category.index')->with('success', 'Category Updated Successfully');
     }
 
     /**
@@ -103,6 +103,6 @@ class CategoryController extends Controller
     {
         $category->delete();
         Alert::success('Success', 'Book Has Been Deleted');
-        return redirect()->route('category.index')->with('success','Category Deleted Successfully');
+        return redirect()->route('category.index')->with('success', 'Category Deleted Successfully');
     }
 }

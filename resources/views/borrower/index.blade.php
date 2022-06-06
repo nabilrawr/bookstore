@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Excel</a>
+    <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Download Report</a>
   </main>
 <!--end page main-->
 
