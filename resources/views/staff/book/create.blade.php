@@ -33,41 +33,57 @@
                                 <div class="row mb-3">
                                     <label for="title" class="col-sm-3 col-form-label">Title</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Enter Book Title"
-                                            name="title" value="{{ old('title') }}" required>
+                                        <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Book Title"
+                                            name="title" value="{{ old('title') }}" >
+                                            @if ($errors->has('title'))
+                                                <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('title') }}</span>
+                                            @endif
                                     </div>
+
                                 </div>
                                 <div class="row mb-3">
                                     <label for="writer" class="col-sm-3 col-form-label">Writer Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Enter Writer Name"
-                                            name="writer" value="{{ old('writer') }}" required>
+                                        <input type="text" class="form-control @error('writer') is-invalid @enderror" placeholder="Enter Writer Name"
+                                            name="writer" value="{{ old('writer') }}" >
+                                            @if ($errors->has('writer'))
+                                                <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('writer') }}</span>
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Description</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" id="description" rows="5" placeholder="Enter Description" name="description"
-                                            required>{{ old('description') }}</textarea>
+                                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="5" placeholder="Enter Description" name="description"
+                                            >{{ old('description') }}</textarea>
+                                            @if ($errors->has('description'))
+                                                <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('description') }}</span>
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Image</label>
                                     <div class="col-sm-9">
-                                        <input type="file" class="form-control" id="inputGroupFile02" name="image">
+                                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="inputGroupFile02" name="image">
+                                        @if ($errors->has('image'))
+                                                <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('image') }}</span>
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
                                     <div class="col-sm-9">
-                                        <select class="multiple-select" data-placeholder="Choose anything"
-                                            multiple="multiple" name="category[]" id="news">
+                                        <select class="multiple-select @error('category') is-invalid @enderror" data-placeholder="Choose anything"
+                                            multiple="multiple" name="category" id="news">
                                             {{-- <select class="select2 form-select mb-3" name="category[]" id="category"> --}}
-                                            <option selected>Open this select menu</option>
+                                            <option value="" selected>Open this select menu</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('category'))
+                                                <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('category') }}</span>
+                                            @endif
                                     </div>
                                 </div>
 
@@ -75,9 +91,12 @@
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Price</label>
                                     <div class="col-sm-9">
                                         <div class="input-group mb-3"> <span class="input-group-text">RM</span>
-                                            <input type="number" class="form-control" placeholder="0.00" required
-                                                name="price" min="0" value="0.00" step="0.01" title="Currency"
+                                            <input type="number" class="form-control @error('price') is-invalid @enderror" placeholder="0.00"
+                                                name="price" min="0" value="{{ old('price') }}" step="0.01" title="Currency"
                                                 pattern="^\d+(?:\.\d{1,2})?$">
+                                                @if ($errors->has('price'))
+                                                <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('price') }}</span>
+                                            @endif
                                             {{-- <input type="text" class="form-control" name="price" placeholder="0.00" aria-label="RM amount (with dot and two decimal places)" value="{{ old('price') }}" required> --}}
                                         </div>
                                     </div>

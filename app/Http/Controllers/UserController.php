@@ -44,6 +44,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate ([
+            'user_id' => 'required',
+            'role_id' => 'required',
+        ]);
+
         // return $request;
         $user = User::find($request->user_id);
         $role = Role::find($request->role_id);

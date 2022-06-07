@@ -54,7 +54,7 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate ([
             'start_date' => 'required',
         ]);
 
