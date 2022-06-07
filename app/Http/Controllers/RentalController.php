@@ -109,7 +109,7 @@ class RentalController extends Controller
             Notification::send($user, new ReturnNotification($rental));
 
             Alert::success('Success', 'The Book Has Been Retured and Complete');
-        } else if ($rental->status_id == 6) {
+        } else if ($rental->status_id == 7) {
             $rental->user_id = $rental->user_id;
             $rental->start_date = $rental->start_date;
             $rental->book_id = $rental->book_id;
