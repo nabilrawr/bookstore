@@ -47,9 +47,11 @@ class UserController extends Controller
         // return $request;
         $user = User::find($request->user_id);
         $role = Role::find($request->role_id);
+
         if (filled($user) && filled($role)) {
-            $user = assignRole($role);
+            $user = $user->assignRole($role);
         }
+
         return redirect()->route('admin.create-role');
     }
 
