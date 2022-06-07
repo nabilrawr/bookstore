@@ -78,7 +78,7 @@
 
                    <li>
                        <a href="{{ route('staff.rent-record') }}">
-                           <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
+                           <div class="parent-icon"><i class="bi bi-folder-fill"></i>
                            </div>
                            <div class="menu-title">Rent</div>
                        </a>
@@ -93,7 +93,7 @@
                @if (auth()->user()->hasRole('admin'))
                    <li>
                        <a href="javascript:;" class="has-arrow">
-                           <div class="parent-icon"><i class="bi bi-book-fill"></i>
+                           <div class="parent-icon"><i class="bi bi-person-fill"></i>
                            </div>
                            <div class="menu-title">User</div>
                        </a>
@@ -129,7 +129,7 @@
                @if (auth()->user()->hasRole('admin'))
                    <li>
                        <a href="javascript:;" class="has-arrow">
-                           <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
+                           <div class="parent-icon"><i class="bi bi-inbox-fill"></i>
                            </div>
                            <div class="menu-title">Category</div>
                        </a>

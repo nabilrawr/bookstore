@@ -7,7 +7,7 @@ File: style.css
 */
 
 
-/* 
+/*
 - General
 - Header
 - Sidebar
@@ -105,7 +105,7 @@ a {
     opacity: 0.5;
     cursor: pointer;
 	display: none;
- 
+
  }
 
 .top-header .navbar .searchbar .form-control {
@@ -133,7 +133,7 @@ a {
 
 .top-header .navbar .searchbar .search-icon,
 .top-header .navbar .dropdown-searchbar .search-icon {
-  
+
     opacity: 0.5;
 
 }
@@ -278,7 +278,7 @@ a {
 }
 
 .top-header .navbar .dropdown-item .setting-text {
-   
+
     font-size: 16px;
     font-weight: 500;
 }
@@ -367,7 +367,7 @@ a {
 
 
 .top-header .navbar .nav-link .notify-badge {
-      
+
     position: absolute;
     top: -8px;
     right: -8px;
@@ -914,7 +914,7 @@ a {
 }
 
 .productlist .product-title {
-    
+
     color: rgb(25, 27, 34);
 
 }
@@ -938,7 +938,7 @@ a {
 }
 
 .orderlist .product-title {
-    
+
     color: rgb(25, 27, 34);
 
 }
@@ -962,7 +962,7 @@ a {
 
 
 .iconmenu .ps__rail-x {
-	
+
 	height: 0px;
 }
 
@@ -1116,7 +1116,7 @@ a {
 }
 
 .profile-cover {
-    background-image: linear-gradient(to bottom right, rgb(26 30 33 / 50%), rgb(0 0 0 / 50%)), url(../images/gallery/33.png);
+    background-image: linear-gradient(to bottom right, rgb(26 30 33 / 50%), rgb(0 0 0 / 50%)), url(../images/gallery/35.jpg);
     background-size: cover;
     height: 24rem;
     background-position: center;
@@ -1603,14 +1603,14 @@ a {
 
 
   @media screen and (max-width:1024px) {
-      
-    
+
+
     .sidebar-wrapper {
-    
+
         left: -300px;
     }
 
-  
+
     .page-content {
 
         margin-left: 0px;
@@ -1618,7 +1618,7 @@ a {
     }
 
     .top-header .navbar{
-      
+
         left: 0px;
     }
 
@@ -1626,11 +1626,11 @@ a {
 
 
    .wrapper.toggled .sidebar-wrapper{
-    
+
         left: 0px;
     }
 
-    
+
     .wrapper.toggled .page-content {
 
         margin-left: 0px;
@@ -1638,7 +1638,7 @@ a {
     }
 
     .wrapper.toggled .top-header .navbar{
-      
+
         left: 0px;
     }
 
@@ -1662,7 +1662,7 @@ a {
 		position: relative;
 		width: 30%;
 		display: none;
-	 
+
  }
 
 .top-header .navbar .full-searchbar {
@@ -1683,7 +1683,7 @@ a {
     padding: 0 1rem;
     -webkit-animation: .6s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 animdropdown;
 	animation: .6s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 animdropdown
- 
+
   }
 
 .email-header {
@@ -1714,7 +1714,7 @@ a {
     cursor: move;
     transition: all .3s ease-out
 }
-   
+
 .compose-mail-popup {
     width: auto;
     position: fixed;
@@ -1773,12 +1773,12 @@ a {
 .top-header .navbar .searchbar .search-close-icon {
 
 	display: block;
-	
+
 }
 
 
 
-  
+
 }
 
 
