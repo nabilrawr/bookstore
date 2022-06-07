@@ -31,6 +31,7 @@ class RentalController extends Controller
             ->join('books', 'books.id', '=', 'rentals.book_id')
             ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
             ->select('rentals.*', 'statuses.name', 'books.title')
+            ->where('rentals.user_id', '=', Auth::user()->id)
             ->get();
         return view('borrower.index', compact('bookings'));
     }
@@ -68,7 +69,7 @@ class RentalController extends Controller
         $rental->book_id = $request->book_id;
         $rental->save();
 
-        Book::where('id',$request->book_id)->update(array('status_id' => 5));
+        Book::where('id', $request->book_id)->update(array('status_id' => 5));
 
         return redirect()->route('borrower.index-booking')->with('success', 'Booking added successfully');
     }
@@ -220,10 +221,9 @@ class RentalController extends Controller
     {
 
         $findBooks = [];
-        $findBooksId=BookCategory::where('category_id','=', $request->category_id)->get();
-        foreach($findBooksId as $data)
-        {
-            array_push($findBooks,$data->book_id);
+        $findBooksId = BookCategory::where('category_id', '=', $request->category_id)->get();
+        foreach ($findBooksId as $data) {
+            array_push($findBooks, $data->book_id);
         }
 
         //breadcumbs
@@ -231,7 +231,7 @@ class RentalController extends Controller
 
         $books = Book::whereIn('id', $findBooks)->orderByDesc('created_at')->get();
         $categories = Category::all();
-        return view('borrower.catalog-index', compact('books', 'categories','breadcumb'));
+        return view('borrower.catalog-index', compact('books', 'categories', 'breadcumb'));
     }
 
 
@@ -240,13 +240,13 @@ class RentalController extends Controller
 
         $rentals = Rental::all();
         return PDF::loadview('report-rental', compact('rentals'))
-        ->setOrientation('landscape')
-        ->setOption('margin-bottom', '0mm')
-        ->setOption('margin-top', '0mm')
-        ->inline('ReportRental.pdf');
-}
+            ->setOrientation('landscape')
+            ->setOption('margin-bottom', '0mm')
+            ->setOption('margin-top', '0mm')
+            ->inline('ReportRental.pdf');
+    }
 
-    public function pdfReportUser(Request $request)
+    public function pdfReceipt(Request $request)
     {
 
         $rentals = Rental::all();
