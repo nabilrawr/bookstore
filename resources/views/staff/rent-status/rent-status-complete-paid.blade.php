@@ -82,14 +82,16 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <div class="col-lg-3 col-md-6 me-auto">
-                                            <div class="ms-auto position-relative">
+                                        @if ($rental->status->name == 'complete' || $rental->status->name == 'complete paid(late)' || $rental->status->name == 'complete paid(replace)')
+                                            <div class="col-lg-3 col-md-6 me-auto">
+                                                <div class="ms-auto position-relative">
 
-                                                <a href="{{ route('staff.pdf-receipt-rental') }}"
-                                                    class="btn btn-success">
-                                                    <i class="fas fa-plus"></i>Generate Receipt</a>
+                                                    <a href="{{ route('staff.pdf-receipt-rental') }}"
+                                                        class="btn btn-success">
+                                                        <i class="fas fa-plus"></i>Generate Receipt</a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
