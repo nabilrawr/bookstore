@@ -19,7 +19,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::orderByDesc('created_at')->get();
         $categories = Category::all();
 
         return view('staff.book.index', compact('books', 'categories'));
