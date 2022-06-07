@@ -31,7 +31,7 @@ class RentalController extends Controller
             ->join('books', 'books.id', '=', 'rentals.book_id')
             ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
             ->select('rentals.*', 'statuses.name', 'books.title')
-            ->where('rentals.user_id','=',Auth::user()->id)
+            ->where('rentals.user_id', '=', Auth::user()->id)
             ->get();
         return view('borrower.index', compact('bookings'));
     }
@@ -240,13 +240,13 @@ class RentalController extends Controller
 
         $rentals = Rental::all();
         return PDF::loadview('report-rental', compact('rentals'))
-        ->setOrientation('landscape')
-        ->setOption('margin-bottom', '0mm')
-        ->setOption('margin-top', '0mm')
-        ->inline('ReportRental.pdf');
-}
+            ->setOrientation('landscape')
+            ->setOption('margin-bottom', '0mm')
+            ->setOption('margin-top', '0mm')
+            ->inline('ReportRental.pdf');
+    }
 
-    public function pdfReportUser(Request $request)
+    public function pdfReceipt(Request $request)
     {
 
         $rentals = Rental::all();
