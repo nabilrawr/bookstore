@@ -37,7 +37,7 @@
                 </a>
             </li>
                    <li>
-                       <a href="{{ route('profile-edit', Auth::user()->id) }}">
+                       <a href="{{ route('profile-show', Auth::user()->id) }}">
                            <div class="parent-icon"><i class="bi bi-house-fill"></i>
                            </div>
                            <div class="menu-title">My Profile</div>
