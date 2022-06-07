@@ -65,6 +65,7 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 
     Route::get('/catalog-index', [App\Http\Controllers\RentalController::class, 'indexCatalog'])->name('index-catalog');
     Route::get('/catalog-show/{book}', [App\Http\Controllers\RentalController::class, 'showCatalog'])->name('show-catalog');
+    Route::post('/catalog-find', [App\Http\Controllers\RentalController::class, 'findCatalog'])->name('find-catalog');
     Route::get('/borrow-record', [App\Http\Controllers\RentalController::class, 'borrowRecord'])->name('borrow-record');
     Route::get('/booking', [App\Http\Controllers\RentalController::class, 'index'])->name('index-booking');
     Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
