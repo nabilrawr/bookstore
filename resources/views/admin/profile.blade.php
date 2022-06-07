@@ -69,10 +69,10 @@
                                     <div class="col-6">
                                         <label class="form-label">Role</label>
                                         <select class="form-control" name="role">
-                                            <option hidden>{{ old('role', $user->role )}}</option>
-                                            <option value="1">Borrower</option>
-                                            <option value="2">Staff</option>
-                                            <option value="3">Admin</option>
+                                            <option hidden>{{ old('role', $roleName->name )}}</option>
+                                            @foreach($roles as $role)
+                                            <option value="{{$role->id}}">{{ $role->name }}</option>
+                                                @endforeach
                                         </select>
                                         @error('role')
                                         <span class="invalid-feedback" role="alert">

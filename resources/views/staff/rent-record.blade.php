@@ -73,7 +73,7 @@
                                             <a class="btn btn-primary px-2 "
                                                 href="{{ route('staff.status-rent-damage', $rental) }}">Damaged /
                                                 Missing</a>
-                                        @elseif ($rental->status->name == 'unpaid(late)')
+                                        @elseif ($rental->status->name == 'late')
                                             <a class="btn btn-primary px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}">Paid(late)</a>
                                         @elseif ($rental->status->name == 'damaged/missing')
@@ -82,23 +82,23 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($rental->status->name == 'complete' || $rental->status->name == 'complete paid(late)' || $rental->status->name == 'complete paid(replace)')
+                                        @if ($rental->status->name == 'complete' || $rental->status->name == 'complete paid(late)' || $rental->status->name == 'complete paid(replace)' || $rental->status->name == 'late')
                                             <div class="col-lg-3 col-md-6 me-auto">
                                                 <div class="ms-auto position-relative">
 
-                                                    <a href="{{ route('staff.pdf-receipt-rental') }}"
+                                                    <a href="{{ route('staff.pdf-receipt-rental', $rental) }}"
                                                         class="btn btn-success">
                                                         <i class="fas fa-plus"></i>Generate Receipt</a>
                                                 </div>
                                             </div>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
+                </td>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
             </div>
+        </div>
         </div>
     </main>
     <!--end page main-->

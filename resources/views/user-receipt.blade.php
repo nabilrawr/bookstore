@@ -112,26 +112,22 @@
             </tr>
 
             <tr class="heading">
-                <td>No</td>
                 <td>Book Name</td>
                 <td>Author</td>
                 <td>Rent Duration</td>
                 <td>Status</td>
-                <td>fee</td>
+                <td>Fee</td>
             </tr>
 
             <tr class="item">
-                @foreach ($rentals as $rental)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $rental->book->title }}</td>
-                <td>{{ $rental->book->writer }}</td>
-                <td>day</td>
-                <td>{{ $rental->status->name }}</td>
-                <td>Rm 0</td>
+                <td>{{ $currentData->book->title }}</td>
+                <td>{{ $currentData->book->writer }}</td>
+                <td>{{ $currentData->day }}</td>
+                <td>{{ $currentData->status->name }}</td>
+                <td>RM {{ $currentData->fee }}</td>
             </tr>
             </tr>
-            @endforeach
         </table>
     </div>
 </body>
