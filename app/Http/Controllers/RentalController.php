@@ -110,6 +110,8 @@ class RentalController extends Controller
             $rental->status_id = 3;
             $rental->staff_id = $rental->staff_id;
             $rental->receipt = $rental->receipt;
+            $rental->day = 7;
+            $rental->fee = 0.00;
             $rental->save();
 
             Notification::send($user, new ReturnNotification($rental));
@@ -121,7 +123,8 @@ class RentalController extends Controller
             $rental->book_id = $rental->book_id;
             $rental->status_id = 2;
             $rental->staff_id = $staff;
-            $rental->receipt = $rental->receipt;
+            $rental->day = $rental->day;
+            $rental->fee = $rental->day;
             $rental->save();
 
             Notification::send($user, new ReturnNotification($rental));
@@ -220,6 +223,9 @@ class RentalController extends Controller
 
     public function findCatalog(Request $request)
     {
+        $request->validate([
+            'category_id' => ['required']
+        ]);
 
         $findBooks = [];
         $findBooksId = BookCategory::where('category_id', '=', $request->category_id)->get();
@@ -247,14 +253,25 @@ class RentalController extends Controller
             ->inline('ReportRental.pdf');
     }
 
-    public function pdfReceipt(Request $request)
+    public function pdfReceipt(Request $request, Rental $rental)
     {
 
-        $rentals = Rental::all();
-        return PDF::loadview('user-receipt', compact('rentals'))
-            ->setOrientation('landscape')
+        $currentData = Rental::find($rental->id);
+        return PDF::loadview('user-receipt', compact('currentData'))
             ->setOption('margin-bottom', '0mm')
             ->setOption('margin-top', '0mm')
             ->inline('UserReceipt.pdf');
+    }
+
+    public function rentalRecord()
+    {
+        $rentals = Rental::where('user_id', auth()->user()->id)->get();
+        return view('borrower.rental-record', compact('rentals'));
+    }
+
+    public function activeRecord()
+    {
+        $rentals = Rental::where('user_id', auth()->user()->id)->where('status_id', 8)->orWhere('status_id', 9)->get();
+        return view('borrower.active-record', compact('rentals'));
     }
 }

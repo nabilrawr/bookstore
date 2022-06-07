@@ -40,8 +40,14 @@ class FeeReturnLate extends Command
      */
     public function handle()
     {
-        $rentals = Rental::where('status_id', 6)->select('end_date')->get();
-        $currentTime = Carbon::now()->addDay()->format('y-m-d H:i');
-        $days = $currentTime->diffindays($rentals);
+        $currentDay = Carbon::now();
+        $rentals = Rental::where('status_id', 7)
+            ->where('end_date', '<=', $currentDay)->get();
+        foreach ($rentals as $rental) {
+            $endDay = Carbon::parse($rental->end_date);
+            $lateDay = $endDay->diffInDays($currentDay);
+            $fee = $lateDay * 2;
+            Rental::where('id', $rental->id)->update(array('day' => $lateDay + 7, 'fee' => $fee));
+        }
     }
 }

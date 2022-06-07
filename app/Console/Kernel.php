@@ -18,7 +18,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('notify:pickup')->everyThirtyMinutes();
         $schedule->command('return:notify')->dailyAt('08:00');
-        $schedule->command('statusReturn:lateReturn')->dailyAt('09:56');
+        $schedule->command('statusReturn:lateReturn')->dailyAt('00:00');
+        $schedule->command('statusReturn:lateFee')->dailyAt('00:00');
         $schedule->command('statusRental:notPickup')->dailyAt('00:00');
     }
 
