@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="border p-4 rounded">
                             <div class="card-title d-flex align-items-center">
-                                <h5 class="mb-0">Create Book</h5>
+                                <h5 class="mb-0">Create Book <i class="bi bi-book-half"></i></h5>
                             </div>
                             <hr />
                             <form method="post" action="{{ route('book.store') }}" class="mb-5"

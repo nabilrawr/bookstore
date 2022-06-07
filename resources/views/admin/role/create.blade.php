@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="border p-4 rounded">
                             <div class="card-title d-flex align-items-center">
-                                <h5 class="mb-0">Assign Role</h5>
+                                <h5 class="mb-0">Assign Role <i class="bi bi-tools"></i></h5>
                             </div>
                             <hr />
                             <form method="post" action="{{ route('admin.store-role') }}" class="mb-5">
@@ -32,7 +32,7 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Staff Name</label>
                                     <div class="col-sm-9">
-                                        <select name="user_id">
+                                        <select  class="form-select" name="user_id">
                                             <option selected>Open this select menu</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -44,7 +44,7 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Role</label>
                                     <div class="col-sm-9">
-                                        <select name="role_id">
+                                        <select  class="form-select" name="role_id">
                                             <option selected>Open this select menu</option>
                                             @foreach ($roles as $role)
                                                 <option value="{{ $role->id }}">{{ $role->name }}</option>

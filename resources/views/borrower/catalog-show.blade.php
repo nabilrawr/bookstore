@@ -24,19 +24,19 @@
                  <form class="form-body" method="POST" action="{{ route('borrower.store-booking', $book->id ) }}">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Default Date and Time Picker</label>
+                        <label class="form-label">Select a Pickup Date And Time</label>
                         <input class="result form-control" name="start_date" type="text" id="date-time" placeholder="Date Picker...">
                     </div>
 
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
                  <br>
-                 <a class="btn btn-danger px-5 radius-30" href="{{ route('borrower.index-catalog') }}">Back</a>
+                 <a class="btn btn-secondary px-5 radius-30" href="{{ route('borrower.index-catalog') }}">Back</a>
 
                  @if ( $book->status_id == 4)
-                     <button type="submit" class="btn btn-primary px-5 radius-30">Book</button>
+                     <button type="submit" class="btn btn-primary px-5 radius-30">Rent The Book</button>
                  @else
-                 <button type="button" class="btn btn-light px-5 radius-30"  disabled >Not available</button>
+                 <button type="button" class="btn btn-warning px-5 radius-30"  disabled >Not available</button>
                  @endif
 
                 </form>
