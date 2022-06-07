@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function rentRecord()
     {
-        return view('admin.rent-record');
+        return view('staff.rent-record');
     }
 
     public function bookList()

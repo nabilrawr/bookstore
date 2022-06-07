@@ -41,7 +41,10 @@ class FeeReturnLate extends Command
     public function handle()
     {
         $rentals = Rental::where('status_id', 6)->select('end_date')->get();
+        for($rentals as $rent){
         $currentTime = Carbon::now()->addDay()->format('y-m-d H:i');
-        $days = $currentTime->diffindays($rentals);
+        $days = $currentTime->diffindays($rent->end_date);
+        }
+
     }
 }
