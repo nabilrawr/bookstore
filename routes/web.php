@@ -104,4 +104,7 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
 });
 
-Route::get('/rent-receipt', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('generate-receipt');
+//User PDF
+Route::get('/user-receipt', function () {
+    return view('user-receipt');
+});

@@ -83,7 +83,7 @@
                                     </td>
                                     <td> <div class="col-lg-3 col-md-6 me-auto">
                                             <div class="ms-auto position-relative">
-                                                <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a>
+                                                {{-- <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a> --}}
                                             </div>
                                         </div></td>
                                 </tr>
