@@ -32,7 +32,10 @@
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter Category Name" name="name" value="{{ old('name') }}" required>
+                                    <input type="text" class="form-control" placeholder="Enter Category Name" name="name" value="{{ old('name') }}" >
+                                    @if ($errors->has('name'))
+                                         <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('name') }}</span>
+                                    @endif
                                 </div>
                             </div>
 

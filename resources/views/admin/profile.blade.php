@@ -32,7 +32,7 @@
                                     @csrf
                                     <div class="col-6">
                                         <label class="form-label">Username</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name )}}" required >
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name )}}"  >
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

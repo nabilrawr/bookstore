@@ -54,7 +54,7 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate ([
             'start_date' => 'required',
         ]);
 
@@ -219,6 +219,9 @@ class RentalController extends Controller
 
     public function findCatalog(Request $request)
     {
+        $request -> validate ([
+            'category_id' => ['required']
+        ]);
 
         $findBooks = [];
         $findBooksId = BookCategory::where('category_id', '=', $request->category_id)->get();

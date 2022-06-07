@@ -32,24 +32,31 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Staff Name</label>
                                     <div class="col-sm-9">
-                                        <select name="user_id">
-                                            <option selected>Open this select menu</option>
+                                        <select name="user_id"  class="form-control">
+                                            <option value="" selected>Open this select menu</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
                                         </select>
+
+                                        @if ($errors->has('user_id'))
+                                            <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('user_id') }}</span>
+                                            @endif
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Role</label>
                                     <div class="col-sm-9">
-                                        <select name="role_id">
-                                            <option selected>Open this select menu</option>
+                                        <select name="role_id"  class="form-control">
+                                            <option value="" selected>Open this select menu</option>
                                             @foreach ($roles as $role)
                                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('role_id'))
+                                        <span id="ordertype-error" class="error text-danger" for="input-ordertype">{{ $errors->first('role_id') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row">
