@@ -91,14 +91,14 @@
                                                         <i class="fas fa-plus"></i>Generate Receipt</a>
                                                 </div>
                                             </div>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
+                </td>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
             </div>
+        </div>
         </div>
     </main>
     <!--end page main-->

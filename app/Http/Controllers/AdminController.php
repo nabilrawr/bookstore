@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminController extends Controller
 
     public function rentRecord()
     {
-        return view('admin.rent-record');
+        return view('staff.rent-record');
     }
 
     public function bookList()
@@ -39,6 +40,7 @@ class AdminController extends Controller
     public function userList()
     {
         $users = User::all();
+
         return view('admin.user-list', compact('users'));
     }
 
@@ -53,7 +55,10 @@ class AdminController extends Controller
     }
     public function profile(User $user)
     {
-        return view('admin.profile', compact('user'));
+        $roleName = Role::find($user->role);
+        $roles = Role::all();
+        return view('admin.profile', compact('user','roleName', 'roles'));
+//        /return view('admin.profile', compact('user'));
     }
 
 
@@ -128,6 +133,7 @@ class AdminController extends Controller
             'ic' => ['required', 'string', 'max:12'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required', 'string'],
+            'role' => ['required', 'integer'],
             'address' => ['required', 'string', 'max:255'],
         ]);
 
@@ -135,6 +141,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'ic' => $request->ic,
             'email' => $request->email,
+            'role'=> $request->role,
             'address' => $request->address,
             'phone' => $request->phone,
 

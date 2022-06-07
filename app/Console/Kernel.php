@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('statusReturn:lateReturn')->dailyAt('00:00');
         $schedule->command('statusReturn:lateFee')->dailyAt('00:00');
         $schedule->command('statusRental:notPickup')->dailyAt('00:00');
+        $schedule->command('statusReturn:lateFee')->dailyAt('14:09');
     }
 
     /**

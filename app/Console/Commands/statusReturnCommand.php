@@ -40,9 +40,9 @@ class statusReturnCommand extends Command
      */
     public function handle()
     {
-        $endDate = Carbon::now()->format('y-m-d');
+        $current = Carbon::now()->format('y-m-d');
 
-        $rentals = Rental::whereDate('end_date', '<', $endDate)->update(['status_id' => 7])->get();
+        $rentals = Rental::whereDate('end_date', '<=', $current)->update(['status_id' => 7])->get();
 
     }
 }
