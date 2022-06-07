@@ -98,6 +98,9 @@
 				<tr class="heading">
                     <td>No</td>
                     <td>Borrower</td>
+                    <td>Ic</td>
+                    <td>Email</td>
+                    <td>Phone</td>
                     <td>Book Title</td>
                     <td>Author</td>
                     <td>Rent start</td>
@@ -112,6 +115,9 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $rental->user->name }}</td>
+                        <td>{{ $rental->user->ic }}</td>
+                        <td>{{ $rental->user->email }}</td>
+                        <td>{{ $rental->user->phone }}</td>
                         <td>{{ $rental->book->title }}</td>
                         <td>{{ $rental->book->writer }}</td>
                         <td>{{ $rental->start_date }}</td>

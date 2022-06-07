@@ -24,9 +24,8 @@
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
-                        <a href="{{ route('staffexport') }}" class="btn btn-success"> Excel</a>
-                        <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-danger">PDF</a>
-                        <a href="{{ route('borrower.pdf-user-receipt') }}" class="btn btn-danger">PDF Receipt</a>
+                        <a href="{{ route('staffexport') }}" class="btn btn-success"> <i class="bi bi-file-earmark-spreadsheet-fill"></i> Excel</a>
+                        <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i>PDF</a>
                         </div>
                     </div>
                 </div>
@@ -37,6 +36,9 @@
                         <thead class="table-light">
                             <tr>
                                 <th>No</th>
+                                <th>Name</th>
+                                <th>Ic No</th>
+                                <th>Phone No</th>
                                 <th>Pickup Date</th>
                                 <th>Pickup Time</th>
                                 <th>Returned Date</th>
@@ -50,6 +52,9 @@
                             @foreach ($rentals as $rental)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $rental->user->name}}</td>
+                                    <td>{{ $rental->user->ic}}</td>
+                                    <td>{{ $rental->user->phone}}</td>
                                     <?php
                                     $tempDate = explode(' ', $rental->start_date);
                                     $tempDate2 = explode(' ', $rental->end_date);
@@ -70,6 +75,7 @@
                                             <a class="btn btn-success px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}"
                                                 onclick="complete();">Complete</a>
+                                                <br><br>
                                             <a class="btn btn-danger px-2 "
                                                 href="{{ route('staff.status-rent-damage', $rental) }}">Damaged /
                                                 Missing</a>
@@ -83,7 +89,7 @@
                                     </td>
                                     <td> <div class="col-lg-3 col-md-6 me-auto">
                                             <div class="ms-auto position-relative">
-                                                <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a>
+                                                {{-- <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a> --}}
                                             </div>
                                         </div></td>
                                 </tr>

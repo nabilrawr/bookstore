@@ -13,8 +13,8 @@
            </div>
            <!--navigation-->
            <ul class="metismenu" id="menu">
-               @if (auth()->user()->hasRole('admin') ||
-                   auth()->user()->hasRole('staff'))
+               {{-- @if (auth()->user()->hasRole('admin') ||
+                   auth()->user()->hasRole('staff')) --}}
                    <li>
                        <a href="{{ route('admin.dashboard') }}">
                            <div class="parent-icon"><i class="bi bi-house-fill"></i>
@@ -22,20 +22,20 @@
                            <div class="menu-title">Dashboard</div>
                        </a>
                    </li>
-               @endif
+               {{-- @endif
                @if (auth()->user()->hasRole('borrower'))
-                   <li>
+                   <li> --}}
                        <a href="{{ route('borrower.index-catalog') }}">
                            <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
                            </div>
                            <div class="menu-title">Catalogue</div>
                        </a>
                    </li>
-               @endif
+               {{-- @endif --}}
 
-               @if (auth()->user()->hasRole('borrower') ||
+               {{-- @if (auth()->user()->hasRole('borrower') ||
                    auth()->user()->hasRole('admin') ||
-                   auth()->user()->hasRole('staff'))
+                   auth()->user()->hasRole('staff')) --}}
                    <li class="menu-label">Account</li>
 
                    <li>
@@ -45,8 +45,8 @@
                            <div class="menu-title">My Profile</div>
                        </a>
                    </li>
-               @endif
-               @if (auth()->user()->hasRole('borrower'))
+               {{-- @endif
+               @if (auth()->user()->hasRole('borrower')) --}}
                    <li>
                        <a href="{{ route('borrower.book-list') }}">
                            <div class="parent-icon"><i class="bi bi-card-list"></i>
@@ -70,10 +70,10 @@
                            <div class="menu-title">Active Rental</div>
                        </a>
                    </li>
-               @endif
+               {{-- @endif
 
                @if (auth()->user()->hasRole('admin') ||
-                   auth()->user()->hasRole('staff'))
+                   auth()->user()->hasRole('staff')) --}}
                    <li class="menu-label">Book Rent</li>
 
                    <li>
@@ -83,14 +83,14 @@
                            <div class="menu-title">Rent</div>
                        </a>
                    </li>
-               @endif
+               {{-- @endif --}}
 
-               @if (auth()->user()->hasRole('admin') ||
-                   auth()->user()->hasRole('staff'))
+               {{-- @if (auth()->user()->hasRole('admin') ||
+                   auth()->user()->hasRole('staff')) --}}
                    <li class="menu-label">Maintenance</li>
-               @endif
+               {{-- @endif --}}
 
-               @if (auth()->user()->hasRole('admin'))
+               {{-- @if (auth()->user()->hasRole('admin')) --}}
                    <li>
                        <a href="javascript:;" class="has-arrow">
                            <div class="parent-icon"><i class="bi bi-person-fill"></i>
@@ -108,9 +108,9 @@
                            </li>
                        </ul>
                    </li>
-               @endif
+               {{-- @endif --}}
 
-               @if (auth()->user()->hasRole('staff'))
+               {{-- @if (auth()->user()->hasRole('staff')) --}}
                    <li>
                        <a href="javascript:;" class="has-arrow">
                            <div class="parent-icon"><i class="bi bi-book-fill"></i>
@@ -124,9 +124,9 @@
                            </li>
                        </ul>
                    </li>
-               @endif
+               {{-- @endif --}}
 
-               @if (auth()->user()->hasRole('admin'))
+               {{-- @if (auth()->user()->hasRole('admin')) --}}
                    <li>
                        <a href="javascript:;" class="has-arrow">
                            <div class="parent-icon"><i class="bi bi-inbox-fill"></i>
@@ -142,7 +142,7 @@
                            </li>
                        </ul>
                    </li>
-               @endif
+               {{-- @endif --}}
 
            </ul>
            <!--end navigation-->
