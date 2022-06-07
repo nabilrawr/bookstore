@@ -43,7 +43,7 @@
                            <div class="menu-title">My Profile</div>
                        </a>
                    </li>
-               @if(Auth::user()->role == 1)
+               {{-- @if(Auth::user()->role == 1) --}}
                <li class="menu-label">Account</li>
 
                <a href="{{ route('borrower.book-list') }}">
