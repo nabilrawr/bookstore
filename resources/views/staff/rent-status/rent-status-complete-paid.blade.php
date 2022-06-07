@@ -24,8 +24,8 @@
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
-                            <a href="{{ route('staffexport') }}" class="btn btn-success"> Excel</a>
-                            <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-danger">PDF</a>
+                            <a href="{{ route('generate-excel-status-rents') }}" class="btn btn-success"> Excel</a>
+                            <a href="{{ route('generate-pdf-status-rents.complete-paid') }}" class="btn btn-danger">PDF</a>
 
                         </div>
                     </div>

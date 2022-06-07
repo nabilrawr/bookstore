@@ -21,7 +21,9 @@ class CreateRentalsTable extends Migration
             $table->integer('status_id')->default(8);
             $table->integer('book_id')->nullable();
             $table->integer('staff_id')->nullable();
-            $table->decimal('receipt')->nullable();
+            $table->string('receipt')->nullable();
+            $table->integer('day')->nullable();
+            $table->double('fee')->nullable();
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ class HomeController extends Controller
         if (auth()->user()->hasRole('borrower')) {
             return redirect()->route('borrower.index-catalog');
         } else if (auth()->user()->hasRole('staff')) {
-            return redirect()->route('staff.rent-record');
+            return redirect()->route('admin.dashboard');
         } else {
             return redirect()->route('admin.dashboard');
         }
