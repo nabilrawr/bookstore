@@ -211,6 +211,9 @@ class RentalController extends Controller
 
     public function findCatalog(Request $request)
     {
+        $request -> validate ([
+            'category_id' => ['required']
+        ]);
 
         $findBooks = [];
         $findBooksId=BookCategory::where('category_id','=', $request->category_id)->get();

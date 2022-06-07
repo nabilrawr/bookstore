@@ -25,7 +25,7 @@
             <div class="row g-3 align-items-center">
               <div class="col-lg-3 col-5 col-md-3">
                 <select class="form-select" name="category_id">
-                  <option>Please Choose Category</option>
+                  <option value="">Please Choose Category</option>
                   @foreach ( $categories as $category )
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                   @endforeach
