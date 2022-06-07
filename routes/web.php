@@ -27,8 +27,6 @@ Route::get('/dashboard', function () {
 Route::get('/test', function () {
     return view('test');
 });
-
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -57,6 +55,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/profile-add', [App\Http\Controllers\AdminController::class, 'create'])->name('profile-add');
     Route::post('/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/create-role', [App\Http\Controllers\UserController::class, 'create'])->name('create-role');
+    Route::post('/store-role', [App\Http\Controllers\UserController::class, 'store'])->name('store-role');
 });
 
 //Borrower Controller
@@ -104,3 +104,4 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
 });
 
+Route::get('/rent-receipt', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('generate-receipt');
