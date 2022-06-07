@@ -70,6 +70,8 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
     Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
     Route::get('/user-receipt-pdf', [App\Http\Controllers\RentalController::class, 'pdfReportUser'])->name('pdf-user-receipt');
     Route::get('/book-list', [App\Http\Controllers\RentalController::class, 'listbook'])->name('book-list');
+    Route::get('/rental-record', [App\Http\Controllers\RentalController::class, 'rentalRecord'])->name('rental-record');
+    Route::get('/active-record', [App\Http\Controllers\RentalController::class, 'activeRecord'])->name('active-record');
 });
 
 //staff controller
@@ -80,7 +82,7 @@ Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
     Route::get('/status-rent-damage{rental}', [App\Http\Controllers\RentalController::class, 'statusRentDamage'])->name('status-rent-damage');
     Route::get('/status-rent{rental}', [App\Http\Controllers\RentalController::class, 'statusRent'])->name('status-rent');
     Route::get('/rental-report-pdf', [App\Http\Controllers\RentalController::class, 'pdfReportRental'])->name('pdf-report-rental');
-    Route::get('/rent-receipt-pdf', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('pdf-receipt-rental');
+    Route::get('/rent-receipt-pdf/{rental}', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('pdf-receipt-rental');
 });
 
 //status-rents

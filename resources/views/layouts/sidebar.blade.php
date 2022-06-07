@@ -64,7 +64,7 @@
                    </li>
 
                    <li>
-                       <a href="{{ route('borrower.index-booking') }}">
+                       <a href="{{ route('borrower.active-record') }}">
                            <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
                            </div>
                            <div class="menu-title">Active Rental</div>
