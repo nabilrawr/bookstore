@@ -199,6 +199,15 @@ class RentalController extends Controller
 
     public function indexCatalog()
     {
+        // $rentals = Rental::where('status_id', '=', 6)->get();
+        // foreach($rentals as $rental) {
+        //     $endDay = Carbon::parse($rental->end_date);
+        //     $currentDay = Carbon::now();
+        //     $lateDay = $endDay->diffInDays($currentDay);
+
+        //     Rental::where('user_id', '=', $rental->id)->update(array('day' => $lateDay));
+        // }
+
         $books = Book::orderByDesc('created_at')->get();
         $categories = Category::all();
         return view('borrower.catalog-index', compact('books', 'categories'));
