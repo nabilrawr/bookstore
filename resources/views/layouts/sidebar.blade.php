@@ -6,7 +6,11 @@
                        alt="logo icon">
                </div>
                <div>
+<<<<<<< HEAD
                    <h4 class="logo-text">Bookstore</h4>
+=======
+                   <h4 class="logo-text">BRMS</h4>
+>>>>>>> nabil
                </div>
                <div class="toggle-icon ms-auto"> <i class="bi bi-list"></i>
                </div>
@@ -30,6 +34,7 @@
                    </a>
                </li>
                <li>
+<<<<<<< HEAD
                    <a href="{{ route('profile-edit', Auth::user()->id) }}">
                        <div class="parent-icon"><i class="bi bi-house-fill"></i>
                        </div>
@@ -39,6 +44,14 @@
                @if (Auth::user()->role == 1)
                    <li class="menu-label">Account</li>
 
+=======
+                <a href="{{ route('borrower.book-list') }}">
+                    <div class="parent-icon"><i class="bi bi-card-list"></i>
+                    </div>
+                    <div class="menu-title">List of Book</div>
+                </a>
+            </li>
+>>>>>>> nabil
                    <li>
                        <a href="{{ route('borrower.index-booking') }}">
                            <div class="parent-icon"><i class="bi bi-journal-bookmark-fill"></i>
@@ -46,6 +59,11 @@
                            <div class="menu-title">Rental Record</div>
                        </a>
                    </li>
+<<<<<<< HEAD
+=======
+               @if(Auth::user()->role == 1)
+               <li class="menu-label">Account</li>
+>>>>>>> nabil
 
                    <li>
                        <a href="{{ route('borrower.index-booking') }}">

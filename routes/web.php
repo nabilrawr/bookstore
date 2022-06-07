@@ -27,11 +27,6 @@ Route::get('/dashboard', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Route::get('/pdf-report', function () {
-    return view('pdf-report');
-});
-
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -69,6 +64,7 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 
     Route::get('/catalog-index', [App\Http\Controllers\RentalController::class, 'indexCatalog'])->name('index-catalog');
     Route::get('/catalog-show/{book}', [App\Http\Controllers\RentalController::class, 'showCatalog'])->name('show-catalog');
+    Route::post('/catalog-find', [App\Http\Controllers\RentalController::class, 'findCatalog'])->name('find-catalog');
     Route::get('/borrow-record', [App\Http\Controllers\RentalController::class, 'borrowRecord'])->name('borrow-record');
     Route::get('/booking', [App\Http\Controllers\RentalController::class, 'index'])->name('index-booking');
     Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
@@ -106,10 +102,6 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::get('/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('edit');
     Route::post('/update/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
-});
-
-Route::get('/receipt', function () {
-    return view('pdf-report');
 });
 
 Route::get('/rent-receipt', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('generate-receipt');

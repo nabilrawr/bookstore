@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\BookCategory;
 use App\Models\Category;
 use App\Models\Rental;
 use App\Models\User;
@@ -66,6 +67,8 @@ class RentalController extends Controller
         $rental->user_id = $request->user_id;
         $rental->book_id = $request->book_id;
         $rental->save();
+
+        Book::where('id',$request->book_id)->update(array('status_id' => 5));
 
         return redirect()->route('borrower.index-booking')->with('success', 'Booking added successfully');
     }
@@ -212,6 +215,25 @@ class RentalController extends Controller
         $categories = Category::all();
         return view('borrower.catalog-show', compact('book', 'categories'));
     }
+
+    public function findCatalog(Request $request)
+    {
+
+        $findBooks = [];
+        $findBooksId=BookCategory::where('category_id','=', $request->category_id)->get();
+        foreach($findBooksId as $data)
+        {
+            array_push($findBooks,$data->book_id);
+        }
+
+        //breadcumbs
+        $breadcumb = Category::find($request->category_id);
+
+        $books = Book::whereIn('id', $findBooks)->orderByDesc('created_at')->get();
+        $categories = Category::all();
+        return view('borrower.catalog-index', compact('books', 'categories','breadcumb'));
+    }
+
 
     public function pdfReportRental(Request $request)
     {
