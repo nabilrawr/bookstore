@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -24,10 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //1= rental
-        if (Auth::user()->role == 1) {
+        if (auth()->user()->hasRole('borrower')) {
             return redirect()->route('borrower.index-catalog');
-        } else if (Auth::user()->role == 2) {
+        } else if (auth()->user()->hasRole('staff')) {
             return redirect()->route('staff.rent-record');
         } else {
             return redirect()->route('admin.dashboard');
