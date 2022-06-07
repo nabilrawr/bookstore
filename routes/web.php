@@ -46,7 +46,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/rent-record', [App\Http\Controllers\AdminController::class, 'rentRecord'])->name('rent-record');
     Route::get('/book-list', [App\Http\Controllers\AdminController::class, 'bookList'])->name('book-list');
     Route::get('/book-category', [App\Http\Controllers\AdminController::class, 'bookCategory'])->name('book-category');
-    Route::get('/status-rent', [App\Http\Controllers\AdminController::class, 'statusRent'])->name('status-rent');
     Route::get('/user-list', [App\Http\Controllers\AdminController::class, 'userList'])->name('user-list');
     Route::get('/create-list', [App\Http\Controllers\AdminController::class, 'createList'])->name('create-list');
     Route::get('/report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');

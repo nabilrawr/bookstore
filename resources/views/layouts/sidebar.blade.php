@@ -22,6 +22,13 @@
                         <div class="menu-title">Dashboard</div>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('borrower.book-list') }}">
+                        <div class="parent-icon"><i class="bi bi-card-list"></i>
+                        </div>
+                        <div class="menu-title">List of Book</div>
+                    </a>
+                </li>
             @endif
             @if (auth()->user()->hasRole('borrower'))
                 <li>
@@ -40,7 +47,7 @@
 
                 <li>
                     <a href="{{ route('profile-show', Auth::user()->id) }}">
-                        <div class="parent-icon"><i class="bi bi-house-fill"></i>
+                        <div class="parent-icon"><i class="bi bi-person-fill"></i>
                         </div>
                         <div class="menu-title">My Profile</div>
                     </a>
@@ -77,18 +84,23 @@
                 <li class="menu-label">Book Rent</li>
 
                 <li>
-                    <a href="{{ route('staff.rent-record') }}">
+                    <a>
                         <div class="parent-icon"><i class="bi bi-folder-fill"></i>
                         </div>
                         <div class="menu-title">Rent</div>
                         <ul>
+                            <li><a href="{{ route('staff.rent-record') }}"><i
+                                class="bi bi-circle"></i>Rent Record</a>
+                            </li>
                             <li> <a href="{{ route('status-rents.complete') }}"><i
                                         class="bi bi-circle"></i>Complete</a>
                             </li>
                             <li> <a href="{{ route('status-rents.complete-replace') }}"><i
                                         class="bi bi-circle"></i>Complete Replace</a></li>
+
                             <li> <a href="{{ route('status-rents.complete-paid') }}"><i
                                         class="bi bi-circle"></i>Complete Paid</a></li>
+
                             <li> <a href="{{ route('status-rents.late') }}"><i class="bi bi-circle"></i>Late</a>
                             </li>
                             <li> <a href="{{ route('status-rents.pending') }}"><i

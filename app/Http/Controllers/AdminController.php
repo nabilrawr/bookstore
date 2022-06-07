@@ -31,11 +31,6 @@ class AdminController extends Controller
         return view('admin.book-category');
     }
 
-    public function statusRent()
-    {
-        return view('admin.status-rent');
-    }
-
 
     public function userList()
     {
