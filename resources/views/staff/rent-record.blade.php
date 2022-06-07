@@ -84,6 +84,7 @@
                                     <td>
                                         <div class="col-lg-3 col-md-6 me-auto">
                                             <div class="ms-auto position-relative">
+                                                
                                                 <a href="{{ route('staff.pdf-receipt-rental') }}"
                                                     class="btn btn-success">
                                                     <i class="fas fa-plus"></i>Generate Receipt</a>

@@ -30,13 +30,20 @@
                    </a>
                </li>
                <li>
-                   <a href="{{ route('profile-edit', Auth::user()->id) }}">
-                       <div class="parent-icon"><i class="bi bi-house-fill"></i>
-                       </div>
-                       <div class="menu-title">My Profile</div>
-                   </a>
-               </li>
-               {{-- @if (Auth::user()->role == 1) --}}
+                <a href="{{ route('borrower.book-list') }}">
+                    <div class="parent-icon"><i class="bi bi-card-list"></i>
+                    </div>
+                    <div class="menu-title">List of Book</div>
+                </a>
+            </li>
+                   <li>
+                       <a href="{{ route('profile-show', Auth::user()->id) }}">
+                           <div class="parent-icon"><i class="bi bi-house-fill"></i>
+                           </div>
+                           <div class="menu-title">My Profile</div>
+                       </a>
+                   </li>
+               {{-- @if(Auth::user()->role == 1) --}}
                <li class="menu-label">Account</li>
 
                <a href="{{ route('borrower.book-list') }}">
