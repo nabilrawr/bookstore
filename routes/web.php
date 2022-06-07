@@ -83,6 +83,37 @@ Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
     Route::get('/rent-receipt-pdf', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('pdf-receipt-rental');
 });
 
+//status-rents
+Route::group(['prefix' => 'status-rents', 'as' => 'status-rents.'], function () {
+
+    Route::get('/complete', [App\Http\Controllers\StatusRentController::class, 'complete'])->name('complete');
+    Route::get('/complete-replace', [App\Http\Controllers\StatusRentController::class, 'completeReplace'])->name('complete-replace');
+    Route::get('/complete-paid', [App\Http\Controllers\StatusRentController::class, 'completePaid'])->name('complete-paid');
+    Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'late'])->name('late');
+    Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pending'])->name('pending');
+    Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rent'])->name('rent');
+});
+
+Route::group(['prefix' => 'generate-pdf-status-rents', 'as' => 'generate-pdf-status-rents.'], function () {
+
+    Route::get('/complete', [App\Http\Controllers\StatusRentController::class, 'completePdf'])->name('complete');
+    Route::get('/complete-replace', [App\Http\Controllers\StatusRentController::class, 'completeReplacePdf'])->name('complete-replace');
+    Route::get('/complete-paid', [App\Http\Controllers\StatusRentController::class, 'completePaidPdf'])->name('complete-paid');
+    Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'latePdf'])->name('late');
+    Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pendingPdf'])->name('pending');
+    Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rentPdf'])->name('rent');
+});
+
+Route::group(['prefix' => 'generate-excel-status-rents', 'as' => 'generate-excel-status-rents.'], function () {
+
+    Route::get('/complete', [App\Http\Controllers\StatusRentController::class, 'completeExcel'])->name('complete');
+    Route::get('/complete-replace', [App\Http\Controllers\StatusRentController::class, 'completeReplaceExcel'])->name('complete-replace');
+    Route::get('/complete-paid', [App\Http\Controllers\StatusRentController::class, 'completePaidExcel'])->name('complete-paid');
+    Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'lateExcel'])->name('late');
+    Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pendingExcel'])->name('pending');
+    Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rentExcel'])->name('rent');
+});
+
 //book
 Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
     Route::get('/index', [App\Http\Controllers\BookController::class, 'index'])->name('index');
