@@ -13,6 +13,7 @@
            </div>
            <!--navigation-->
            <ul class="metismenu" id="menu">
+               @if(Auth::user()->role == 3)
                <li>
                    <a href="{{ route('admin.dashboard') }}">
                        <div class="parent-icon"><i class="bi bi-house-fill"></i>
@@ -20,6 +21,7 @@
                        <div class="menu-title">Dashboard</div>
                    </a>
                </li>
+               @endif
                <li>
                    <a href="{{ route('borrower.index-catalog') }}">
                        <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
@@ -34,6 +36,14 @@
                     <div class="menu-title">List of Book</div>
                 </a>
             </li>
+                   <li>
+                       <a href="{{ route('profile-edit', Auth::user()->id) }}">
+                           <div class="parent-icon"><i class="bi bi-house-fill"></i>
+                           </div>
+                           <div class="menu-title">My Profile</div>
+                       </a>
+                   </li>
+               @if(Auth::user()->role == 1)
                <li class="menu-label">Account</li>
 
                <li>
@@ -45,33 +55,14 @@
                </li>
 
                <li>
-                   <a href="javascript:;">
+                   <a href="{{ route('borrower.index-booking') }}">
                        <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i>
                        </div>
                        <div class="menu-title">Active Rental</div>
                    </a>
                </li>
-
-               <li class="menu-label">Others</li>
-
-
-               <li>
-                   <a href="https://themeforest.net/user/codervent" target="_blank">
-                       <div class="parent-icon"><i class="bi bi-telephone-fill"></i>
-                       </div>
-                       <div class="menu-title" class="has-arrow">Support</div>
-                   </a>
-               </li>
-
-               <li>
-                   <a href="https://themeforest.net/user/codervent" target="_blank">
-                       <div class="parent-icon"><i class="bi-sim-fill"></i>
-                       </div>
-                       <div class="menu-title">Maintenance</div>
-                   </a>
-               </li>
-
-               <li class="menu-label">Staff</li>
+               @endif
+                   @if((Auth::user()->role == 3) || (Auth::user()->role == 2))
                <li class="menu-label">Book Rent</li>
 
                <li>
@@ -80,13 +71,23 @@
                        </div>
                        <div class="menu-title">Rent</div>
                    </a>
-                   <ul>
-                       <li> <a href="{{ route('staff.rent-record') }}"><i class="bi bi-circle"></i>Rent List</a>
-                       </li>
-                   </ul>
                </li>
 
-               <li class="menu-label">Book</li>
+
+               <li class="menu-label">Maintenance</li>
+                   @if(Auth::user()->role == 3)
+                       <li>
+                           <a href="javascript:;" class="has-arrow">
+                               <div class="parent-icon"><i class="bi bi-book-fill"></i>
+                               </div>
+                               <div class="menu-title">User</div>
+                           </a>
+                           <ul>
+                               <li> <a href="{{route('admin.user-list')}}"><i class="bi bi-circle"></i>User List</a>
+                               </li>
+                           </ul>
+                    </li>
+                   @endif
                <li>
                    <a href="javascript:;" class="has-arrow">
                        <div class="parent-icon"><i class="bi bi-book-fill"></i>
@@ -114,6 +115,7 @@
                        </li>
                    </ul>
                </li>
+                   @endif
 
            </ul>
            <!--end navigation-->

@@ -52,7 +52,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/user-list', [App\Http\Controllers\AdminController::class, 'userList'])->name('user-list');
     Route::get('/create-list', [App\Http\Controllers\AdminController::class, 'createList'])->name('create-list');
     Route::get('/report', [App\Http\Controllers\AdminController::class, 'report'])->name('report');
-    Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('profile');
+    Route::get('/profile-edit/{user}', [App\Http\Controllers\AdminController::class, 'profile'])->name('profile-edit');
+    Route::post('/profile-update/{user}', [App\Http\Controllers\AdminController::class, 'update'])->name('profile-update');
+    Route::get('/profile-add', [App\Http\Controllers\AdminController::class, 'create'])->name('profile-add');
+    Route::post('/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
 
@@ -61,6 +64,7 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 
     Route::get('/catalog-index', [App\Http\Controllers\RentalController::class, 'indexCatalog'])->name('index-catalog');
     Route::get('/catalog-show/{book}', [App\Http\Controllers\RentalController::class, 'showCatalog'])->name('show-catalog');
+    Route::post('/catalog-find', [App\Http\Controllers\RentalController::class, 'findCatalog'])->name('find-catalog');
     Route::get('/borrow-record', [App\Http\Controllers\RentalController::class, 'borrowRecord'])->name('borrow-record');
     Route::get('/booking', [App\Http\Controllers\RentalController::class, 'index'])->name('index-booking');
     Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
@@ -99,5 +103,4 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::post('/update/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
 });
-
 

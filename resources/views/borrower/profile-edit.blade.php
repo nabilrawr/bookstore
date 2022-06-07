@@ -11,13 +11,6 @@
           <div class="card-body">
               <h5 class="mb-0">My Account</h5>
               <hr>
-{{--
-              @if ($message = Session::get('success'))
-                    <div class="alert alert-primary card shadow">
-                        <p>{{ $message }}</p>
-                    </div>
-                @endif --}}
-
 
               <div class="card shadow-none border">
                 <div class="card-header">
