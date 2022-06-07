@@ -52,7 +52,11 @@
                          <td>{{ $loop->iteration }}</td>
                          <td>{{ $user->name }}</td>
                          <td>{{ $user->address }}</td>
-                         <td>{{ $user->role }}</td>
+                         <td>
+                             @foreach ($user->getRoleNames() as $item)
+                                 {{ $item }}
+                             @endforeach
+                           </td>
                        <td>
                          <div class="table-actions d-flex align-items-center gap-3 fs-6">
 {{--                           <a href="{{ route('admin.profile-show', $user->id) }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Views"><i class="bi bi-eye-fill"></i></a>--}}

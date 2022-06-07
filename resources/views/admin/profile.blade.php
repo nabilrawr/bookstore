@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-
     <!--start content-->
     <main class="page-content">
 
@@ -28,65 +26,71 @@
                                 <h6 class="mb-0">USER INFORMATION</h6>
                             </div>
                             <div class="card-body">
-                                <form class="row g-3" action="{{ route('admin.profile-update', $user->id) }}" method="POST">
+                                <form class="row g-3" action="{{ route('admin.profile-update', $user->id) }}"
+                                    method="POST">
                                     @csrf
                                     <div class="col-6">
                                         <label class="form-label">Username</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name )}}"  >
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            name="name" value="{{ old('name', $user->name) }}">
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">Email address</label>
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email', $user->email )}}" >
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror "
+                                            name="email" value="{{ old('email', $user->email) }}">
                                         @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">IC Number</label>
-                                        <input type="text" class="form-control @error('ic') is-invalid @enderror" name="ic" value="{{ old('ic', $user->ic )}}" >
+                                        <input type="text" class="form-control @error('ic') is-invalid @enderror" name="ic"
+                                            value="{{ old('ic', $user->ic) }}">
                                         @error('ic')
-                                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone', $user->phone )}}" >
+                                        <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                            name="phone" value="{{ old('phone', $user->phone) }}">
                                         @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">Role</label>
                                         <select class="form-control" name="role">
-                                            <option hidden>{{ old('role', $roleName->name )}}</option>
-                                            @foreach($roles as $role)
-                                            <option value="{{$role->id}}">{{ $role->name }}</option>
-                                                @endforeach
+                                            <option>SILA DIAM</option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @endforeach
                                         </select>
                                         @error('role')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Address</label>
-                                        <textarea class="form-control @error('address') is-invalid @enderror" id="exampleFormControlTextarea1" name="address" rows="4">{{ old('address', $user->address )}}</textarea>
+                                        <textarea class="form-control @error('address') is-invalid @enderror" id="exampleFormControlTextarea1" name="address"
+                                            rows="4">{{ old('address', $user->address) }}</textarea>
                                         @error('address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                     <div class="text-start">
@@ -103,7 +107,7 @@
                 <div class="card shadow-sm border-0 overflow-hidden">
                     <div class="card-body">
                         <div class="text-center mt-4">
-                            <h4 class="mb-1">{{$user->name}}</h4>
+                            <h4 class="mb-1">{{ $user->name }}</h4>
                             <p class="mb-0 text-secondary">{{ $user->email }}</p>
                             <div class="mt-4"></div>
                             <h6 class="mb-1">{{ $user->phone }}</h6>
@@ -122,5 +126,4 @@
         <!--end row-->
     </main>
     <!--end page main-->
-
 @endsection

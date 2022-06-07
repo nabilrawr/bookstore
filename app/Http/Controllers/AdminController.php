@@ -123,6 +123,8 @@ class AdminController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
+        $userId = $user->id;
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'ic' => ['required', 'string', 'max:12'],
@@ -136,15 +138,16 @@ class AdminController extends Controller
             'name' => $request->name,
             'ic' => $request->ic,
             'email' => $request->email,
-            'role'=> $request->role,
             'address' => $request->address,
             'phone' => $request->phone,
 
         ]);
+        // 'role'=> $userId->syncRoles($role),
 
-        $users = User::all();
+        $user->syncRoles($request->role);
 
-        return view('admin.user-list', compact('users'));
+
+        return redirect()->route('admin.user-list');
     }
 
     /**

@@ -164,10 +164,9 @@ class BookController extends Controller
         $book->save();
 
         foreach ($request->category as $category) {
-            $bookCategory = new BookCategory();
-            $bookCategory->book_id = $book->id;
-            $bookCategory->category_id = $category;
-            $bookCategory->save();
+            $category->book_id = $book->id;
+            $category->category_id = $category;
+            $category->save();
         }
 
         Alert::success('Success', 'Book Has Been Edited');
