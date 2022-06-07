@@ -32,7 +32,8 @@ class RentalController extends Controller
         $bookings = DB::table('rentals')
             ->join('books', 'books.id', '=', 'rentals.book_id')
             ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
-            ->select('rentals.*', 'statuses.name', 'books.title')
+            ->join('users', 'users.id', '=', 'rentals.user_id')
+            ->select('rentals.*', 'statuses.name', 'books.title', 'users.name as Username')
             ->where('rentals.user_id', '=', Auth::user()->id)
             ->get();
         return view('borrower.index', compact('bookings'));

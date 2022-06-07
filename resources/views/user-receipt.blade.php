@@ -9,8 +9,6 @@
 
             margin: auto;
             padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
             font-size: 16px;
             line-height: 24px;
             font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
@@ -93,6 +91,8 @@
         .invoice-box.rtl table tr td:nth-child(2) {
             text-align: left;
         }
+
+
     </style>
 </head>
 
@@ -106,10 +106,23 @@
                             <td class="title">
                                 Receipt
                             </td>
+                            <td>
+                                BRMS<br />
+                                Book Rental Management System<br />
+                            </td>
+                            <td>
+                                Name: {{ $currentData->user->name }} <br>
+                                IC: {{ $currentData->user->ic }}
+                            </td>
+                            <td>
+
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
+
+
 
             <tr class="heading">
                 <td>Book Name</td>
@@ -130,6 +143,28 @@
             </tr>
         </table>
     </div>
+
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="5">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                THANK YOU !
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
 </body>
+
+
+
+
 
 </html>

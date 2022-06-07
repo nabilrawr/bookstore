@@ -11,17 +11,17 @@
         <!--start content-->
         <main class="authentication-content">
             <div class="container-fluid">
-                <div class="authentication-card">
+                <div class="card pt-4" style="padding-left: 5%; padding-right:5%">
                     <div class="card shadow rounded-0 overflow-hidden">
                         <div class="row g-0">
                             <div class="col-lg-6 bg-login d-flex align-items-center justify-content-center">
-                                <img src="{{ asset('template/assets/images/error/login-img.jpg') }}" class="img-fluid"
+                                <img src="{{ asset('template/assets/images/error/auth-img-7.png') }}" class="img-fluid"
                                     alt="">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-body p-4 p-sm-5">
                                     <h5 class="card-title">Sign Up</h5>
-                                    <p class="card-text mb-5">Start Reading today for free</p>
+                                    <p class="card-text mb-5">Start Reading for free today</p>
                                     <hr>
                                     <form class="form-body" method="POST" action="{{ route('register') }}">
                                         @csrf

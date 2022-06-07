@@ -109,7 +109,7 @@ class UserController extends Controller
 
         ]);
 
-        return view('borrower.profile-edit');
+        return redirect()->route('profile-show', $user);
     }
 
     /**

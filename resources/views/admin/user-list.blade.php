@@ -36,7 +36,7 @@
 {{--                   </form>--}}
                </div>
                <div class="table-responsive mt-3">
-                 <table class="table align-middle">
+                <table id="example" class="table table-striped table-bordered" >
                    <thead class="table-secondary">
                      <tr>
                       <th>Bil.</th>

@@ -48,7 +48,7 @@
     <link href="{{ asset('template/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('template/assets/css/header-colors.css') }}" rel="stylesheet" />
 
-    <title>Bookstore - Mini Poject</title>
+    <title>Book Rental Management System - Mini Poject</title>
 </head>
 
 <style>

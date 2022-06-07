@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="border p-4 rounded">
                             <div class="card-title d-flex align-items-center">
-                                <h5 class="mb-0">Create Category</h5>
+                                <h5 class="mb-0">Create Category <i class="bi bi-pencil-fill"></i> </h5>
                             </div>
                             <hr/>
                             <form method="post" action="{{ route('category.store') }}"class="mb-5">

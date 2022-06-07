@@ -18,7 +18,7 @@
              <div class="col-lg-6">
                <div class="card-body p-4 p-sm-5">
                 <h5 class="card-title">Sign In</h5>
-                <p class="card-text mb-5">Start Reading today for free</p>
+                <p class="card-text mb-5">Start Reading for free today</p>
                 <hr>
 
                  <form method="POST" class="form-body" action="{{ route('login') }}">

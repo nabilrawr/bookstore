@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="border p-4 rounded">
                             <div class="card-title d-flex align-items-center">
-                                <h5 class="mb-0">Assign Role</h5>
+                                <h5 class="mb-0">Assign Role <i class="bi bi-tools"></i></h5>
                             </div>
                             <hr />
                             <form method="post" action="{{ route('admin.store-role') }}" class="mb-5">
