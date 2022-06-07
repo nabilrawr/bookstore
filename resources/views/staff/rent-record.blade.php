@@ -64,20 +64,20 @@
                                             <a class="btn btn-primary px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}">Pickup</a>
                                         @elseif ($rental->status->name == 'pickup')
-                                            <a class="btn btn-primary px-2 "
+                                            <a class="btn btn-warning px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}">Rent</a>
                                         @elseif ($rental->status->name == 'rent')
-                                            <a class="btn btn-primary px-2 "
+                                            <a class="btn btn-success px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}"
                                                 onclick="complete();">Complete</a>
                                             <a class="btn btn-danger px-2 "
                                                 href="{{ route('staff.status-rent-damage', $rental) }}">Damaged /
                                                 Missing</a>
                                         @elseif ($rental->status->name == 'late')
-                                            <a class="btn btn-primary px-2 "
+                                            <a class="btn btn-warning px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}">Paid(late)</a>
                                         @elseif ($rental->status->name == 'damaged/missing')
-                                            <a class="btn btn-primary px-2 "
+                                            <a class="btn btn-warning px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}">Paid(Replace)</a>
                                         @endif
                                     </td>
@@ -85,7 +85,7 @@
                                         @if($rental->status->name == 'complete' || $rental->status->name == 'complete paid(late)' || $rental->status->name == 'complete paid(replace)')
                                         <div class="col-lg-3 col-md-6 me-auto">
                                             <div class="ms-auto position-relative">
-                                                {{-- <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a> --}}
+                                                <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a>
                                             </div>
                                         </div></td>
                                     @endif
