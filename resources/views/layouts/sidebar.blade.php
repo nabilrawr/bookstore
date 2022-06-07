@@ -81,6 +81,21 @@
                            <div class="parent-icon"><i class="bi bi-folder-fill"></i>
                            </div>
                            <div class="menu-title">Rent</div>
+                           <ul>
+                               <li> <a href="{{ route('status-rents.complete') }}"><i
+                                           class="bi bi-circle"></i>Complete</a>
+                               </li>
+                               <li> <a href="{{ route('status-rents.complete-replace') }}"><i
+                                           class="bi bi-circle"></i>Complete Replace</a></li>
+                               <li> <a href="{{ route('status-rents.complete-paid') }}"><i
+                                           class="bi bi-circle"></i>Complete Paid</a></li>
+                               <li> <a href="{{ route('status-rents.late') }}"><i class="bi bi-circle"></i>Late</a>
+                               </li>
+                               <li> <a href="{{ route('status-rents.pending') }}"><i
+                                           class="bi bi-circle"></i>Pending</a></li>
+                               <li> <a href="{{ route('status-rents.rent') }}"><i class="bi bi-circle"></i>Rent</a>
+                               </li>
+                           </ul>
                        </a>
                    </li>
                @endif
