@@ -36,21 +36,18 @@
                     <div class="menu-title">List of Book</div>
                 </a>
             </li>
-                   <li>
-                       <a href="{{ route('profile-show', Auth::user()->id) }}">
-                           <div class="parent-icon"><i class="bi bi-house-fill"></i>
-                           </div>
-                           <div class="menu-title">My Profile</div>
-                       </a>
-                   </li>
-               {{-- @if(Auth::user()->role == 1) --}}
+
+
                <li class="menu-label">Account</li>
 
-               <a href="{{ route('borrower.book-list') }}">
-                   <div class="parent-icon"><i class="bi bi-card-list"></i>
-                   </div>
-                   <div class="menu-title">List of Book</div>
-               </a>
+               <li>
+                <a href="{{ route('profile-show', Auth::user()->id) }}">
+                    <div class="parent-icon"><i class="bi bi-house-fill"></i>
+                    </div>
+                    <div class="menu-title">My Profile</div>
+                </a>
+            </li>
+             {{-- @if(Auth::user()->role == 1) --}}
                </li>
                <li>
                    <a href="{{ route('borrower.index-booking') }}">
@@ -75,7 +72,7 @@
 
                <li>
                    <a href="{{ route('staff.rent-record') }}">
-                       <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
+                       <div class="parent-icon"><i class="bi bi-folder-fill"></i>
                        </div>
                        <div class="menu-title">Rent</div>
                    </a>
@@ -85,7 +82,7 @@
                {{-- @if (Auth::user()->role == 3) --}}
                <li>
                    <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="bi bi-book-fill"></i>
+                       <div class="parent-icon"><i class="bi bi-person-fill"></i>
                        </div>
                        <div class="menu-title">User</div>
                    </a>
@@ -117,7 +114,7 @@
 
                <li>
                    <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="bi bi-basket2-fill"></i>
+                       <div class="parent-icon"><i class="bi bi-inbox-fill"></i>
                        </div>
                        <div class="menu-title">Category</div>
                    </a>
