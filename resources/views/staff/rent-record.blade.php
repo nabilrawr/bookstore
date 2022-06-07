@@ -24,7 +24,9 @@
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
-                        <a href="{{ route('staffexport') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Excel</a>
+                        <a href="{{ route('staffexport') }}" class="btn btn-success"> Excel</a>
+                        <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-danger">PDF</a>
+                        <a href="{{ route('borrower.pdf-user-receipt') }}" class="btn btn-danger">PDF Receipt</a>
                         </div>
                     </div>
                 </div>
@@ -94,8 +96,6 @@
                 </div>
             </div>
         </div>
-        <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Excel</a>
-        <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-success"> <i class="fas fa-plus"></i> PDF</a>
     </main>
     <!--end page main-->
 @endsection

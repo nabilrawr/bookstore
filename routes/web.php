@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +27,6 @@ Route::get('/dashboard', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Route::get('/pdf-report', function () {
-    return view('pdf-report');
-});
-
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -58,6 +55,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/profile-add', [App\Http\Controllers\AdminController::class, 'create'])->name('profile-add');
     Route::post('/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/create-role', [App\Http\Controllers\UserController::class, 'create'])->name('create-role');
+    Route::post('/store-role', [App\Http\Controllers\UserController::class, 'store'])->name('store-role');
 });
 
 //Borrower Controller
@@ -65,9 +64,12 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 
     Route::get('/catalog-index', [App\Http\Controllers\RentalController::class, 'indexCatalog'])->name('index-catalog');
     Route::get('/catalog-show/{book}', [App\Http\Controllers\RentalController::class, 'showCatalog'])->name('show-catalog');
+    Route::post('/catalog-find', [App\Http\Controllers\RentalController::class, 'findCatalog'])->name('find-catalog');
     Route::get('/borrow-record', [App\Http\Controllers\RentalController::class, 'borrowRecord'])->name('borrow-record');
     Route::get('/booking', [App\Http\Controllers\RentalController::class, 'index'])->name('index-booking');
     Route::post('/booking/{id}', [App\Http\Controllers\RentalController::class, 'store'])->name('store-booking');
+    Route::get('/user-receipt-pdf', [App\Http\Controllers\RentalController::class, 'pdfReportUser'])->name('pdf-user-receipt');
+    Route::get('/book-list', [App\Http\Controllers\RentalController::class, 'listbook'])->name('book-list');
 });
 
 //staff controller
@@ -100,10 +102,6 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::get('/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('edit');
     Route::post('/update/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
-});
-
-Route::get('/receipt', function () {
-    return view('pdf-report');
 });
 
 Route::get('/rent-receipt', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('generate-receipt');

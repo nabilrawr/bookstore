@@ -19,36 +19,32 @@
    <main class="page-content">
 
       <div class="card">
-         <div class="card-header py-3">
-          <div class="row g-3 align-items-center">
-            <div class="col-lg-3 col-md-6 me-auto">
-              <div class="ms-auto position-relative">
-                <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
-                {{-- <input class="form-control ps-5" type="text" placeholder="search produts"> --}}
-                <input class="form-control ps-5" id="search-box" type="Search" placeholder="search produts">
+        <form method="POST" action="{{  route('borrower.find-catalog') }}">
+            @csrf
+        <div class="card-header py-3">
+            <div class="row g-3 align-items-center">
+              <div class="col-lg-3 col-5 col-md-3">
+                <select class="form-select" name="category_id">
+                  <option>Please Choose Category</option>
+                  @foreach ( $categories as $category )
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  @endforeach
+                </select>
               </div>
+              <div class="col-lg-2 col-5 col-md-3">
+                  <input type="submit" class="btn btn-dark px-5 " value="Search">
+                </div>
+
             </div>
-            <div class="col-lg-2 col-6 col-md-3">
-              <select class="form-select">
-                <option>All category</option>
-                <option>Fashion</option>
-                <option>Electronics</option>
-                <option>Furniture</option>
-                <option>Sports</option>
-              </select>
-            </div>
-            <div class="col-lg-2 col-6 col-md-3">
-              <select class="form-select">
-                <option>Latest added</option>
-                <option>Cheap first</option>
-                <option>Most viewed</option>
-              </select>
-            </div>
-          </div>
-         </div>
+           </div>
+        </form>
+        @if (!empty($breadcumb))
+        <div style="white-space: nowrap ;">&emsp;<a style="text" href="{{ route('borrower.index-catalog') }}">All Categories</a> -> {{ $breadcumb->name }}</div>
+        @endif
          <div class="card-body">
            <div class="product-grid">
              <div class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-3">
+
                 @foreach ($books as $book)
                 <div class="col">
                     <div class="boxShadowCatalog">
@@ -57,8 +53,8 @@
 
                                 <img class="img-fluid rounded-4 shadow-2-strong" src="{{ asset("storage/$book->image") }}" style="width:150px;height:200px;">
                                 <hr>
-                                    <span id="book-list" class="text-ellipsis"><a id="book-list" href="{{ route('borrower.show-catalog',$book->id) }}">{{ $book->title }}</a></span>
-                                    <span id="book-list" class="text-ellipsis"> <a id="book-list"> By :{{ $book->writer }}</a> </span>
+                                    <span class="text-ellipsis"><a href="{{ route('borrower.show-catalog',$book->id) }}">{{ $book->title }}</a></span>
+                                    <span class="text-ellipsis">By :{{ $book->writer }}</span>
                                 <hr>
                                 <div class="actions d-flex align-items-center justify-content-center gap-2 mt-3">
                             </div>

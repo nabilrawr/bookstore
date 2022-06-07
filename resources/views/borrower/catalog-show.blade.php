@@ -32,7 +32,13 @@
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
                  <br>
                  <a class="btn btn-danger px-5 radius-30" href="{{ route('borrower.index-catalog') }}">Back</a>
-                 <button type="submit" class="btn btn-primary px-5 radius-30">Book</button>
+
+                 @if ( $book->status_id == 4)
+                     <button type="submit" class="btn btn-primary px-5 radius-30">Book</button>
+                 @else
+                 <button type="button" class="btn btn-light px-5 radius-30"  disabled >Not available</button>
+                 @endif
+
                 </form>
               </div>
              </div>

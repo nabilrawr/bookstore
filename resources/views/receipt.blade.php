@@ -10,9 +10,9 @@
 		  <div class="panel-body">
 		    <div class="row">
 
-{{--				<div class="col-sm-6 top-left">--}}
-{{--					<img src="./images/logo.png" alt="Company logo" style="width: 100%; " />--}}
-{{--				</div>--}}
+				<div class="col-sm-6 top-left">
+					<img src="./images/logo.png" alt="Company logo" style="width: 100%; " />
+				</div>
 
 				<div class="col-sm-6 top-right">
 						<h3 class="marginright">Reference No: 1234578</h3>
