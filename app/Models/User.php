@@ -11,20 +11,20 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-//    protected $fillable = [
-//        'name',
-//        'ic',
-//        'phone',
-//        'address',
-//        'email',
-//    ];
+    //    protected $fillable = [
+    //        'name',
+    //        'ic',
+    //        'phone',
+    //        'address',
+    //        'email',
+    //    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -50,5 +50,4 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Rental::class);
     }
-
 }
