@@ -70,7 +70,7 @@
                                             <a class="btn btn-primary px-2 "
                                                 href="{{ route('staff.status-rent', $rental) }}"
                                                 onclick="complete();">Complete</a>
-                                            <a class="btn btn-primary px-2 "
+                                            <a class="btn btn-danger px-2 "
                                                 href="{{ route('staff.status-rent-damage', $rental) }}">Damaged /
                                                 Missing</a>
                                         @elseif ($rental->status->name == 'unpaid(late)')
