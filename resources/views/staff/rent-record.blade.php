@@ -24,9 +24,9 @@
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
-                        <a href="{{ route('staffexport') }}" class="btn btn-success"> Excel</a>
-                        <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-danger">PDF</a>
-                        <a href="{{ route('borrower.pdf-user-receipt') }}" class="btn btn-danger">PDF Receipt</a>
+                            <a href="{{ route('staffexport') }}" class="btn btn-success"> Excel</a>
+                            <a href="{{ route('staff.pdf-receipt-rental') }}" class="btn btn-danger">PDF</a>
+
                         </div>
                     </div>
                 </div>
@@ -81,11 +81,14 @@
                                                 href="{{ route('staff.status-rent', $rental) }}">Paid(Replace)</a>
                                         @endif
                                     </td>
-                                    <td> <div class="col-lg-3 col-md-6 me-auto">
+                                    <td>
+                                        <div class="col-lg-3 col-md-6 me-auto">
                                             <div class="ms-auto position-relative">
-                                                <a href="{{ route('generate-receipt') }}" class="btn btn-success"> <i class="fas fa-plus"></i>Generate Receipt</a>
+                                                <a href="{{ route('staff.generate-receipt') }}" class="btn btn-success">
+                                                    <i class="fas fa-plus"></i>Generate Receipt</a>
                                             </div>
-                                        </div></td>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

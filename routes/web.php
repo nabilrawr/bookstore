@@ -80,6 +80,7 @@ Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
     Route::get('/status-rent-damage{rental}', [App\Http\Controllers\RentalController::class, 'statusRentDamage'])->name('status-rent-damage');
     Route::get('/status-rent{rental}', [App\Http\Controllers\RentalController::class, 'statusRent'])->name('status-rent');
     Route::get('/rental-report-pdf', [App\Http\Controllers\RentalController::class, 'pdfReportRental'])->name('pdf-report-rental');
+    Route::get('/rent-receipt-pdf', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('pdf-receipt-rental');
 });
 
 //book
@@ -104,4 +105,11 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
 });
 
-Route::get('/rent-receipt', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('generate-receipt');
+
+Route::get('/receipt', function () {
+    return view('user-receipt');
+});
+
+Route::get('/report', function () {
+    return view('report-rental');
+});

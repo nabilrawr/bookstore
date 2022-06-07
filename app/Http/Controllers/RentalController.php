@@ -68,7 +68,7 @@ class RentalController extends Controller
         $rental->book_id = $request->book_id;
         $rental->save();
 
-        Book::where('id',$request->book_id)->update(array('status_id' => 5));
+        Book::where('id', $request->book_id)->update(array('status_id' => 5));
 
         return redirect()->route('borrower.index-booking')->with('success', 'Booking added successfully');
     }
@@ -220,10 +220,9 @@ class RentalController extends Controller
     {
 
         $findBooks = [];
-        $findBooksId=BookCategory::where('category_id','=', $request->category_id)->get();
-        foreach($findBooksId as $data)
-        {
-            array_push($findBooks,$data->book_id);
+        $findBooksId = BookCategory::where('category_id', '=', $request->category_id)->get();
+        foreach ($findBooksId as $data) {
+            array_push($findBooks, $data->book_id);
         }
 
         //breadcumbs
@@ -231,7 +230,7 @@ class RentalController extends Controller
 
         $books = Book::whereIn('id', $findBooks)->orderByDesc('created_at')->get();
         $categories = Category::all();
-        return view('borrower.catalog-index', compact('books', 'categories','breadcumb'));
+        return view('borrower.catalog-index', compact('books', 'categories', 'breadcumb'));
     }
 
 
@@ -250,7 +249,7 @@ class RentalController extends Controller
     {
 
         $rentals = Rental::all();
-        return PDF::loadview('receipt', compact('rentals'))
+        return PDF::loadview('user-receipt', compact('rentals'))
             ->setOrientation('landscape')
             ->setOption('margin-bottom', '10mm')
             ->setOption('margin-top', '10mm')
