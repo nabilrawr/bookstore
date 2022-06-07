@@ -120,18 +120,18 @@
                 <td>fee</td>
             </tr>
 
-            {{-- <tr class="item">
-                    @foreach ($rentals as $rental)
-                    <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $rental->book->title }}</td>
-                    <td>{{ $rental->book->writer }}</td>
-                    <td>day</td>
-                    <td>{{ $rental->status->name }}</td>
-                    <td>Rm 0</td>
-                    </tr>
-				</tr>
-                @endforeach --}}
+            <tr class="item">
+                @foreach ($rentals as $rental)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $rental->book->title }}</td>
+                <td>{{ $rental->book->writer }}</td>
+                <td>day</td>
+                <td>{{ $rental->status->name }}</td>
+                <td>Rm 0</td>
+            </tr>
+            </tr>
+            @endforeach
         </table>
     </div>
 </body>

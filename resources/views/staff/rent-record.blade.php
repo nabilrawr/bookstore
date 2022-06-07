@@ -25,7 +25,7 @@
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
                             <a href="{{ route('staffexport') }}" class="btn btn-success"> Excel</a>
-                            <a href="{{ route('staff.pdf-receipt-rental') }}" class="btn btn-danger">PDF</a>
+                            <a href="{{ route('staff.pdf-report-rental') }}" class="btn btn-danger">PDF</a>
 
                         </div>
                     </div>
@@ -84,7 +84,8 @@
                                     <td>
                                         <div class="col-lg-3 col-md-6 me-auto">
                                             <div class="ms-auto position-relative">
-                                                <a href="{{ route('staff.generate-receipt') }}" class="btn btn-success">
+                                                <a href="{{ route('staff.pdf-receipt-rental') }}"
+                                                    class="btn btn-success">
                                                     <i class="fas fa-plus"></i>Generate Receipt</a>
                                             </div>
                                         </div>
