@@ -24,7 +24,7 @@
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
-                            <a href="{{ route('generate-excel-status-rents.pending.complete-paid') }}" class="btn btn-success"> Excel</a>
+                            <a href="{{ route('generate-excel-status-rents.pending') }}" class="btn btn-success"> Excel</a>
                             <a href="{{ route('generate-pdf-status-rents.pending') }}" class="btn btn-danger">PDF</a>
 
                         </div>
