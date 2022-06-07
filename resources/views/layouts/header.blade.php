@@ -48,7 +48,7 @@
     <link href="{{ asset('template/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('template/assets/css/header-colors.css') }}" rel="stylesheet" />
 
-    <title>Snacked - Bootstrap 5 Admin Template</title>
+    <title>Bookstore - Mini Poject</title>
 </head>
 
 <style>
@@ -75,13 +75,13 @@
                     <ul class="navbar-nav align-items-center">
 
                         <li class="nav-item dropdown dropdown-small">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
+                            {{-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                                 data-bs-toggle="dropdown">
                                 <div class="notifications">
                                     <span class="notify-badge">8</span>
                                     <i class="bi bi-bell-fill"></i>
                                 </div>
-                            </a>
+                            </a> --}}
                             <div class="dropdown-menu dropdown-menu-end p-0">
                                 <div class="p-2 border-bottom m-2">
                                     <h5 class="h5 mb-0">Notifications</h5>
@@ -134,7 +134,7 @@
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">Log Out
                             </button>
-                            
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
