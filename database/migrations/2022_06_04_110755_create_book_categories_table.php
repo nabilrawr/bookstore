@@ -17,6 +17,7 @@ class CreateBookCategoriesTable extends Migration
             $table->id();
             $table->foreignId('book_id');
             $table->foreignId('category_id');
+            $table->softDeletes(); // this will create deleted_at field for softdelete
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('image');
             $table->decimal('price');
             $table->foreignId('status_id');
+            $table->softDeletes(); // this will create deleted_at field for softdelete
             $table->timestamps();
         });
     }

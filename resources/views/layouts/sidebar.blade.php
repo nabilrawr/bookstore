@@ -154,6 +154,9 @@
                        <ul>
                            <li> <a href="{{ route('book.index') }}"><i class="bi bi-circle"></i>Book List</a>
                            </li>
+                           <li> <a href="{{ route('book.IndexRestore') }}"><i class="bi bi-circle"></i>Book
+                                   Deleted</a>
+                           </li>
                            <li> <a href="{{ route('book.create') }}"><i class="bi bi-circle"></i>Book Add</a>
                            </li>
                        </ul>
@@ -171,6 +174,9 @@
                            <li> <a href="{{ route('category.index') }}"><i class="bi bi-circle"></i>Category
                                    List</a>
                            </li>
+                           <li> <a href="{{ route('category.IndexRestore') }}"><i class="bi bi-circle"></i>Category
+                            Deleted</a>
+                    </li>
                            <li> <a href="{{ route('category.create') }}"><i class="bi bi-circle"></i>Category
                                    Add</a>
                            </li>

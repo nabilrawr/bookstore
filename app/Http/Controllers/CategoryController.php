@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Category\CreateRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -20,6 +22,13 @@ class CategoryController extends Controller
         return view('staff.category.index', compact('categories'));
     }
 
+    public function IndexRestore()
+    {
+        $categories = Category::onlyTrashed()
+            ->get();
+        return view('staff.category.deleted', compact('categories'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,12 +45,8 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $request->validate([
-            'name' => 'required|unique:categories',
-        ]);
-
         $category = new Category();
         $category->name = $request->name;
         $category->save();
@@ -80,11 +85,8 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(UpdateRequest $request, Category $category)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
         $category->name = $request->name;
         $category->save();
 
@@ -104,5 +106,23 @@ class CategoryController extends Controller
         $category->delete();
         Alert::success('Success', 'Category Has Been Deleted');
         return redirect()->route('category.index')->with('success', 'Category Deleted Successfully');
+    }
+
+    public function restore($category_id)
+    {
+
+        $category = Category::onlyTrashed()->findOrFail($category_id);
+        $category->restore();
+        // Book::withTrashed()->where('id', $book)->restore();
+
+        Alert::success('Success', 'Category Has Been Restored');
+        return redirect()->route('category.index');
+    }
+
+    public function restoreAll()
+    {
+        Category::onlyTrashed()->restore();
+
+        return redirect()->route('category.index');
     }
 }

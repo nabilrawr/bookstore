@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Rental\CreateRequest;
 use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\Category;
@@ -21,14 +22,12 @@ use DateTime;
 class RentalController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-
-
         $bookings = DB::table('rentals')
             ->join('books', 'books.id', '=', 'rentals.book_id')
             ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
@@ -55,12 +54,8 @@ class RentalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $request->validate([
-            'start_date' => 'required',
-        ]);
-
         //automatik tambah 7 hari
         $end_date_copy = Carbon::parse($request->start_date);
         $end_date = $end_date_copy->addDays(7);

@@ -7,6 +7,8 @@ use App\Exports\StaffExport;
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\CreateRequest;
+use App\Http\Requests\User\UpdateRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -42,14 +44,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-
-        $request->validate([
-            'user_id' => 'required',
-            'role_id' => 'required',
-        ]);
-
         // return $request;
         $user = User::find($request->user_id);
         $role = Role::find($request->role_id);
@@ -90,16 +86,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'ic' => ['required', 'string', 'max:12'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'phone' => ['required', 'string'],
-            'address' => ['required', 'string', 'max:255'],
-        ]);
-
         $user->update([
             'name' => $request->name,
             'ic' => $request->ic,
