@@ -32,22 +32,21 @@ class StaffExport implements FromCollection, ShouldAutoSize, WithHeadings, WithE
     {
 
         $bookings = DB::table('rentals')
-        // ->join('books', 'books.id', '=', 'rentals.book_id')
-        // ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
-        // ->join('users', 'users.id', '=', 'rentals.user_id')
-        // // ->join('users', 'users.id', '=', 'rentals.staff_id')
-        // ->select('rentals.id','users.name as Username','books.title', 'rentals.start_date','statuses.name as statusName','users.name as Staffname')
-        // ->get();
+            // ->join('books', 'books.id', '=', 'rentals.book_id')
+            // ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
+            // ->join('users', 'users.id', '=', 'rentals.user_id')
+            // // ->join('users', 'users.id', '=', 'rentals.staff_id')
+            // ->select('rentals.id','users.name as Username','books.title', 'rentals.start_date','statuses.name as statusName','users.name as Staffname')
+            // ->get();
 
-        ->join('books', 'books.id', '=', 'rentals.book_id')
-        ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
-        ->join('users', 'users.id', '=', 'rentals.user_id')
-        // ->join('users', 'users.id', '=', 'rentals.staff_id')
-        ->select('rentals.id','users.name as Username','users.name as Staffname', 'rentals.start_date','rentals.end_date','books.title', 'statuses.name as statusName',)
-        ->get();
+            ->join('books', 'books.id', '=', 'rentals.book_id')
+            ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
+            ->join('users', 'users.id', '=', 'rentals.user_id')->on('users', 'users.id', '=', 'rentals.staff_id')
+            // ->join('users', 'users.id', '=', 'rentals.staff_id')
+            ->select('rentals.id', 'users.name as Username', 'rentals.staff_id as Staffname', 'rentals.start_date', 'rentals.end_date', 'books.title', 'statuses.name as statusName',)
+            ->get();
 
         return $bookings;
-
     }
 
     public function headings(): array
@@ -66,14 +65,14 @@ class StaffExport implements FromCollection, ShouldAutoSize, WithHeadings, WithE
     public function registerEvents(): array
     {
         return [
-            AfterSheet::class => function(AfterSheet $event) {
+            AfterSheet::class => function (AfterSheet $event) {
 
                 $event->sheet->getDelegate()->getParent()->getDefaultStyle()->getFont()->setName('Arial');
                 $event->sheet->getDelegate()->getParent()->getDefaultStyle()->getFont()->setSize(10);
 
                 //Style
                 $event->sheet->getstyle('A1:G1')->applyFromArray([
-                    'font' =>[
+                    'font' => [
                         'bold' => true
                     ],
                     'borders' => [
@@ -88,6 +87,4 @@ class StaffExport implements FromCollection, ShouldAutoSize, WithHeadings, WithE
             },
         ];
     }
-
-
 }

@@ -45,7 +45,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate ([
+        $request->validate([
             'title' => 'required',
             'writer' => 'required',
             'description' => 'required',
@@ -112,8 +112,9 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $categories = Category::all();
+
         $BookCategories = BookCategory::all();
-        $genres = Book::with(['categories'])->get()->find($book);
+        $genres = $book->categories()->pluck('category_id')->toArray();
         // return $genres->categories;
 
         return view('staff.book.edit', compact('book', 'categories', 'genres'));
@@ -128,16 +129,15 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $request->validate ([
+        $request->validate([
             'title' => 'required',
             'writer' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
             'category' => 'required',
             'price' => 'required|numeric',
         ]);
 
-        $book = new Book();
         $book->title = $request->title;
         $book->writer = $request->writer;
         $book->description = $request->description;
@@ -163,10 +163,16 @@ class BookController extends Controller
         $book->price = $request->price;
         $book->save();
 
+
+
+        // foreach ($request->category as $category) {
+        //     $book->categories()->update([
+        //         'category_id' => $category
+        //     ]);
         foreach ($request->category as $category) {
-            $category->book_id = $book->id;
-            $category->category_id = $category;
-            $category->save();
+            $book->categories()->sync([
+                'category_id' => $category
+            ]);
         }
 
         Alert::success('Success', 'Book Has Been Edited');

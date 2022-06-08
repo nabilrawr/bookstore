@@ -72,9 +72,10 @@
                                     <div class="col-6">
                                         <label class="form-label">Role</label>
                                         <select class="form-control" name="role">
-                                            <option>SILA DIAM</option>
                                             @foreach ($roles as $role)
-                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                <option value={{ $role->id }}
+                                                    {{ $role->id == $user->roles->first()->id ? 'selected' : '' }}>
+                                                    {{ $role->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('role')

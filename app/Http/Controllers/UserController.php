@@ -45,7 +45,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate ([
+        $request->validate([
             'user_id' => 'required',
             'role_id' => 'required',
         ]);
@@ -58,7 +58,7 @@ class UserController extends Controller
             $user = $user->assignRole($role);
         }
 
-        return redirect()->route('admin.create-role');
+        return redirect()->route('admin.user-list');
     }
 
     /**
@@ -92,8 +92,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
-        return
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'ic' => ['required', 'string', 'max:12'],

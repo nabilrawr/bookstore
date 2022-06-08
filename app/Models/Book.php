@@ -16,13 +16,14 @@ class Book extends Model
     {
         // return $this->hasMany(BookingItem::class);
         return $this->hasMany(BookCategory::class, 'book_id', 'id');
+        // return $this->belongsToMany(BookCategory::class, 'book_categories', 'book_id');
     }
 
     public function status()
     {
         return $this->belongsTo(Status::class, 'status_id', 'id');
     }
-    
+
     public function rentals()
     {
         return $this->hasMany(Rental::class);

@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/create-role', [App\Http\Controllers\UserController::class, 'create'])->name('create-role');
     Route::post('/store-role', [App\Http\Controllers\UserController::class, 'store'])->name('store-role');
+    Route::post('/delete-user/{user}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('delete-user');
 });
 
 //Borrower Controller

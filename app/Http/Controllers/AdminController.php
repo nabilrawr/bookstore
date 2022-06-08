@@ -52,8 +52,8 @@ class AdminController extends Controller
     {
         $roleName = Role::find($user->role);
         $roles = Role::all();
-        return view('admin.profile', compact('user','roleName', 'roles'));
-//        /return view('admin.profile', compact('user'));
+        return view('admin.profile', compact('user', 'roleName', 'roles'));
+        //        /return view('admin.profile', compact('user'));
     }
 
 
@@ -73,10 +73,10 @@ class AdminController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'ic' => ['required', 'string','max:12'],
+            'ic' => ['required', 'string', 'max:12'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required', 'string'],
-            'address' => ['required', 'string','max:255'],
+            'address' => ['required', 'string', 'max:255'],
         ]);
         $user = new User();
         $user->name = $request->name;
@@ -156,8 +156,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('admin.user-list');
     }
 }

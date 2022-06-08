@@ -14,4 +14,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Book::class, 'book_categories');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

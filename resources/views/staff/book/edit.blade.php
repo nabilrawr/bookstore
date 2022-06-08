@@ -11,7 +11,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Create</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
                     </ol>
                 </nav>
             </div>
@@ -47,8 +47,7 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Description</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" id="description" rows="5" placeholder="Enter Description" name="description"
-                                            required>{{ old('description', $book->description) }}</textarea>
+                                        <textarea class="form-control" id="description" rows="5" placeholder="Enter Description" name="description" required>{{ old('description', $book->description) }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -60,17 +59,33 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
                                     <div class="col-sm-9">
-                                        {{-- <input type="text" class="form-control"
-                                            name="category" value="{{ old('category', $genres->category) }}" readonly> --}}
-                                        <select class="form-control" name="category[]" multiple>
-                                            <option value="" selected="selected">Select</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
+                                        <select class="col-sm-3 multiple-select @error('category') is-invalid @enderror"
+                                            data-placeholder="Choose anything" multiple="multiple" name="category[]"
+                                            id="category">
 
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                     {{ in_array($category->id,$genres) ? 'selected' : ''}} >
+                                                    {{ $category->name }}</option>
+                                            @endforeach
                                         </select>
+
+
+
+                                        {{-- <select name="options[]" id="options" class="form-control" multiple>
+                                            @foreach ($settings->includes->get('optionList') as $option)
+                                                <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
+                                            @endforeach
+                                        </select> --}}
+
+
+                                        @if ($errors->has('category'))
+                                            <span id="ordertype-error" class="error text-danger"
+                                                for="input-ordertype">{{ $errors->first('category') }}</span>
+                                        @endif
                                     </div>
                                 </div>
+
 
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Price</label>
