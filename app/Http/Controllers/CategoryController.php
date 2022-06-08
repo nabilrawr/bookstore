@@ -102,7 +102,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        Alert::success('Success', 'Book Has Been Deleted');
+        Alert::success('Success', 'Category Has Been Deleted');
         return redirect()->route('category.index')->with('success', 'Category Deleted Successfully');
     }
 }

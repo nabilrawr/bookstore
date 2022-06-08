@@ -82,6 +82,7 @@ class RentalController extends Controller
     {
         $staff = Auth::user()->id;
         $user = User::first();
+        $book = Book::find($rental->book_id);
         // return $user;
         if ($rental->status_id == 8) {
             $rental->user_id = $rental->user_id;
@@ -116,6 +117,8 @@ class RentalController extends Controller
             $rental->fee = 0.00;
             $rental->save();
 
+            Book::where('id', $rental->book_id)->update(array('status_id' => 4));
+
             Notification::send($user, new ReturnNotification($rental));
 
             Alert::success('Success', 'The Book Has Been Retured and Complete');
@@ -128,6 +131,24 @@ class RentalController extends Controller
             $rental->day = $rental->day;
             $rental->fee = $rental->day;
             $rental->save();
+
+            Book::where('id', $rental->book_id)->update(array('status_id' => 4));
+
+            Notification::send($user, new ReturnNotification($rental));
+
+            Alert::success('Success', 'The book already paid for the late return');
+        } else if ($rental->status_id == 11) {
+
+            $rental->user_id = $rental->user_id;
+            $rental->start_date = $rental->start_date;
+            $rental->book_id = $rental->book_id;
+            $rental->status_id = 1;
+            $rental->staff_id = $staff;
+            $rental->day = $rental->day;
+            $rental->fee = $book->price;
+            $rental->save();
+
+            Book::where('id', $rental->book_id)->update(array('status_id' => 4));
 
             Notification::send($user, new ReturnNotification($rental));
 
@@ -146,14 +167,14 @@ class RentalController extends Controller
         $rental->user_id = $rental->user_id;
         $rental->start_date = $rental->start_date;
         $rental->book_id = $rental->book_id;
-        $rental->status_id = 1;
+        $rental->status_id = 11;
         $rental->staff_id = $staff;
         $rental->receipt = $rental->receipt;
         $rental->save();
 
         Notification::send($user, new ReturnNotification($rental));
 
-        Alert::success('Success', 'The book already paid for the damage / missing book');
+        Alert::success('Success', 'The book is damage / missing book');
 
         return redirect()->route('staff.rent-record');
     }
