@@ -36,6 +36,11 @@
                                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                                         value="{{ old('name') }}" required autocomplete="name"
                                                         placeholder="Enter your full name" autofocus>
+
+                                                        @if ($errors->has('name'))
+                                                        <span id="ordertype-error" class="error text-danger" for="input-ordertype">
+                                                        {{ $errors->first('name') }}</span>
+                                                         @endif
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -49,6 +54,10 @@
                                                         maxlength="12" value="{{ old('ic') }}"
                                                         placeholder="Enter your IC. Example : 990131045045 (without -)"
                                                         required autocomplete="ic">
+                                                        @if ($errors->has('ic'))
+                                                        <span id="ordertype-error" class="error text-danger" for="input-ordertype">
+                                                        {{ $errors->first('ic') }}</span>
+                                                         @endif
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -62,6 +71,10 @@
                                                         name="email" value="{{ old('email') }}"
                                                         placeholder="Enter your email address" required
                                                         autocomplete="email">
+                                                        @if ($errors->has('email'))
+                                                        <span id="ordertype-error" class="error text-danger" for="input-ordertype">
+                                                        {{ $errors->first('email') }}</span>
+                                                         @endif
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -74,6 +87,10 @@
                                                         class="form-control @error('phone') is-invalid @enderror"
                                                         name="phone" maxlength="11" value="{{ old('phone') }}"
                                                         placeholder="Enter your phone number" required autocomplete="phone">
+                                                        @if ($errors->has('phone'))
+                                                        <span id="ordertype-error" class="error text-danger" for="input-ordertype">
+                                                        {{ $errors->first('phone') }}</span>
+                                                         @endif
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -85,6 +102,10 @@
                                                     <textarea class="form-control @error('address') is-invalid @enderror" name="address" rows="4" required
                                                         autocomplete="address"
                                                         placeholder="Enter your address">{{ old('address') }}</textarea>
+                                                        @if ($errors->has('address'))
+                                                        <span id="ordertype-error" class="error text-danger" for="input-ordertype">
+                                                        {{ $errors->first('adddress') }}</span>
+                                                         @endif
                                                 </div>
                                             </div>
                                             <div class="col-12">
