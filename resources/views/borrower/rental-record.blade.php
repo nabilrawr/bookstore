@@ -10,8 +10,8 @@
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-6 me-auto">
                         <div class="ms-auto position-relative">
-                            <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Download
-                                Report</a>
+                            {{-- <a href="{{ route('export') }}" class="btn btn-success"> <i class="fas fa-plus"></i> Download
+                                Report</a> --}}
                         </div>
                     </div>
                 </div>

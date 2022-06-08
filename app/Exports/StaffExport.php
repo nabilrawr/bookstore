@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Rental;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User;
 use Maatwebsite\Excel\Events\AfterSheet;
@@ -23,41 +24,69 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
-class StaffExport implements FromCollection, ShouldAutoSize, WithHeadings, WithEvents
+class StaffExport implements ShouldAutoSize, WithHeadings, WithEvents, FromQuery, WithMapping
+
 
 {
     use Exportable;
 
-    public function collection()
+    public function __construct(int $status_id)
     {
+        $this->status_id = $status_id;
+    }
 
-        $bookings = DB::table('rentals')
-            // ->join('books', 'books.id', '=', 'rentals.book_id')
-            // ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
-            // ->join('users', 'users.id', '=', 'rentals.user_id')
-            // // ->join('users', 'users.id', '=', 'rentals.staff_id')
-            // ->select('rentals.id','users.name as Username','books.title', 'rentals.start_date','statuses.name as statusName','users.name as Staffname')
-            // ->get();
+    public function query()
+    {
+        $rentals = Rental::query();
 
-            ->join('books', 'books.id', '=', 'rentals.book_id')
-            ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
-            ->join('users', 'users.id', '=', 'rentals.user_id')->on('users', 'users.id', '=', 'rentals.staff_id')
-            // ->join('users', 'users.id', '=', 'rentals.staff_id')
-            ->select('rentals.id', 'users.name as Username', 'rentals.staff_id as Staffname', 'rentals.start_date', 'rentals.end_date', 'books.title', 'statuses.name as statusName',)
-            ->get();
+        if ($this->status_id !=0)
+        {
+            $rentals->where('status_id', $this->status_id);
+        }
 
-        return $bookings;
+        // DB::table('rentals')
+        //     // ->join('books', 'books.id', '=', 'rentals.book_id')
+        //     // ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
+        //     // ->join('users', 'users.id', '=', 'rentals.user_id')
+        //     // // ->join('users', 'users.id', '=', 'rentals.staff_id')
+        //     // ->select('rentals.id','users.name as Username','books.title', 'rentals.start_date','statuses.name as statusName','users.name as Staffname')
+        //     // ->get();
+
+        //     ->join('books', 'books.id', '=', 'rentals.book_id')
+        //     ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
+        //     ->join('users', 'users.id', '=', 'rentals.user_id')->on('users', 'users.id', '=', 'rentals.staff_id')
+        //     // ->join('users', 'users.id', '=', 'rentals.staff_id')
+        //     ->select('rentals.id', 'users.name as Username', 'rentals.staff_id as Staffname', 'rentals.start_date', 'rentals.end_date', 'books.title', 'statuses.name as statusName',)
+        //     ->get();
+
+        return $rentals;
+    }
+
+    public function map($rentals): array
+    {
+        $i = 1;
+        return [
+            $rentals->book->id,
+            $rentals->user->name,
+            $rentals->start_date,
+            $rentals->end_date,
+            $rentals->book->title,
+            filled($rentals->staff_id) ? $rentals->staff->name : '-',
+            $rentals->status->name,
+
+            // Date::dateTimeToExcel($invoice->created_at),
+        ];
     }
 
     public function headings(): array
     {
         return [
-            'No',
+            'Book Id',
             'Borrower Name',
-            'Staff On Charge',
             'Pickup date',
             'Return Date',
             'Book Title',
+            'Staff On Charge',
             'Status',
         ];
     }

@@ -55,6 +55,11 @@ class StatusRentController extends Controller
         $rentals = Rental::where('status_id', 13)->get();
         return view('staff.rent-status.rent-status-rent', compact('rentals'));
     }
+    public function pickup()
+    {
+        $rentals = Rental::where('status_id', 13)->get();
+        return view('staff.rent-status.rent-status-pickup', compact('rentals'));
+    }
 
     public function completePdf()
     {
@@ -115,33 +120,49 @@ class StatusRentController extends Controller
             ->setOption('margin-top', '0mm')
             ->inline('ReportRental.pdf');
     }
+
+    public function pickupPdf()
+    {
+        $rentals = Rental::where('status_id', 9)->get();
+        return PDF::loadview('report-rental', compact('rentals'))
+            ->setOrientation('landscape')
+            ->setOption('margin-bottom', '0mm')
+            ->setOption('margin-top', '0mm')
+            ->inline('ReportRental.pdf');
+    }
+
     public function completeExcel()
     {
-        return (new StaffExport)->download('statusComplete.xlsx');
+        return (new StaffExport(3))->download('statusComplete.xlsx');
     }
 
     public function completeReplaceExcel()
     {
-        return (new StaffExport)->download('statusReplace.xlsx');
+        return (new StaffExport(1))->download('statusReplace.xlsx');
     }
 
     public function completePaidExcel()
     {
-        return (new StaffExport)->download('statusPaidLate.xlsx');
+        return (new StaffExport(2))->download('statusPaidLate.xlsx');
     }
 
     public function lateExcel()
     {
-        return (new StaffExport)->download('statusLate.xlsx');
+        return (new StaffExport(7))->download('statusLate.xlsx');
     }
 
     public function pendingExcel()
     {
-        return (new StaffExport)->download('statusPending.xlsx');
+        return (new StaffExport(8))->download('statusPending.xlsx');
     }
 
     public function rentExcel()
     {
-        return (new StaffExport)->download('statusRent.xlsx');
+        return (new StaffExport(13))->download('statusRent.xlsx');
+    }
+
+    public function pickupExcel()
+    {
+        return (new StaffExport(9))->download('statusPickup.xlsx');
     }
 }

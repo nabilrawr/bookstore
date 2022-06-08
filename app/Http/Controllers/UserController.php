@@ -131,6 +131,6 @@ class UserController extends Controller
     //excel controller staff
     public function staffexport()
     {
-        return (new StaffExport)->download('staff.xlsx');
+        return (new StaffExport(0))->download('staff.xlsx');
     }
 }

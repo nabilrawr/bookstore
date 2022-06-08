@@ -94,6 +94,7 @@ Route::group(['prefix' => 'status-rents', 'as' => 'status-rents.'], function () 
     Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'late'])->name('late');
     Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pending'])->name('pending');
     Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rent'])->name('rent');
+    Route::get('/pickup', [App\Http\Controllers\StatusRentController::class, 'pickup'])->name('pickup');
 });
 
 Route::group(['prefix' => 'generate-pdf-status-rents', 'as' => 'generate-pdf-status-rents.'], function () {
@@ -104,6 +105,7 @@ Route::group(['prefix' => 'generate-pdf-status-rents', 'as' => 'generate-pdf-sta
     Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'latePdf'])->name('late');
     Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pendingPdf'])->name('pending');
     Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rentPdf'])->name('rent');
+    Route::get('/pickup', [App\Http\Controllers\StatusRentController::class, 'pickupPdf'])->name('pickup');
 });
 
 Route::group(['prefix' => 'generate-excel-status-rents', 'as' => 'generate-excel-status-rents.'], function () {
@@ -114,6 +116,7 @@ Route::group(['prefix' => 'generate-excel-status-rents', 'as' => 'generate-excel
     Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'lateExcel'])->name('late');
     Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pendingExcel'])->name('pending');
     Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rentExcel'])->name('rent');
+    Route::get('/pickup', [App\Http\Controllers\StatusRentController::class, 'pickupExcel'])->name('pickup');
 });
 
 //book
