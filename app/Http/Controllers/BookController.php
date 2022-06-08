@@ -112,7 +112,6 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $categories = Category::all();
-
         $BookCategories = BookCategory::all();
         $genres = $book->categories()->pluck('category_id')->toArray();
         // return $genres->categories;
@@ -133,7 +132,7 @@ class BookController extends Controller
             'title' => 'required',
             'writer' => 'required',
             'description' => 'required',
-            // 'image' => 'required',
+            'image' => 'required',
             'category' => 'required',
             'price' => 'required|numeric',
         ]);
@@ -164,16 +163,11 @@ class BookController extends Controller
         $book->save();
 
 
+        // $book->book_categories()->detacth();
+        // $book->book_categories()->attach($request->$category)
 
-        // foreach ($request->category as $category) {
-        //     $book->categories()->update([
-        //         'category_id' => $category
-        //     ]);
-        foreach ($request->category as $category) {
-            $book->categories()->sync([
-                'category_id' => $category
-            ]);
-        }
+
+        $book->categories()->sync($request->category);
 
         Alert::success('Success', 'Book Has Been Edited');
         return redirect()->route('book.index');
