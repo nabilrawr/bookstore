@@ -13,7 +13,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Index</li>
+                            <li class="breadcrumb-item active" aria-current="page">Category Deleted</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,11 +22,8 @@
             <div class="card">
                 <div class="card-header py-3">
                     <div class="row g-3">
-                        <div class="col-lg-6 col-10 col-md-7">
+                        <div class="col-lg-4 col-8 col-md-5">
                             <a href="{{ route('category.create') }}" class="btn btn-primary px-2">Create Category</a>
-                            <a href="{{ route('book.IndexRestore', ['trashed' => 'book']) }}"
-                                class="btn btn-primary px-3">View
-                                Deleted Categories</a>
                         </div>
                     </div>
                 </div>
@@ -49,23 +46,12 @@
                                             <td>{{ $category->name }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-3 fs-6">
-                                                    <a href="{{ route('category.edit', $category) }}"
-                                                        class="text-warning" data-bs-toggle="tooltip"
-                                                        data-bs-placement="bottom" title=""
-                                                        data-bs-original-title="Edit Category" aria-label="Edit"><i
-                                                            class="bi bi-pencil-fill"></i></a>
-                                                    <form action="{{ route('category.destroy', $category) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            onclick="return confirm ('Are you sure want to delete?');"
-                                                            class="text-danger border-0 bx-outline-none btn-light"
-                                                            data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
-                                                            data-bs-original-title="Delete" aria-label="Delete"><i
-                                                                class="bi bi-trash-fill"></i></button>
-                                                    </form>
-
-                                                </div>
+                                                    <a href="{{ route('category.restore', $category->id) }}"
+                                                        class="btn btn-danger"
+                                                        onclick="return confirm ('Are you sure want to restore?');"
+                                                        data-id="{{ $category->id }}" data-bs-toggle="tooltip"
+                                                        data-bs-placement="bottom" id="delete-confirm" title=""
+                                                        data-bs-original-title="Restore" aria-label="Restore">Restore</a>
                                             </td>
                                         </tr>
                                     @endforeach

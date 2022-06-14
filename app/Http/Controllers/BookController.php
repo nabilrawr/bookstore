@@ -9,6 +9,8 @@ use App\Models\BookCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\Book\CreateRequest;
+use App\Http\Requests\Book\UpdateRequest;
 
 class BookController extends Controller
 {
@@ -23,6 +25,13 @@ class BookController extends Controller
         $categories = Category::all();
 
         return view('staff.book.index', compact('books', 'categories'));
+    }
+
+    public function IndexRestore()
+    {
+        $books = Book::onlyTrashed()
+            ->get();
+        return view('staff.book.deleted', compact('books'));
     }
     /**
      * Show the form for creating a new resource.
@@ -42,18 +51,8 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-
-        $request->validate ([
-            'title' => 'required',
-            'writer' => 'required',
-            'description' => 'required',
-            'image' => 'required',
-            'category' => 'required',
-            'price' => 'required|numeric',
-        ]);
-
         $book = new Book();
         $book->title = $request->title;
         $book->writer = $request->writer;
@@ -99,8 +98,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        $bookCategories = $book->categories;
-        return view('staff.book.show', compact('book', 'bookCategories'));
+        return view('staff.book.show', compact('book'));
     }
 
     /**
@@ -113,7 +111,7 @@ class BookController extends Controller
     {
         $categories = Category::all();
         $BookCategories = BookCategory::all();
-        $genres = Book::with(['categories'])->get()->find($book);
+        $genres = $book->categories()->pluck('category_id')->toArray();
         // return $genres->categories;
 
         return view('staff.book.edit', compact('book', 'categories', 'genres'));
@@ -126,18 +124,8 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(UpdateRequest $request, Book $book)
     {
-        $request->validate ([
-            'title' => 'required',
-            'writer' => 'required',
-            'description' => 'required',
-            'image' => 'required',
-            'category' => 'required',
-            'price' => 'required|numeric',
-        ]);
-
-        $book = new Book();
         $book->title = $request->title;
         $book->writer = $request->writer;
         $book->description = $request->description;
@@ -163,12 +151,12 @@ class BookController extends Controller
         $book->price = $request->price;
         $book->save();
 
-        foreach ($request->category as $category) {
-            $bookCategory = new BookCategory();
-            $bookCategory->book_id = $book->id;
-            $bookCategory->category_id = $category;
-            $bookCategory->save();
-        }
+
+        // $book->book_categories()->detacth();
+        // $book->book_categories()->attach($request->$category)
+
+
+        $book->categories()->sync($request->category);
 
         Alert::success('Success', 'Book Has Been Edited');
         return redirect()->route('book.index');
@@ -184,6 +172,24 @@ class BookController extends Controller
     {
         $book->delete();
         Alert::success('Success', 'Book Has Been Deleted');
+        return redirect()->route('book.index');
+    }
+
+    public function restore($book_id)
+    {
+
+        $book = Book::onlyTrashed()->findOrFail($book_id);
+        $book->restore();
+        // Book::withTrashed()->where('id', $book)->restore();
+
+        Alert::success('Success', 'Book Has Been Restored');
+        return redirect()->route('book.index');
+    }
+
+    public function restoreAll()
+    {
+        Book::onlyTrashed()->restore();
+
         return redirect()->route('book.index');
     }
 }

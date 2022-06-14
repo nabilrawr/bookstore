@@ -73,12 +73,11 @@
                                 <div class="row mb-3">
                                     <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
                                     <div class="col-sm-9">
-                                        <select class="multiple-select @error('category') is-invalid @enderror" data-placeholder="Choose anything"
-                                            multiple="multiple" name="category" id="news">
+                                        <select class="col-sm-3 multiple-select @error('category') is-invalid @enderror" data-placeholder="Choose anything"
+                                            multiple="multiple" name="category[]" id="news">
                                             {{-- <select class="select2 form-select mb-3" name="category[]" id="category"> --}}
-                                            <option value="" selected>Open this select menu</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}" @if ( $category->id == old('category')) selected @endif>{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('category'))

@@ -11,7 +11,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Index</li>
+                        <li class="breadcrumb-item active" aria-current="page">Book Deleted</li>
                     </ol>
                 </nav>
             </div>
@@ -22,9 +22,6 @@
                 <div class="row g-3">
                     <div class="col-lg-4 col-8 col-md-5">
                         <a href="{{ route('book.create') }}" class="btn btn-primary px-2">Create Book</a>
-                        <a href="{{ route('book.IndexRestore', ['trashed' => 'book']) }}"
-                            class="btn btn-primary px-3">View
-                            Deleted books</a>
                     </div>
                 </div>
             </div>
@@ -38,8 +35,9 @@
                                 <th>Title</th>
                                 <th>Author</th>
                                 <th>Price</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                @if (auth()->user()->hasRole('admin'))
+                                    <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -52,28 +50,16 @@
                                     <td>{{ $book->writer }}</td>
                                     <td>RM {{ $book->price }}</td>
                                     {{-- <td>{{ $book->status_id }}</td> --}}
-                                    <td>{{ $book->status->name }}</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3 fs-6">
-                                            <a href="{{ route('book.show', $book) }}" class="text-primary"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
-                                                data-bs-original-title="View detail" aria-label="Views"><i
-                                                    class="bi bi-eye-fill"></i></a>
-                                            <a href="{{ route('book.edit', $book) }}" class="text-warning"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
-                                                data-bs-original-title="Edit Category" aria-label="Edit"><i
-                                                    class="bi bi-pencil-fill"></i></a>
-                                            <form action="{{ route('book.destroy', $book) }}" method="POST">
-                                                @csrf
-                                                <button type="submit"
-                                                    class="text-danger border-0 bx-outline-none btn-light "
-                                                    onclick="return confirm ('Are you sure want to delete?');"
+                                    @if (auth()->user()->hasRole('admin'))
+                                        <td>
+                                            <div class="d-flex align-items-center gap-3 fs-6">
+                                                <a href="{{ route('book.restore', $book->id) }}" class="btn btn-danger"
+                                                    onclick="return confirm ('Are you sure want to restore?');"
                                                     data-id="{{ $book->id }}" data-bs-toggle="tooltip"
                                                     data-bs-placement="bottom" id="delete-confirm" title=""
-                                                    data-bs-original-title="Delete" aria-label="Delete"><i
-                                                        class="bi bi-trash-fill"></i></button>
-                                            </form>
-                                    </td>
+                                                    data-bs-original-title="Restore" aria-label="Restore">Restore</a>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

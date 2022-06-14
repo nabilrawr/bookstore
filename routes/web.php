@@ -30,6 +30,7 @@ Route::get('/test', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 //excel Route
 Route::get('user/export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
 Route::get('/user/staffexport', [App\Http\Controllers\UserController::class, 'staffexport'])->name('staffexport');
@@ -40,7 +41,7 @@ Route::get('/profile-edit/{user}', [App\Http\Controllers\UserController::class, 
 Route::post('/profile-update/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('profile-update');
 
 
-//Admin Controller
+//Admin
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/index', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
     Route::get('/rent-record', [App\Http\Controllers\AdminController::class, 'rentRecord'])->name('rent-record');
@@ -56,9 +57,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/create-role', [App\Http\Controllers\UserController::class, 'create'])->name('create-role');
     Route::post('/store-role', [App\Http\Controllers\UserController::class, 'store'])->name('store-role');
+    Route::post('/delete-user/{user}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('delete-user');
 });
 
-//Borrower Controller
+//Borrower
 Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
 
     Route::get('/catalog-index', [App\Http\Controllers\RentalController::class, 'indexCatalog'])->name('index-catalog');
@@ -73,7 +75,7 @@ Route::group(['prefix' => 'borrower', 'as' => 'borrower.'], function () {
     Route::get('/active-record', [App\Http\Controllers\RentalController::class, 'activeRecord'])->name('active-record');
 });
 
-//staff controller
+//staff
 Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
 
     Route::get('/index', [App\Http\Controllers\StaffController::class, 'index'])->name('index');
@@ -93,8 +95,10 @@ Route::group(['prefix' => 'status-rents', 'as' => 'status-rents.'], function () 
     Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'late'])->name('late');
     Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pending'])->name('pending');
     Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rent'])->name('rent');
+    Route::get('/pickup', [App\Http\Controllers\StatusRentController::class, 'pickup'])->name('pickup');
 });
 
+//generate pdf by status
 Route::group(['prefix' => 'generate-pdf-status-rents', 'as' => 'generate-pdf-status-rents.'], function () {
 
     Route::get('/complete', [App\Http\Controllers\StatusRentController::class, 'completePdf'])->name('complete');
@@ -103,8 +107,10 @@ Route::group(['prefix' => 'generate-pdf-status-rents', 'as' => 'generate-pdf-sta
     Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'latePdf'])->name('late');
     Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pendingPdf'])->name('pending');
     Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rentPdf'])->name('rent');
+    Route::get('/pickup', [App\Http\Controllers\StatusRentController::class, 'pickupPdf'])->name('pickup');
 });
 
+//generate excel by status
 Route::group(['prefix' => 'generate-excel-status-rents', 'as' => 'generate-excel-status-rents.'], function () {
 
     Route::get('/complete', [App\Http\Controllers\StatusRentController::class, 'completeExcel'])->name('complete');
@@ -113,6 +119,7 @@ Route::group(['prefix' => 'generate-excel-status-rents', 'as' => 'generate-excel
     Route::get('/late', [App\Http\Controllers\StatusRentController::class, 'lateExcel'])->name('late');
     Route::get('/pending', [App\Http\Controllers\StatusRentController::class, 'pendingExcel'])->name('pending');
     Route::get('/rent', [App\Http\Controllers\StatusRentController::class, 'rentExcel'])->name('rent');
+    Route::get('/pickup', [App\Http\Controllers\StatusRentController::class, 'pickupExcel'])->name('pickup');
 });
 
 //book
@@ -124,6 +131,9 @@ Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
     Route::get('/edit/{book}', [App\Http\Controllers\BookController::class, 'edit'])->name('edit');
     Route::post('/update/{book}', [App\Http\Controllers\BookController::class, 'update'])->name('update');
     Route::post('/destroy/{book}', [App\Http\Controllers\BookController::class, 'destroy'])->name('destroy');
+    Route::get('/IndexRestore', [App\Http\Controllers\BookController::class, 'IndexRestore'])->name('IndexRestore');
+    Route::get('/restore/{book}', [App\Http\Controllers\BookController::class, 'restore'])->name('restore');
+    Route::get('/restore-all', [App\Http\Controllers\BookController::class, 'restoreAll'])->name('restoreAll');
 });
 
 //category
@@ -135,6 +145,9 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::get('/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('edit');
     Route::post('/update/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
     Route::post('/destroy/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
+    Route::get('/IndexRestore', [App\Http\Controllers\CategoryController::class, 'IndexRestore'])->name('IndexRestore');
+    Route::get('/restore/{book}', [App\Http\Controllers\CategoryController::class, 'restore'])->name('restore');
+    Route::get('/restore-all', [App\Http\Controllers\CategoryController::class, 'restoreAll'])->name('restoreAll');
 });
 
 Route::get('/rent-receipt', [App\Http\Controllers\RentalController::class, 'pdfReceipt'])->name('generate-receipt');

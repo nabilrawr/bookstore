@@ -51,18 +51,6 @@
                                     {{-- <textarea class="form-control" rows="7" readonly>{{ $book->description }}</textarea> --}}
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputEnterYourName" class="col-sm-3 col-form-label">Category</label>
-                                <div class="col-sm-9">
-                                    <ul>
-                                        @foreach ($bookCategories as $bookCategory)
-                                            <li>{{ $bookCategory->category->name }}</li>
-                                        @endforeach
-                                    </ul>
-                                    {{-- <input type="text" class="form-control" value="{{ $bookCategory->category->name }}" readonly> --}}
-
-                                </div>
-                            </div>
 
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">Price</label>
