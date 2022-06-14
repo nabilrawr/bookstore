@@ -104,7 +104,12 @@
                         </tbody>
                     </table>
                 </div>
+                </td>
+                </tr>
+                </tbody>
+                </table>
             </div>
+        </div>
         </div>
     </main>
     <!--end page main-->

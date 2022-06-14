@@ -27,6 +27,8 @@ class RentalController extends Controller
      */
     public function index()
     {
+
+
         $bookings = DB::table('rentals')
             ->join('books', 'books.id', '=', 'rentals.book_id')
             ->join('statuses', 'statuses.id', '=', 'rentals.status_id')
