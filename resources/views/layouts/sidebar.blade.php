@@ -6,7 +6,7 @@
                     alt="logo icon">
             </div>
             <div>
-                <h4 class="logo-text">BRMS</h4>
+                <h4 class="logo-text">BRMS®</h4>
             </div>
             <div class="toggle-icon ms-auto"> <i class="bi bi-list"></i>
             </div>
